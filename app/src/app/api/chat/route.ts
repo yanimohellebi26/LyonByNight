@@ -1,6 +1,6 @@
 import { openai } from "@ai-sdk/openai";
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { streamText, convertToModelMessages, type UIMessage } from "ai";
+import { streamText, generateText, convertToModelMessages, type UIMessage } from "ai";
 import { retrieveLieux, formatLieuxForContext } from "@/lib/rag/retriever";
 import {
   searchYelpLyon,
@@ -41,21 +41,27 @@ function extractTextFromMessage(msg: UIMessage): string {
     .join(" ");
 }
 
-/** Pick the best available model: Gemini → OpenAI */
-function getModel() {
+/** Build ordered list of available models for fallback */
+function getModels() {
+  const models: Array<{ provider: string; model: ReturnType<typeof openai> }> = [];
+
   const geminiKey = process.env.GEMINI_API_KEY ?? process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (geminiKey) {
     const google = createGoogleGenerativeAI({ apiKey: geminiKey });
-    return google("gemini-2.0-flash");
+    models.push({ provider: "gemini", model: google("gemini-2.0-flash") as ReturnType<typeof openai> });
   }
 
-  if (!process.env.OPENAI_API_KEY) {
+  if (process.env.OPENAI_API_KEY) {
+    models.push({ provider: "openai", model: openai("gpt-4o-mini") });
+  }
+
+  if (models.length === 0) {
     throw new Error(
       "No AI API key configured. Set GEMINI_API_KEY or OPENAI_API_KEY in environment variables."
     );
   }
 
-  return openai("gpt-4o-mini");
+  return models;
 }
 
 export async function POST(req: Request) {
@@ -70,7 +76,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const model = getModel();
+    const models = getModels();
 
     // Extract text from the last user message
     const lastUserMsg = [...messages].reverse().find((m) => m.role === "user");
@@ -100,14 +106,38 @@ export async function POST(req: Request) {
       .filter(Boolean)
       .join("\n");
 
-    const result = streamText({
-      model,
-      system: `${SYSTEM_PROMPT}\n\n--- CONTEXTE ---\n${contextBlock}`,
-      messages: await convertToModelMessages(messages),
-      temperature: 0.7,
-    });
+    const systemPrompt = `${SYSTEM_PROMPT}\n\n--- CONTEXTE ---\n${contextBlock}`;
+    const modelMessages = await convertToModelMessages(messages);
 
-    return result.toUIMessageStreamResponse();
+    // Try each model in order, fall back on failure
+    // streamText errors are asynchronous, so we pre-test each model
+    let lastError: unknown;
+    for (const { provider, model } of models) {
+      try {
+        // Quick check: generate a minimal response to verify the model works
+        await generateText({
+          model,
+          prompt: "ok",
+          maxOutputTokens: 1,
+          maxRetries: 0,
+        });
+
+        // Model is reachable — stream the real response
+        const result = streamText({
+          model,
+          system: systemPrompt,
+          messages: modelMessages,
+          temperature: 0.7,
+        });
+
+        return result.toUIMessageStreamResponse();
+      } catch (err) {
+        console.warn(`[chat] ${provider} failed, trying next model...`, err);
+        lastError = err;
+      }
+    }
+
+    throw lastError ?? new Error("All AI models failed");
   } catch (error) {
     console.error("Chat API error:", error);
     const message = error instanceof Error ? error.message : "Internal server error";

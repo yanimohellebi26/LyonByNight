@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -322,6 +323,7 @@ export function FilterSheet(props: FilterPanelProps) {
       <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto rounded-t-2xl">
         <SheetHeader>
           <SheetTitle className="sr-only">{t("title")}</SheetTitle>
+          <SheetDescription className="sr-only">{t("title")}</SheetDescription>
         </SheetHeader>
         <FilterContent {...props} />
       </SheetContent>
