@@ -24,7 +24,11 @@ export function ChatPanel() {
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status } = useChat();
+  const { messages, sendMessage, status, error } = useChat({
+    onError: (err) => {
+      console.error("Chat error:", err);
+    },
+  });
 
   const isLoading = status === "submitted" || status === "streaming";
 
@@ -126,6 +130,12 @@ export function ChatPanel() {
 
             {isLoading && messages[messages.length - 1]?.role === "user" && (
               <ChatBubble role="assistant" content="" isLoading />
+            )}
+
+            {error && !isLoading && (
+              <div className="mx-2 rounded-lg border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">
+                {error.message || "An error occurred. Please try again."}
+              </div>
             )}
 
             {/* Mini-cards for referenced lieux — deep links to venue pages */}

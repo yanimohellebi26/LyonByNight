@@ -48,56 +48,72 @@ function getModel() {
     const google = createGoogleGenerativeAI({ apiKey: geminiKey });
     return google("gemini-2.0-flash");
   }
+
+  if (!process.env.OPENAI_API_KEY) {
+    throw new Error(
+      "No AI API key configured. Set GEMINI_API_KEY or OPENAI_API_KEY in environment variables."
+    );
+  }
+
   return openai("gpt-4o-mini");
 }
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { messages } = body as { messages: UIMessage[] };
+  try {
+    const body = await req.json();
+    const { messages } = body as { messages: UIMessage[] };
 
-  if (!messages || !Array.isArray(messages) || messages.length === 0) {
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return new Response(
+        JSON.stringify({ error: "Messages array is required" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const model = getModel();
+
+    // Extract text from the last user message
+    const lastUserMsg = [...messages].reverse().find((m) => m.role === "user");
+    const lastUserMessage = lastUserMsg ? extractTextFromMessage(lastUserMsg) : "";
+
+    // Retrieve relevant local lieux — generous limit for better coverage
+    const localLieux = await retrieveLieux(lastUserMessage, { limit: 10, minScore: 2 });
+
+    // Always try Yelp enrichment if local results are thin
+    let yelpContext = "";
+    if (localLieux.length < 4 && process.env.YELP_API_KEY) {
+      try {
+        const yelpResults = await searchYelpLyon(lastUserMessage, { limit: 5 });
+        yelpContext = formatYelpForContext(yelpResults);
+      } catch (error) {
+        console.error("Yelp API error:", error);
+      }
+    }
+
+    const localContext = formatLieuxForContext(localLieux);
+
+    const contextBlock = [
+      "=== DONNÉES LOCALES (prioritaires — utilise les [id:xxx] de cette section) ===",
+      localContext || "(Aucun résultat local pertinent pour cette requête)",
+      yelpContext ? `\n=== DONNÉES YELP (complémentaires — pas d'id disponible) ===\n${yelpContext}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const result = streamText({
+      model,
+      system: `${SYSTEM_PROMPT}\n\n--- CONTEXTE ---\n${contextBlock}`,
+      messages: await convertToModelMessages(messages),
+      temperature: 0.7,
+    });
+
+    return result.toUIMessageStreamResponse();
+  } catch (error) {
+    console.error("Chat API error:", error);
+    const message = error instanceof Error ? error.message : "Internal server error";
     return new Response(
-      JSON.stringify({ error: "Messages array is required" }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ error: message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
-
-  // Extract text from the last user message
-  const lastUserMsg = [...messages].reverse().find((m) => m.role === "user");
-  const lastUserMessage = lastUserMsg ? extractTextFromMessage(lastUserMsg) : "";
-
-  // Retrieve relevant local lieux — generous limit for better coverage
-  const localLieux = await retrieveLieux(lastUserMessage, { limit: 10, minScore: 2 });
-
-  // Always try Yelp enrichment if local results are thin
-  let yelpContext = "";
-  if (localLieux.length < 4 && process.env.YELP_API_KEY) {
-    try {
-      const yelpResults = await searchYelpLyon(lastUserMessage, { limit: 5 });
-      yelpContext = formatYelpForContext(yelpResults);
-    } catch (error) {
-      console.error("Yelp API error:", error);
-    }
-  }
-
-  const localContext = formatLieuxForContext(localLieux);
-
-  const contextBlock = [
-    "=== DONNÉES LOCALES (prioritaires — utilise les [id:xxx] de cette section) ===",
-    localContext || "(Aucun résultat local pertinent pour cette requête)",
-    yelpContext ? `\n=== DONNÉES YELP (complémentaires — pas d'id disponible) ===\n${yelpContext}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
-
-  const model = getModel();
-
-  const result = streamText({
-    model,
-    system: `${SYSTEM_PROMPT}\n\n--- CONTEXTE ---\n${contextBlock}`,
-    messages: await convertToModelMessages(messages),
-    temperature: 0.7,
-  });
-
-  return result.toUIMessageStreamResponse();
 }
