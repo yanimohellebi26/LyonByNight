@@ -12,6 +12,12 @@ import {
   ExternalLink,
   ArrowLeft,
   Share2,
+  Music,
+  Users,
+  Euro,
+  Tag,
+  Star,
+  Info,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -104,20 +110,39 @@ export default async function LieuPage({ params }: LieuPageProps) {
   };
   const horairesLines = formatHoraires(lieu.horaires, dayLabels);
 
-  /* Find similar venues (same type or musique overlap, limit 3) */
+  /* Deduplicate: don't show specificites that are identical to description */
+  const uniqueSpecificites = lieu.specificites.filter(
+    (spec) => spec.toLowerCase().trim() !== lieu.description.toLowerCase().trim()
+  );
+
+  /* Price label */
+  const priceLabel =
+    lieu.prix.fourchette === "€"
+      ? t("price_budget")
+      : lieu.prix.fourchette === "€€"
+        ? t("price_mid")
+        : t("price_upscale");
+
+  /* Find similar venues — same category OR same type with musique overlap, up to 6 */
   const similar = lieux
     .filter(
       (l) =>
         l.id !== lieu.id &&
-        (l.type === lieu.type ||
+        (l.categorie === rawLieu.categorie ||
+          l.type === rawLieu.type &&
           l.musique.some((m) => rawLieu.musique.includes(m)))
     )
-    .slice(0, 3)
+    .sort((a, b) => (b.note ?? 0) - (a.note ?? 0))
+    .slice(0, 6)
     .map((l) => translateLieu(l, locale));
+
+  /* Check if the venue has sparse data */
+  const isSparse = !lieu.note && !lieu.resume_avis && lieu.photos.length === 0 && !lieu.horaires;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">
       <JsonLd type="lieu" lieu={lieu} />
+
       {/* Back + share */}
       <div className="mb-4 flex items-center justify-between">
         <Link
@@ -144,11 +169,32 @@ export default async function LieuPage({ params }: LieuPageProps) {
           priority
           unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-        <div className="absolute left-4 top-4">
-          <Badge variant="secondary" className="text-xs">
-            {lieu.type === "club" ? t("type_club") : t("type_bar")}
-          </Badge>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        {/* Overlay content on hero */}
+        <div className="absolute bottom-4 left-4 right-4">
+          <div className="flex items-end justify-between gap-4">
+            <div>
+              <Badge variant="secondary" className="mb-2 text-xs">
+                {lieu.type === "club" ? t("type_club") : t("type_bar")}
+              </Badge>
+              <h1 className="text-2xl font-bold text-white drop-shadow-lg md:text-3xl">
+                {lieu.nom}
+              </h1>
+              <p className="mt-1 text-sm text-white/80">
+                <MapPin className="mr-1 inline h-3.5 w-3.5" />
+                {lieu.quartier
+                  ? `${lieu.quartier} — Lyon ${lieu.arrondissement}`
+                  : lieu.adresse}
+              </p>
+            </div>
+            {lieu.note != null && (
+              <div className="flex shrink-0 items-center gap-1 rounded-xl bg-black/40 px-3 py-1.5 backdrop-blur">
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                <span className="text-lg font-bold text-white">{lieu.note}</span>
+                <span className="text-xs text-white/70">/5</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -173,61 +219,117 @@ export default async function LieuPage({ params }: LieuPageProps) {
         </div>
       )}
 
-      {/* Title + meta row */}
-      <div className="mb-6">
-        {lieu.musique.length > 0 && (
-          <div className="mb-2 flex flex-wrap gap-1.5">
-            {lieu.musique.map((m) => (
-              <span
-                key={m}
-                className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary"
-              >
-                ♫ {m}
-              </span>
-            ))}
+      {/* ===== Quick Facts Grid ===== */}
+      <section className="mb-8">
+        <h2 className="mb-4 text-lg font-semibold">{t("quick_facts")}</h2>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          {/* Price */}
+          <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+            <Euro className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+            <div>
+              <p className="text-xs text-muted-foreground">{t("price_level")}</p>
+              <p className="text-sm font-semibold">{lieu.prix.fourchette} · {priceLabel}</p>
+              {lieu.prix.pinte_moy && (
+                <p className="text-xs text-muted-foreground">
+                  {t("avg_pint")}: {lieu.prix.pinte_moy}€
+                </p>
+              )}
+              {lieu.prix.cocktail_moy && (
+                <p className="text-xs text-muted-foreground">
+                  {t("avg_cocktail")}: {lieu.prix.cocktail_moy}€
+                </p>
+              )}
+            </div>
           </div>
-        )}
 
-        <div className="flex items-start justify-between gap-4">
-          <h1 className="text-3xl font-bold leading-tight md:text-4xl">
-            {lieu.nom}
-          </h1>
-          {lieu.note != null && (
-            <div className="flex shrink-0 items-center gap-1 rounded-xl bg-primary/10 px-3 py-1.5">
-              <span className="text-lg text-amber-400">★</span>
-              <span className="text-lg font-bold">{lieu.note}</span>
-              <span className="text-xs text-muted-foreground">/5</span>
+          {/* Music */}
+          {lieu.musique.length > 0 && (
+            <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+              <Music className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-xs text-muted-foreground">{t("music_style")}</p>
+                <p className="text-sm font-semibold">{lieu.musique.slice(0, 3).join(", ")}</p>
+                {lieu.musique.length > 3 && (
+                  <p className="text-xs text-muted-foreground">+{lieu.musique.length - 3}</p>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Category */}
+          <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+            <Tag className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+            <div>
+              <p className="text-xs text-muted-foreground">{t("category")}</p>
+              <p className="text-sm font-semibold">{lieu.categorie}</p>
+              {lieu.sous_categories.length > 0 && (
+                <p className="text-xs text-muted-foreground">
+                  {lieu.sous_categories.join(", ")}
+                </p>
+              )}
+            </div>
+          </div>
+
+          {/* Location */}
+          <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+            <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+            <div>
+              <p className="text-xs text-muted-foreground">{t("neighborhood")}</p>
+              <p className="text-sm font-semibold">
+                {lieu.quartier ?? `Lyon ${lieu.arrondissement}`}
+              </p>
+              {lieu.quartier && lieu.arrondissement && (
+                <p className="text-xs text-muted-foreground">Lyon {lieu.arrondissement}</p>
+              )}
+            </div>
+          </div>
+
+          {/* Clientele */}
+          {lieu.clientele && (
+            <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+              <Users className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-xs text-muted-foreground">{t("clientele")}</p>
+                <p className="text-sm font-semibold">{lieu.clientele}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Capacity */}
+          {lieu.capacite && (
+            <div className="flex items-start gap-3 rounded-xl border bg-card p-3">
+              <Users className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-xs text-muted-foreground">{t("capacity")}</p>
+                <p className="text-sm font-semibold">{t("places", { count: lieu.capacite })}</p>
+              </div>
+            </div>
+          )}
+
+          {/* Hours (compact) */}
+          {horairesLines.length > 0 && (
+            <div className="flex items-start gap-3 rounded-xl border bg-card p-3 col-span-2 sm:col-span-1">
+              <Clock className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <div>
+                <p className="text-xs text-muted-foreground">{t("hours")}</p>
+                {horairesLines.map((line) => (
+                  <p key={line} className="text-sm font-semibold">{line}</p>
+                ))}
+              </div>
             </div>
           )}
         </div>
+      </section>
 
-        {/* Quick info row */}
-        <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <MapPin className="h-4 w-4" />
-            {lieu.quartier
-              ? `${lieu.quartier} — Lyon ${lieu.arrondissement}`
-              : lieu.adresse}
-          </span>
-          {lieu.prix.fourchette && (
-            <span className="font-mono font-medium text-foreground">
-              {lieu.prix.fourchette}
-              {lieu.prix.pinte_moy &&
-                ` · ${t("pinte", { price: lieu.prix.pinte_moy })}`}
-              {lieu.prix.cocktail_moy &&
-                ` · ${t("cocktail", { price: lieu.prix.cocktail_moy })}`}
-            </span>
-          )}
-        </div>
-
-        {/* Links */}
-        <div className="mt-3 flex flex-wrap gap-3">
+      {/* Links */}
+      {(lieu.site_web || lieu.instagram || lieu.google_maps) && (
+        <div className="mb-8 flex flex-wrap gap-3">
           {lieu.site_web && (
             <a
               href={lieu.site_web}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-primary hover:underline"
+              className="flex items-center gap-1.5 rounded-lg border px-3 py-2 text-sm text-primary hover:bg-primary/5 transition-colors"
             >
               <Globe className="h-4 w-4" />
               {t("website")}
@@ -242,7 +344,7 @@ export default async function LieuPage({ params }: LieuPageProps) {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-primary hover:underline"
+              className="flex items-center gap-1.5 rounded-lg border px-3 py-2 text-sm text-primary hover:bg-primary/5 transition-colors"
             >
               <Instagram className="h-4 w-4" />
               Instagram
@@ -253,104 +355,60 @@ export default async function LieuPage({ params }: LieuPageProps) {
               href={lieu.google_maps}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-sm text-primary hover:underline"
+              className="flex items-center gap-1.5 rounded-lg border px-3 py-2 text-sm text-primary hover:bg-primary/5 transition-colors"
             >
               <ExternalLink className="h-4 w-4" />
               Google Maps
             </a>
           )}
         </div>
-      </div>
+      )}
 
       <Separator className="mb-8" />
 
-      {/* Description */}
-      {lieu.description && (
-        <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold">{t("description")}</h2>
+      {/* ===== About Section — combines description + unique specificites ===== */}
+      <section className="mb-8">
+        <h2 className="mb-3 text-lg font-semibold">{t("about")}</h2>
+        {lieu.description && (
           <p className="text-sm leading-relaxed text-muted-foreground">
             {lieu.description}
           </p>
-        </section>
-      )}
+        )}
+
+        {/* Specificites as tags — only those not duplicated from description */}
+        {uniqueSpecificites.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {uniqueSpecificites.map((spec) => (
+              <Badge key={spec} variant="secondary" className="text-xs">
+                {spec}
+              </Badge>
+            ))}
+          </div>
+        )}
+      </section>
 
       {/* Résumé des avis */}
       {lieu.resume_avis && (
         <section className="mb-8">
           <h2 className="mb-3 text-lg font-semibold">{t("reviews_summary")}</h2>
           <div className="rounded-xl border bg-card p-4">
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              {lieu.resume_avis}
+            <p className="text-sm leading-relaxed text-muted-foreground italic">
+              &ldquo;{lieu.resume_avis}&rdquo;
             </p>
           </div>
         </section>
       )}
 
-      {/* Spécificités */}
-      {lieu.specificites.length > 0 && (
-        <section className="mb-8">
-          <h2 className="mb-3 text-lg font-semibold">{t("features")}</h2>
-          <div className="flex flex-wrap gap-2">
-            {lieu.specificites.map((spec) => (
-              <Badge key={spec} variant="secondary" className="text-xs">
-                {spec}
-              </Badge>
-            ))}
-          </div>
-        </section>
+      {/* Sparse data notice */}
+      {isSparse && (
+        <div className="mb-8 flex items-start gap-3 rounded-xl border border-dashed border-muted-foreground/30 bg-muted/30 p-4">
+          <Info className="mt-0.5 h-5 w-5 shrink-0 text-muted-foreground" />
+          <p className="text-sm text-muted-foreground">{t("no_info")}</p>
+        </div>
       )}
 
       {/* Événements à venir */}
       <LieuEvents lieuId={lieu.id} />
-
-      <div className="mb-8 grid gap-6 md:grid-cols-2">
-        {/* Horaires */}
-        {horairesLines.length > 0 && (
-          <section className="rounded-xl border bg-card p-4">
-            <h2 className="mb-3 flex items-center gap-2 font-semibold">
-              <Clock className="h-4 w-4" /> {t("hours")}
-            </h2>
-            <ul className="space-y-1 text-sm text-muted-foreground">
-              {horairesLines.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {/* Infos pratiques */}
-        <section className="rounded-xl border bg-card p-4">
-          <h2 className="mb-3 font-semibold">{t("practical_info")}</h2>
-          <dl className="space-y-2 text-sm">
-            {lieu.clientele && (
-              <div>
-                <dt className="text-muted-foreground">{t("clientele")}</dt>
-                <dd className="font-medium">{lieu.clientele}</dd>
-              </div>
-            )}
-            {lieu.capacite && (
-              <div>
-                <dt className="text-muted-foreground">{t("capacity")}</dt>
-                <dd className="font-medium">{t("places", { count: lieu.capacite })}</dd>
-              </div>
-            )}
-            {lieu.categorie && (
-              <div>
-                <dt className="text-muted-foreground">{t("category")}</dt>
-                <dd className="font-medium">{lieu.categorie}</dd>
-              </div>
-            )}
-            {lieu.sous_categories.length > 0 && (
-              <div>
-                <dt className="text-muted-foreground">{t("subcategories")}</dt>
-                <dd className="font-medium">
-                  {lieu.sous_categories.join(", ")}
-                </dd>
-              </div>
-            )}
-          </dl>
-        </section>
-      </div>
 
       {/* Mini-carte */}
       {lieu.coordonnees && (
@@ -363,34 +421,55 @@ export default async function LieuPage({ params }: LieuPageProps) {
         />
       )}
 
-      {/* Similar venues */}
+      {/* ===== Similar venues — expanded to 6, with richer cards ===== */}
       {similar.length > 0 && (
         <section className="mb-8">
           <Separator className="mb-6" />
-          <h2 className="mb-4 text-lg font-semibold">{t("similar")}</h2>
-          <div className="grid gap-4 sm:grid-cols-3">
+          <h2 className="mb-4 text-lg font-semibold">{t("explore_similar")}</h2>
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
             {similar.map((s) => (
-              <a
+              <Link
                 key={s.id}
                 href={`/lieu/${s.slug}`}
-                className="group rounded-xl border bg-card p-4 transition-all hover:border-primary/30 hover:shadow-lg"
+                className="group rounded-xl border bg-card overflow-hidden transition-all hover:border-primary/30 hover:shadow-lg"
               >
-                <p className="text-sm font-semibold group-hover:text-primary transition-colors">
-                  {s.nom}
-                </p>
-                <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-                  {s.note && (
-                    <span className="text-amber-400">★ {s.note}</span>
-                  )}
-                  <span>{s.prix.fourchette}</span>
-                  {s.arrondissement && <span>Lyon {s.arrondissement}</span>}
+                {/* Mini cover */}
+                <div className="relative h-28 bg-gradient-to-br from-muted to-muted/50">
+                  <Image
+                    src={s.photo_cover ?? getPlaceholderImage(s.id, s.categorie, s.type)}
+                    alt={s.nom}
+                    fill
+                    className="object-cover"
+                    sizes="280px"
+                    unoptimized
+                  />
                 </div>
-                {s.musique.length > 0 && (
-                  <p className="mt-1 truncate text-xs text-muted-foreground">
-                    ♫ {s.musique.slice(0, 2).join(", ")}
+                <div className="p-3">
+                  <p className="text-sm font-semibold group-hover:text-primary transition-colors">
+                    {s.nom}
                   </p>
-                )}
-              </a>
+                  <div className="mt-1 flex items-center gap-2 text-xs text-muted-foreground">
+                    {s.note && (
+                      <span className="flex items-center gap-0.5">
+                        <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                        {s.note}
+                      </span>
+                    )}
+                    <span>{s.prix.fourchette}</span>
+                    {s.arrondissement && <span>Lyon {s.arrondissement}</span>}
+                  </div>
+                  {s.musique.length > 0 && (
+                    <p className="mt-1 truncate text-xs text-muted-foreground">
+                      ♫ {s.musique.slice(0, 2).join(", ")}
+                    </p>
+                  )}
+                  {s.categorie && (
+                    <Badge variant="outline" className="mt-2 text-[10px]">
+                      {s.categorie}
+                    </Badge>
+                  )}
+                </div>
+              </Link>
             ))}
           </div>
         </section>
