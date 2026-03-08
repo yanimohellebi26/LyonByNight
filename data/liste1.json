@@ -1,0 +1,767 @@
+{
+  "bars": [
+    {
+      "nom": "you cocktail bar",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "lounge (non précisé)",
+      "specificites": [
+        "bar à cocktails",
+        "cocktails créatifs",
+        "ambiance chic et moderne",
+        "terrasse"
+      ],
+      "adresse": "56 Rue Ney, 69006 Lyon",
+      "site_web": "https://www.youfreebrand.com"
+    },
+    {
+      "nom": "Contrast.",
+      "note": 5.0,
+      "gamme_prix": "10–20 €",
+      "style_musique": "lounge / DJ soft (non précisé)",
+      "specificites": [
+        "bar à cocktails",
+        "déco minimaliste",
+        "cocktails signatures",
+        "accessible PMR"
+      ],
+      "adresse": "32 Rue Palais Grillet, 69002 Lyon",
+      "site_web": "https://www.contrast-bar.com"
+    },
+    {
+      "nom": "Pineapple Room",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "lounge (non précisé)",
+      "specificites": [
+        "bar à cocktails",
+        "décor tiki/élégant",
+        "cocktails créatifs",
+        "terrasse"
+      ],
+      "adresse": "21 Rue Juliette Récamier, 69006 Lyon",
+      "site_web": "https://www.privateaser.com/lieu/52290-pineapple-room"
+    },
+    {
+      "nom": "Black Forest Society",
+      "note": 4.6,
+      "gamme_prix": "10–20 €",
+      "style_musique": "cocktail bar avec DJ (non précisé)",
+      "specificites": [
+        "bar à cocktails",
+        "ambiance bois sombre",
+        "concerts et DJ ponctuels",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "29 Rue de l'Arbre Sec, 69001 Lyon",
+      "site_web": "https://instagram.com/blackforestsociety"
+    },
+    {
+      "nom": "Bambi",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "nu-disco / funk / house (non détaillé)",
+      "specificites": [
+        "bar à cocktails",
+        "musique live et DJ",
+        "ambiance très branchée",
+        "terrasse"
+      ],
+      "adresse": "2 Petite Rue des Feuillants, 69001 Lyon",
+      "site_web": "https://www.privateaser.com/lieu/52555-bambi"
+    },
+    {
+      "nom": "L Bar Food & Drink",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / hits (non précisé)",
+      "specificites": [
+        "bar, club, karaoké",
+        "excellents cocktails",
+        "jeux de bar et sports",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "19 Rue du Garet, 69001 Lyon",
+      "site_web": "http://www.instagram.com/lbar_food_drink/"
+    },
+    {
+      "nom": "La Baignoire",
+      "note": 4.9,
+      "gamme_prix": "20–30 €",
+      "style_musique": "electro soft / funk / pop (non détaillé)",
+      "specificites": [
+        "bar à cocktails intimiste",
+        "cocktails maison",
+        "ambiance chaleureuse",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "11 Rue des 3 Rois, 69007 Lyon",
+      "site_web": "https://barlabaignoire.fr"
+    },
+    {
+      "nom": "Wanderlust Lyon",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / bar festif",
+      "specificites": [
+        "bar à cocktails",
+        "terrasse",
+        "karaoké et quiz",
+        "happy hour boissons"
+      ],
+      "adresse": "5 Cours de Verdun Gensoul, 69002 Lyon",
+      "site_web": "https://www.wanderlust-lyon.com"
+    },
+    {
+      "nom": "Coquelicot bar",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste (bar festif)",
+      "specificites": [
+        "bar à cocktails",
+        "déco soignée",
+        "quiz, spectacles, jeux",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "21 Rue Pasteur, 69007 Lyon",
+      "site_web": "https://www.instagram.com/coquelicotbar"
+    },
+    {
+      "nom": "Olmé",
+      "note": 5.0,
+      "gamme_prix": "10–20 €",
+      "style_musique": "lounge (non précisé)",
+      "specificites": [
+        "bar à cocktails et vins",
+        "petite capacité",
+        "ambiance cosy",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "15 Rue Montesquieu, 69007 Lyon",
+      "site_web": "https://olmebar.com"
+    },
+
+    {
+      "nom": "Calle Latino",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "salsa / bachata / reggaeton",
+      "specificites": [
+        "bar latino",
+        "mojitos réputés",
+        "tapas",
+        "ambiance très dansante"
+      ],
+      "adresse": "3 Cours de Verdun Gensoul, 69002 Lyon",
+      "site_web": "https://www.privateaser.com/lieu/39539-calle-latino"
+    },
+    {
+      "nom": "Cabana Café Latino Social Club",
+      "note": 3.8,
+      "gamme_prix": "€€ (non détaillé)",
+      "style_musique": "musique latine (salsa, reggaeton, généraliste)",
+      "specificites": [
+        "bar latino festif",
+        "empanadas & nachos",
+        "cours de danse",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "30 Rue de l'Annonciade, 69001 Lyon",
+      "site_web": "http://www.cabana-cafe.com"
+    },
+    {
+      "nom": "Casa Latina",
+      "note": 3.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "merengue / reggaeton (week-end)",
+      "specificites": [
+        "bar latino",
+        "burgers, pâtes, viandes",
+        "soirées latines week-end"
+      ],
+      "adresse": "2 Place des Terreaux, 69001 Lyon",
+      "site_web": "https://www.facebook.com/casalatinalyon"
+    },
+
+    {
+      "nom": "La Barge",
+      "note": 4.1,
+      "gamme_prix": "20–30 €",
+      "style_musique": "lounge / généraliste (non précisé)",
+      "specificites": [
+        "péniche sur le Rhône",
+        "tapas et cocktails",
+        "vue sur la ville",
+        "toit-terrasse"
+      ],
+      "adresse": "15 Quai du Général Sarrail, 69006 Lyon",
+      "site_web": "https://labarge-lyon.fr"
+    },
+    {
+      "nom": "Modulo",
+      "note": 4.6,
+      "gamme_prix": "€€ (plats + cocktails)",
+      "style_musique": "lounge / généraliste",
+      "specificites": [
+        "péniche bar-restaurant",
+        "tapas & plats internationaux",
+        "cocktails, bières, vins"
+      ],
+      "adresse": "15 Quai du Général Sarrail, 69006 Lyon",
+      "site_web": "https://restaurant-modulo.fr/fr"
+    },
+    {
+      "nom": "La Passagère",
+      "note": 4.2,
+      "gamme_prix": "1–10 € (ticket moyen)",
+      "style_musique": "concerts / DJ / généraliste",
+      "specificites": [
+        "péniche bar",
+        "rhums arrangés",
+        "grande terrasse sur le Rhône",
+        "concerts et quiz"
+      ],
+      "adresse": "Pont Wilson, 21 Quai Victor Augagneur, 69003 Lyon",
+      "site_web": "https://www.facebook.com/La-Passag%C3%A8re-Lyon-205044052856285"
+    },
+    {
+      "nom": "Berzingue",
+      "note": 4.1,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste (bar péniche)",
+      "specificites": [
+        "péniche bar à bières",
+        "grosse terrasse",
+        "grand choix de bières",
+        "très fréquenté étudiants"
+      ],
+      "adresse": "Face au, 2 Quai Victor Augagneur, 69003 Lyon",
+      "site_web": "https://www.facebook.com/berzinguelyon3"
+    },
+
+    {
+      "nom": "XS BAR",
+      "note": 4.3,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / dance / karaoké",
+      "specificites": [
+        "bar gay",
+        "karaoké, quiz",
+        "happy hour",
+        "ouvert très tard"
+      ],
+      "adresse": "19 Rue Claudia, 69002 Lyon",
+      "site_web": "https://xs-bar.fr"
+    },
+    {
+      "nom": "La Chapelle Café",
+      "note": 4.3,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / dance",
+      "specificites": [
+        "bar lounge gay",
+        "terrasse sur les quais",
+        "happy hour",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "8 Quai des Célestins, 69002 Lyon",
+      "site_web": "https://la-chapelle-cafe-lyon.eatbu.com/?lang=fr"
+    },
+
+    {
+      "nom": "L'Atenium",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore / chill",
+      "specificites": [
+        "bar à bières",
+        "jeux de société",
+        "soirées quiz",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "80 Rue Montesquieu, 69007 Lyon",
+      "site_web": "http://www.atenium.fr"
+    },
+    {
+      "nom": "Les Arpenteurs",
+      "note": 4.7,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à jeux",
+        "bières et cocktails",
+        "quiz et spectacles",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "13 Rue Lanterne, 69001 Lyon",
+      "site_web": "https://www.lesarpenteurs-bar.com"
+    },
+    {
+      "nom": "Les Petits Joueurs",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à jeux de société",
+        "grande ludothèque",
+        "planches à partager",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "4 Rue Saint-Georges, 69005 Lyon",
+      "site_web": "http://www.bar-lpj.fr"
+    },
+    {
+      "nom": "Yakapiocher",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à jeux familial",
+        "quiz, karaoké",
+        "cocktails & bières",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "8 Rue Rivet, 69001 Lyon",
+      "site_web": "https://www.yakapiocher.fr"
+    },
+    {
+      "nom": "Moi J'm'en Fous Je Triche",
+      "note": 4.8,
+      "gamme_prix": "non précisé",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "club de jeux de société",
+        "grande salle",
+        "ambiance conviviale",
+        "accessible PMR"
+      ],
+      "adresse": "8 Rue René Leynaud, 69001 Lyon",
+      "site_web": "http://www.debitdejeux.fr"
+    },
+    {
+      "nom": "Overcraft Café",
+      "note": 4.7,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore / OST / électro légère (non précisé)",
+      "specificites": [
+        "bar geek",
+        "consoles rétro et récentes",
+        "jeux de société",
+        "cocktails & bières"
+      ],
+      "adresse": "4 Rue de la Baleine, 69005 Lyon",
+      "site_web": "http://www.overcraftcafe.com"
+    },
+    {
+      "nom": "Shrubbery",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à jeux",
+        "bières en libre service",
+        "grand jardin",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "17 Rue d'Inkermann, 69100 Villeurbanne",
+      "site_web": "https://www.facebook.com/LeShrubbery"
+    },
+    {
+      "nom": "Bar Les Gamins",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore / bar festif",
+      "specificites": [
+        "bar de quartier",
+        "jeux de bar",
+        "excellents cocktails",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "1 Rue de la Victoire, 69003 Lyon",
+      "site_web": "https://bar-les-gamins-lyon.eatbu.com/?lang=fr"
+    },
+
+    {
+      "nom": "Dr Yeast",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore / rock / indie (non précisé)",
+      "specificites": [
+        "bar à bières artisanales",
+        "grand choix de bières",
+        "happy hour",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "6 Rue de Cuire, 69004 Lyon",
+      "site_web": "http://www.facebook.com/DrYeastLyon"
+    },
+    {
+      "nom": "Malto",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à bières",
+        "tapas, plats bio",
+        "happy hour",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "2 Rue Chaponnay, 69003 Lyon",
+      "site_web": "https://www.instagram.com/lyonmalto/"
+    },
+    {
+      "nom": "Mousse",
+      "note": 5.0,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à bières craft",
+        "caviste",
+        "grand choix de bières",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "67 Rue de Marseille, 69007 Lyon",
+      "site_web": "https://www.privateaser.com/lieu/48502-mousse"
+    },
+    {
+      "nom": "La Kave Maltée",
+      "note": 4.9,
+      "gamme_prix": "20–30 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à bières et vins",
+        "tapas",
+        "convient aux végétariens",
+        "LGBTQ+ friendly"
+      ],
+      "adresse": "81 Rue Louis Blanc, 69006 Lyon",
+      "site_web": "https://www.instagram.com/lakavemaltee/"
+    },
+    {
+      "nom": "Carousel, cave & bar à bières craft",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar et cave à bières",
+        "produits d’artisans locaux",
+        "ambiance de quartier"
+      ],
+      "adresse": "3 Place Marcel Bertone, 69004 Lyon",
+      "site_web": "https://www.carouselbeer.fr"
+    },
+    {
+      "nom": "Brasserie de l'Amour",
+      "note": 4.8,
+      "gamme_prix": "10–20 €",
+      "style_musique": "concerts / généraliste",
+      "specificites": [
+        "microbrasserie",
+        "grand choix de bières",
+        "concerts et spectacles",
+        "accessible PMR"
+      ],
+      "adresse": "82 Rue Magenta, 69100 Villeurbanne",
+      "site_web": "http://brasseriedelamour.fr"
+    },
+
+    {
+      "nom": "Pop and Wine",
+      "note": 4.5,
+      "gamme_prix": "20–30 €",
+      "style_musique": "fond sonore / jazz soft (non précisé)",
+      "specificites": [
+        "bar à vin",
+        "carte de vins très complète",
+        "ambiance conviviale",
+        "accessible PMR"
+      ],
+      "adresse": "14 Rue Palais Grillet, 69002 Lyon",
+      "site_web": "https://popandwine.fr"
+    },
+    {
+      "nom": "Braise & Vin",
+      "note": 4.8,
+      "gamme_prix": "non précisé (plats + vins)",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à vin et tapas",
+        "fromages et camembert rôti",
+        "service soigné"
+      ],
+      "adresse": "17 Rue Désirée, 69001 Lyon",
+      "site_web": "https://www.instagram.com/braiseetvin_lyon/"
+    },
+    {
+      "nom": "Octobre caviste",
+      "note": 5.0,
+      "gamme_prix": "20–30 €",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "cave à vins / bar",
+        "sélection pointue de vins",
+        "ambiance cosy"
+      ],
+      "adresse": "24 Rue de la Platière, 69001 Lyon",
+      "site_web": "http://www.octobrecaviste.fr"
+    },
+    {
+      "nom": "La Cave Café Terroir",
+      "note": 4.5,
+      "gamme_prix": "non précisé (bistrot + vins)",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à vin",
+        "accord mets/vins",
+        "ambiance bistronomique"
+      ],
+      "adresse": "5 Rue Montcharmont, 69002 Lyon",
+      "site_web": "https://www.cafeterroir.fr/la-cave-caf%C3%A9-terroir"
+    },
+    {
+      "nom": "Le Comptoir des Buvards",
+      "note": 4.8,
+      "gamme_prix": "non précisé",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "bar à vin",
+        "charcuterie et fromages",
+        "ambiance de quartier"
+      ],
+      "adresse": "76 Rue Saint-Georges, 69005 Lyon",
+      "site_web": "https://www.lecomptoirdesbuvards.fr"
+    },
+
+    {
+      "nom": "Hot Club de Lyon",
+      "note": 4.7,
+      "gamme_prix": "10–20 €",
+      "style_musique": "jazz moderne et classique",
+      "specificites": [
+        "club de jazz historique",
+        "cave voûtée en pierre",
+        "concerts réguliers"
+      ],
+      "adresse": "26 Rue Lanterne, 69001 Lyon",
+      "site_web": "https://www.hotclubjazzlyon.com"
+    },
+    {
+      "nom": "Big Easy",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "jazz / blues / soul (non détaillé)",
+      "specificites": [
+        "bar à cocktails",
+        "ambiance jazzy",
+        "concerts et spectacles"
+      ],
+      "adresse": "17 Quai Romain Rolland, 69005 Lyon",
+      "site_web": "https://www.privateaser.com/lieu/43472-big-easy"
+    },
+    {
+      "nom": "House of Bears",
+      "note": 4.9,
+      "gamme_prix": "10–20 €",
+      "style_musique": "fond sonore / bar festif",
+      "specificites": [
+        "bar à bières et cocktails",
+        "ambiance conviviale",
+        "accessible PMR"
+      ],
+      "adresse": "22 Quai Claude Bernard, 69007 Lyon",
+      "site_web": "https://www.house-of-bears.fr"
+    },
+    {
+      "nom": "La Faute aux Ours",
+      "note": 4.4,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / bar festif",
+      "specificites": [
+        "bar à cocktails",
+        "plusieurs salles originales",
+        "karaoké et quiz"
+      ],
+      "adresse": "4 Grande Rue de la Guillotière, 69007 Lyon",
+      "site_web": "http://lafauteauxours.fr"
+    },
+    {
+      "nom": "La Beer Fabrique - Atelier bière et microbrasserie",
+      "note": 4.9,
+      "gamme_prix": "non précisé",
+      "style_musique": "fond sonore",
+      "specificites": [
+        "microbrasserie",
+        "atelier de brassage",
+        "bar à bières"
+      ],
+      "adresse": "10 Rue Saint-Polycarpe, 69001 Lyon",
+      "site_web": "https://www.labeerfabrique.com/lyon/"
+    }
+  ],
+
+  "clubs": [
+    {
+      "nom": "Le Petit Salon",
+      "note": 4.3,
+      "gamme_prix": "entrée 10–20 € avec conso (selon soirée)",
+      "style_musique": "techno / house / electro",
+      "specificites": [
+        "2 salles",
+        "gros sound system",
+        "line-up DJs pointus",
+        "accessible PMR"
+      ],
+      "adresse": "3 Rue Cronstadt, 69007 Lyon",
+      "site_web": "https://www.lpslyon.fr"
+    },
+    {
+      "nom": "Loft Club Lyon",
+      "note": 3.7,
+      "gamme_prix": "entrée 10–20 € (selon prog)",
+      "style_musique": "electro / généraliste club",
+      "specificites": [
+        "gros light show",
+        "confettis, lasers, pyrotechnie",
+        "grande capacité",
+        "accessible PMR"
+      ],
+      "adresse": "7 Rue Renan, 69007 Lyon",
+      "site_web": "http://www.loftclub.fr"
+    },
+    {
+      "nom": "L'Ambassade Club Lyon",
+      "note": 3.5,
+      "gamme_prix": "entrée 15–20 €",
+      "style_musique": "house / funk / disco",
+      "specificites": [
+        "club intimiste",
+        "focus bon son",
+        "cocktails"
+      ],
+      "adresse": "4 Rue Jacques Stella, 69002 Lyon",
+      "site_web": "http://www.ambassadeclub.fr"
+    },
+    {
+      "nom": "Distrikt",
+      "note": 3.4,
+      "gamme_prix": "entrée ~10–15 €",
+      "style_musique": "techno / house / electro",
+      "specificites": [
+        "after club (ouvre vers 5h)",
+        "casque sans fil",
+        "fin de soirée"
+      ],
+      "adresse": "12 Quai Saint-Vincent, 69001 Lyon",
+      "site_web": "https://distrikt12.com"
+    },
+    {
+      "nom": "Usine - Lyon",
+      "note": 3.2,
+      "gamme_prix": "entrée ~10–15 €",
+      "style_musique": "electro / généraliste club (non précisé)",
+      "specificites": [
+        "grosse discothèque",
+        "vibe industrielle",
+        "ouvert très tard"
+      ],
+      "adresse": "73 Rue du Bourbonnais, 69009 Lyon",
+      "site_web": "https://www.facebook.com/usinelyon"
+    },
+
+    {
+      "nom": "F&K Bistroclub",
+      "note": 4.0,
+      "gamme_prix": "€€€ (bar, restaurant, club)",
+      "style_musique": "généraliste club / house (non précisé)",
+      "specificites": [
+        "bistro + club chic",
+        "rooftop",
+        "cocktails et tapas"
+      ],
+      "adresse": "13 Place Jules Ferry, 69006 Lyon",
+      "site_web": "https://www.f-and-k.fr"
+    },
+    {
+      "nom": "Ayers Rock",
+      "note": 3.5,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / rock / hits",
+      "specificites": [
+        "thème désert australien",
+        "public international",
+        "excellents cocktails"
+      ],
+      "adresse": "4 Rue Désirée, 69001 Lyon",
+      "site_web": "https://www.instagram.com/ayersrocklyon/"
+    },
+    {
+      "nom": "Queen club",
+      "note": 4.1,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / electro / hits",
+      "specificites": [
+        "ambiance safe",
+        "piste de danse",
+        "cocktails"
+      ],
+      "adresse": "3 Rue Terme, 69001 Lyon",
+      "site_web": "https://www.facebook.com/maksclublyon/"
+    },
+    {
+      "nom": "La Maison M.",
+      "note": 3.7,
+      "gamme_prix": "10–20 €",
+      "style_musique": "généraliste / club",
+      "specificites": [
+        "bar dansant / club",
+        "terrasse",
+        "concerts et DJs"
+      ],
+      "adresse": "21 Place Gabriel Rambaud, 69001 Lyon",
+      "site_web": "http://www.mmlyon.com"
+    },
+
+    {
+      "nom": "Barrio Club",
+      "note": 3.5,
+      "gamme_prix": "€€ (entrée + consommations)",
+      "style_musique": "latino / reggaeton / salsa",
+      "specificites": [
+        "club latino",
+        "mojitos, caïpirinhas",
+        "grosse capacité"
+      ],
+      "adresse": "13 B Place Jules Ferry, 69006 Lyon",
+      "site_web": "http://www.barrioclub.com"
+    },
+
+    {
+      "nom": "Péniche La Marquise",
+      "note": 3.5,
+      "gamme_prix": "10–20 €",
+      "style_musique": "electro / rock / soirées à thème",
+      "specificites": [
+        "péniche club",
+        "concerts live",
+        "DJ sets",
+        "terrasse"
+      ],
+      "adresse": "20 Quai Victor Augagneur, 69003 Lyon",
+      "site_web": "http://marquise.net"
+    },
+
+    {
+      "nom": "Cabana Café Latino Social Club (côté club)",
+      "note": 3.8,
+      "gamme_prix": "€€ (bar dansant)",
+      "style_musique": "latino / généraliste dansant",
+      "specificites": [
+        "bar dansant latino",
+        "soirées étudiantes",
+        "ambiance tropicale"
+      ],
+      "adresse": "30 Rue de l'Annonciade, 69001 Lyon",
+      "site_web": "http://www.cabana-cafe.com"
+    }
+  ]
+}

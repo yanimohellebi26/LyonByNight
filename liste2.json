@@ -1,0 +1,397 @@
+        {
+          "nom": "Le Petit Salon",
+          "arrondissement": "Lyon 7",
+          "note": "4.3/5",
+          "musique": "Electro, Techno, House, Disco",
+          "prix_pinte": "N/D",
+          "specificite": "Pilier de la scène électro avec deux salles et une grande capacité d'accueil."
+        },
+        {
+          "nom": "Terminal Club",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Techno brute, Underground",
+          "prix_pinte": "N/D",
+          "specificite": "La cave mythique des teufeurs lyonnais, programmation pointue."
+        },
+        {
+          "nom": "Sound Factory",
+          "arrondissement": "Lyon 9",
+          "note": "N/D",
+          "musique": "Techno, Electro",
+          "prix_pinte": "N/D",
+          "specificite": "Immense espace de 600 m² parfait pour les nuits jusqu'à l'aube."
+        },
+        {
+          "nom": "La Marquise",
+          "arrondissement": "Lyon 3",
+          "note": "9.3/10",
+          "musique": "Hip-hop, Electro, Funk, Latino",
+          "prix_pinte": "5.50 €",
+          "specificite": "Club mythique sur une péniche au bord du Rhône, programmation très éclectique."
+        },
+        {
+          "nom": "Ayers Rock",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Généraliste, DJ sets",
+          "prix_pinte": "2.00 €",
+          "specificite": "Pub festif australien avec des prix imbattables et une énorme affluence étudiante."
+        },
+        {
+          "nom": "Flan' Ruin Pub",
+          "arrondissement": "Lyon 1",
+          "note": "4.7/5",
+          "musique": "Évolutive, Généraliste",
+          "prix_pinte": "5.00 €",
+          "specificite": "Pub de style anglo-saxon, ambiance chill qui évolue vers un véritable clubbing. [1, 2]"
+        },
+        {
+          "nom": "Le Distrikt",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "DJ sets progressifs",
+          "prix_pinte": "N/D",
+          "specificite": "Piste de danse intégrée, parfait pour afterworks et anniversaires. [1]"
+        },
+        {
+          "nom": "La Feria",
+          "arrondissement": "Lyon 5",
+          "note": "N/D",
+          "musique": "Latino, Reggaeton",
+          "prix_pinte": "5.00 €",
+          "specificite": "Ambiance tropicale et sud-américaine avec tapas et danse. [2]"
+        },
+        {
+          "nom": "Cabana Café",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Latino, Reggaeton",
+          "prix_pinte": "N/D",
+          "specificite": "Institution pour danser sur les rythmes latinos. [1, 3]"
+        },
+        {
+          "nom": "Groom",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Clubbing pointu, Live",
+          "prix_pinte": "5.00 €",
+          "specificite": "Espace hybride et contemporain mêlant concerts intimistes et clubbing."
+        },
+        {
+          "nom": "Le Sirius",
+          "arrondissement": "Lyon 3",
+          "note": "N/D",
+          "musique": "Live, Jazz, Pop, Rap, Electro",
+          "prix_pinte": "6.50 €",
+          "specificite": "Péniche ultra-festive proposant près de 135 concerts gratuits par an. [4, 5]"
+        },
+        {
+          "nom": "Since The Cavern",
+          "arrondissement": "Lyon 5",
+          "note": "4.0/5",
+          "musique": "Généraliste (playlist client autorisée)",
+          "prix_pinte": "8.00 €",
+          "specificite": "Authentique cave voûtée avec néons, piste de danse ouverte jusqu'à 4h. [6]"
+        },
+        {
+          "nom": "Péniche Loupika",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "Techno, Electro",
+          "prix_pinte": "N/D",
+          "specificite": "Soirées sur l'eau avec une piste de danse au sous-sol très animée."
+        },
+        {
+          "nom": "Le Barberousse",
+          "arrondissement": "Lyon 1",
+          "note": "4.1/5",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Bar de nuit dans une cale de bateau pirate, énorme choix de shooters de rhum. [7, 8]"
+        },
+        {
+          "nom": "Docks 40",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "Live, DJ sets",
+          "prix_pinte": "N/D",
+          "specificite": "Restaurant festif très chic au bord de la Saône, ambiance électrique la nuit. [9]"
+        },
+        {
+          "nom": "Loft Club",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Une des boîtes de nuit les plus connues avec de nombreuses soirées étudiantes."
+        },
+        {
+          "nom": "L'Ambassade",
+          "arrondissement": "Lyon 2",
+          "note": "3.3/5",
+          "musique": "Electro, Deep Groove, House, Funk",
+          "prix_pinte": "N/D",
+          "specificite": "Club à l'ancienne avec ambiance velours et boules à facettes."
+        },
+        {
+          "nom": "La Maison",
+          "arrondissement": "Lyon 7",
+          "note": "3.8/5",
+          "musique": "Généraliste, Clubbing",
+          "prix_pinte": "N/D",
+          "specificite": "Complexe XXL à Gerland, restaurant qui se transforme en véritable club à l'étage. [9, 10]"
+        },
+        {
+          "nom": "The Boat",
+          "arrondissement": "Lyon 3",
+          "note": "3.2/5",
+          "musique": "DJ Sets",
+          "prix_pinte": "6.50 €",
+          "specificite": "Péniche clubbing sur les berges du Rhône. [2, 10]"
+        },
+        {
+          "nom": "Super5",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Éclectique",
+          "prix_pinte": "5.00 €",
+          "specificite": "Bar dansant alternatif des pentes. [2]"
+        },
+        {
+          "nom": "Kaïa",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "DJ sets",
+          "prix_pinte": "N/D",
+          "specificite": "Espace tropical avec mezzanine pour manger et rez-de-chaussée pour danser. [9]"
+        },
+        {
+          "nom": "Le Six",
+          "arrondissement": "Lyon 6",
+          "note": "N/D",
+          "musique": "Clubbing, DJ locaux",
+          "prix_pinte": "N/D",
+          "specificite": "Installé dans l'ancienne gare des Brotteaux, speakeasy underground et chic au sous-sol. [9]"
+        },
+        {
+          "nom": "Queen Club",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Clubbing",
+          "prix_pinte": "N/D",
+          "specificite": "Rendez-vous gay (LGBT+) incontournable en plein cœur de Lyon."
+        },
+        {
+          "nom": "F&K Bistroclub",
+          "arrondissement": "Lyon 6",
+          "note": "N/D",
+          "musique": "Généraliste, Festif",
+          "prix_pinte": "N/D",
+          "specificite": "Institution des nuits lyonnaises dans le quartier huppé des Brotteaux."
+        },
+        {
+          "nom": "L'Idole des Jeunes",
+          "arrondissement": "Lyon 1",
+          "note": "4.3/5",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Bar dansant dynamique rue Sainte-Catherine. [2]"
+    },
+    {
+      "id": "bars-cosy-afterworks",
+      "nom": "Bars Cosy & Afterworks",
+      "description": "Des espaces intimistes, des speakeasys et des bars à vivre idéals pour se poser, discuter ou s'échauffer.",
+      "etablissements":"" },
+        {
+          "nom": "Look Bar",
+          "arrondissement": "Lyon 5",
+          "note": "3.0/5",
+          "musique": "Vinyles, Rétro",
+          "prix_pinte": "6.00 € (HH)",
+          "specificite": "Bar hors du temps avec une ambiance très intime, diffusion de musique exclusivement sur vinyles. [13, 14]"
+        },
+        {
+          "nom": "Patchwork Café",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Chill",
+          "prix_pinte": "N/D",
+          "specificite": "Hybride bar/salon de thé avec des canapés moelleux et des jeux de société. [15]"
+        },
+        {
+          "nom": "Gentle Cat",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "Ambiance zen",
+          "prix_pinte": "N/D",
+          "specificite": "Un bar à chats ultra-cocooning (fermé aux moins de 12 ans pour la quiétude). [15]"
+        },
+        {
+          "nom": "Coin Café",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Cadre extrêmement chaleureux avec véritable cheminée qui crépite et fauteuils en cuir. [15]"
+        },
+        {
+          "nom": "Un Brin de Folie",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Concept insolite mixant fleuriste et café botanique. [15]"
+        },
+        {
+          "nom": "Le Faro",
+          "arrondissement": "Lyon 3",
+          "note": "N/D",
+          "musique": "Généraliste douce",
+          "prix_pinte": "N/D",
+          "specificite": "Bistrot de quartier sans chichi, idéal pour se retrouver comme chez un ami. [15]"
+        },
+        {
+          "nom": "Maison Courgette",
+          "arrondissement": "Lyon 4",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Lieu de vie chaleureux à la Croix-Rousse avec un jardin caché et épicerie locale. [15]"
+        },
+        {
+          "nom": "Le Luminarium",
+          "arrondissement": "Lyon 5",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Cocon dans le Vieux Lyon parfait pour s'installer avec un plaid. [15]"
+        },
+        {
+          "nom": "Cabaitan",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Café-cantine vegan avec une mezzanine très confortable. [15]"
+        },
+        {
+          "nom": "Anahera",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Chill, Lounge",
+          "prix_pinte": "N/D",
+          "specificite": "Bulle de sérénité décorée comme une jungle urbaine (concept store). [15]"
+        },
+        {
+          "nom": "Diploïd",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Calme",
+          "prix_pinte": "N/D",
+          "specificite": "Brunch gourmand avec une terrasse secrète au fond de la salle. [15]"
+        },
+        {
+          "nom": "L'Alchimiste",
+          "arrondissement": "Lyon 5",
+          "note": "4.8/5",
+          "musique": "Généraliste",
+          "prix_pinte": "4.00 €",
+          "specificite": "Bistrot cachant une étonnante salle voûtée secrète pour une ambiance gourmande. [16, 17]"
+        },
+        {
+          "nom": "The Monkey Club",
+          "arrondissement": "Lyon 1",
+          "note": "4.3/5",
+          "musique": "Lounge",
+          "prix_pinte": "N/D",
+          "specificite": "Bar à cocktails chic avec une décoration élégante aux touches rococo."
+        },
+        {
+          "nom": "Le Grizzly Pub",
+          "arrondissement": "Lyon 1",
+          "note": "4.7/5",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Pub chaleureux avec boiseries, idéal pour les afterworks entre amis."
+        },
+        {
+          "nom": "The Soda Club",
+          "arrondissement": "Lyon 5",
+          "note": "4.7/5",
+          "musique": "Rétro",
+          "prix_pinte": "N/D",
+          "specificite": "Mixologie de haute qualité servie dans un décor aux accents rétro."
+        },
+        {
+          "nom": "Livestation DIY",
+          "arrondissement": "Lyon 7",
+          "note": "N/D",
+          "musique": "Éclectique",
+          "prix_pinte": "N/D",
+          "specificite": "Approche participative, très chaleureux, idéal pour commencer la soirée (Before). [18]"
+        },
+        {
+          "nom": "Big White",
+          "arrondissement": "Lyon 5",
+          "note": "5.0/5",
+          "musique": "Généraliste",
+          "prix_pinte": "4.00 €",
+          "specificite": "Décoration 100% snowboard/chalet montagnard pour des soirées longues. [16]"
+        },
+        {
+          "nom": "St Andrew's",
+          "arrondissement": "Lyon 5",
+          "note": "N/D",
+          "musique": "Rock, Pub",
+          "prix_pinte": "4.00 €",
+          "specificite": "Pub irlandais traditionnel très intimiste. [16]"
+        },
+        {
+          "nom": "La Traboule",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Petit bistrot authentique avec des Happy Hours à 1€ selon les alcools. [19]"
+        },
+        {
+          "nom": "Lockers",
+          "arrondissement": "Lyon 6",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Mi-restaurant gastronomique mi-speakeasy cachant une salle de karaoké. [9]"
+        },
+        {
+          "nom": "Le Plein Sud",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "Musique client",
+          "prix_pinte": "N/D",
+          "specificite": "Bar cosy avec fond de salle privatisable où vous mettez votre propre son. [20]"
+        },
+        {
+          "nom": "Le Quai 22",
+          "arrondissement": "Lyon 2",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Ambiance intimiste pour déguster des bières artisanales locales. [20]"
+        },
+        {
+          "nom": "Repère(s)",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "N/D",
+          "specificite": "Cadre très convivial pour fêter un évènement en petit comité. [20]"
+        },
+        {
+          "nom": "Boston Café",
+          "arrondissement": "Lyon 1",
+          "note": "N/D",
+          "musique": "Généraliste",
+          "prix_pinte": "3.00 €",
+          "specificite": "Idéal pour les afterworks économiques place des Terreaux. [16]"
+        }
