@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Lyon Night Guide",
+    "description": "Le guide ultime de la vie nocturne lyonnaise"
+  },
+  "nav": {
+    "home": "Accueil",
+    "explore": "Explorer",
+    "map": "Carte",
+    "compare": "Comparer",
+    "events": "Événements",
+    "chat": "Assistant",
+    "favorites": "Favoris",
+    "tonight_mode": "Ce soir",
+    "tonight_mode_active": "Mode Ce soir — lieux ouverts ce soir uniquement",
+    "favorites_active": "Vos favoris"
+  },
+  "home": {
+    "hero_title": "La nuit lyonnaise,\nà portée de main.",
+    "hero_subtitle": "Bars, clubs, événements — trouvez votre spot idéal ce soir.",
+    "cta": "Explorer les lieux",
+    "trending": "Tendances",
+    "tonight": "Ce soir",
+    "near_you": "Près de chez vous",
+    "venues": "Lieux",
+    "bars": "Bars",
+    "clubs": "Clubs",
+    "music_genres": "Genres musicaux",
+    "see_all": "Tout voir",
+    "events_tonight": "Événements ce soir"
+  },
+  "filters": {
+    "title": "Filtres",
+    "type": "Type",
+    "bar": "Bar",
+    "club": "Club",
+    "music": "Musique",
+    "price": "Prix",
+    "district": "Arrondissement",
+    "rating": "Note minimum",
+    "features": "Spécificités",
+    "clear": "Effacer les filtres",
+    "results": "{count} résultats",
+    "address_placeholder": "Adresse ou lieu…"
+  },
+  "sort": {
+    "label": "Trier par",
+    "rating": "Note",
+    "price": "Prix",
+    "name": "Nom",
+    "distance": "Distance"
+  },
+  "lieu": {
+    "reviews_summary": "Résumé des avis",
+    "music": "Musique",
+    "price": "Prix",
+    "features": "Spécificités",
+    "hours": "Horaires",
+    "address": "Adresse",
+    "website": "Site web",
+    "similar": "Lieux similaires",
+    "add_compare": "Comparer",
+    "remove_compare": "Retirer",
+    "clientele": "Clientèle",
+    "capacity": "Capacité",
+    "share": "Partager",
+    "type_club": "Club",
+    "type_bar": "Bar",
+    "pinte": "Pinte ~{price}€",
+    "cocktail": "Cocktail ~{price}€",
+    "description": "Description",
+    "practical_info": "Infos pratiques",
+    "category": "Catégorie",
+    "subcategories": "Sous-catégories",
+    "places": "{count} places",
+    "not_found": "Lieu introuvable",
+    "tonight_event": "Ce soir",
+    "add_favorite": "Ajouter aux favoris",
+    "remove_favorite": "Retirer des favoris",
+    "location": "Localisation",
+    "directions": "Itinéraire",
+    "upcoming_events": "Événements à venir",
+    "day_mon": "Lun",
+    "day_tue": "Mar",
+    "day_wed": "Mer",
+    "day_thu": "Jeu",
+    "day_fri": "Ven",
+    "day_sat": "Sam",
+    "day_sun": "Dim"
+  },
+  "compare": {
+    "title": "Comparateur",
+    "empty": "Sélectionnez 2 à 4 lieux à comparer",
+    "add": "Ajouter un lieu",
+    "share": "Partager"
+  },
+  "chat": {
+    "title": "Assistant Lyon Night",
+    "placeholder": "Un bar techno pas cher dans le 1er ?",
+    "suggestions": [
+      "Meilleur cocktail bar ?",
+      "Club ouvert ce soir ?",
+      "Bar avec terrasse près de Bellecour",
+      "Soirée latino ce week-end"
+    ],
+    "thinking": "Réfléchit…",
+    "online": "En ligne",
+    "close": "Fermer",
+    "useful": "Utile",
+    "not_useful": "Pas utile",
+    "welcome": "Pose-moi une question sur les bars et clubs de Lyon !"
+  },
+  "events": {
+    "title": "Événements",
+    "tonight": "Ce soir",
+    "this_week": "Cette semaine",
+    "this_month": "Ce mois",
+    "no_events": "Aucun événement à venir",
+    "tomorrow": "Demain",
+    "see_all_month": "Voir tout le mois",
+    "event_count": "{count} événement{count, plural, one {} other {s}}",
+    "type_all": "Tous",
+    "type_concert": "Concerts",
+    "type_dj_set": "DJ Sets",
+    "type_soiree": "Soirées Thème",
+    "type_quiz": "Quiz",
+    "type_other": "Autre",
+    "type_concert_single": "Concert",
+    "type_dj_set_single": "DJ Set",
+    "type_soiree_single": "Soirée Thème",
+    "type_quiz_single": "Quiz",
+    "type_other_single": "Événement"
+  },
+  "common": {
+    "loading": "Chargement…",
+    "error": "Une erreur est survenue",
+    "no_results": "Aucun résultat",
+    "see_more": "Voir plus",
+    "back": "Retour",
+    "skip_to_content": "Aller au contenu"
+  },
+  "footer": {
+    "disclaimer": "Données à titre indicatif",
+    "legal": "Mentions légales & Cookies"
+  },
+  "cookies": {
+    "consent": "Consentement cookies",
+    "close": "Fermer",
+    "title": "Cookies",
+    "description": "Nous utilisons des cookies techniques nécessaires au fonctionnement du site (carte Mapbox, préférences thème). Aucun cookie publicitaire.",
+    "learn_more": "En savoir plus",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
+  "error_page": {
+    "title": "Une erreur est survenue",
+    "description": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "retry": "Réessayer"
+  },
+  "not_found_page": {
+    "title": "Page introuvable",
+    "description": "Cette page n'existe pas ou a été déplacée.",
+    "home": "Accueil",
+    "explore": "Explorer les lieux"
+  },
+  "transport": {
+    "title": "Se rendre sur place",
+    "uber": "Uber",
+    "bolt": "Bolt",
+    "tcl": "TCL (Transports en commun)",
+    "tcl_short": "TCL",
+    "directions": "Itinéraire"
+  }
+}

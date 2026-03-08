@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Lyon Night Guide",
+    "description": "The ultimate guide to Lyon's nightlife"
+  },
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "map": "Map",
+    "compare": "Compare",
+    "events": "Events",
+    "chat": "Assistant",
+    "favorites": "Favorites",
+    "tonight_mode": "Tonight",
+    "tonight_mode_active": "Tonight mode — showing venues open tonight only",
+    "favorites_active": "Your favorites"
+  },
+  "home": {
+    "hero_title": "Lyon nightlife,\nat your fingertips.",
+    "hero_subtitle": "Bars, clubs, events — find your perfect spot tonight.",
+    "cta": "Explore venues",
+    "trending": "Trending",
+    "tonight": "Tonight",
+    "near_you": "Near you",
+    "venues": "Venues",
+    "bars": "Bars",
+    "clubs": "Clubs",
+    "music_genres": "Music genres",
+    "see_all": "See all",
+    "events_tonight": "Events tonight"
+  },
+  "filters": {
+    "title": "Filters",
+    "type": "Type",
+    "bar": "Bar",
+    "club": "Club",
+    "music": "Music",
+    "price": "Price",
+    "district": "District",
+    "rating": "Min. rating",
+    "features": "Features",
+    "clear": "Clear filters",
+    "results": "{count} results",
+    "address_placeholder": "Address or place…"
+  },
+  "sort": {
+    "label": "Sort by",
+    "rating": "Rating",
+    "price": "Price",
+    "name": "Name",
+    "distance": "Distance"
+  },
+  "lieu": {
+    "reviews_summary": "Reviews summary",
+    "music": "Music",
+    "price": "Price",
+    "features": "Features",
+    "hours": "Hours",
+    "address": "Address",
+    "website": "Website",
+    "similar": "Similar venues",
+    "add_compare": "Compare",
+    "remove_compare": "Remove",
+    "clientele": "Clientele",
+    "capacity": "Capacity",
+    "share": "Share",
+    "type_club": "Club",
+    "type_bar": "Bar",
+    "pinte": "Pint ~{price}€",
+    "cocktail": "Cocktail ~{price}€",
+    "description": "Description",
+    "practical_info": "Practical info",
+    "category": "Category",
+    "subcategories": "Subcategories",
+    "places": "{count} seats",
+    "not_found": "Venue not found",
+    "tonight_event": "Tonight",
+    "add_favorite": "Add to favorites",
+    "remove_favorite": "Remove from favorites",
+    "location": "Location",
+    "directions": "Directions",
+    "upcoming_events": "Upcoming events",
+    "day_mon": "Mon",
+    "day_tue": "Tue",
+    "day_wed": "Wed",
+    "day_thu": "Thu",
+    "day_fri": "Fri",
+    "day_sat": "Sat",
+    "day_sun": "Sun"
+  },
+  "compare": {
+    "title": "Comparator",
+    "empty": "Select 2 to 4 venues to compare",
+    "add": "Add a venue",
+    "share": "Share"
+  },
+  "chat": {
+    "title": "Lyon Night Assistant",
+    "placeholder": "Cheap techno bar in the 1st district?",
+    "suggestions": [
+      "Best cocktail bar?",
+      "Club open tonight?",
+      "Bar with terrace near Bellecour",
+      "Latin party this weekend"
+    ],
+    "thinking": "Thinking…",
+    "online": "Online",
+    "close": "Close",
+    "useful": "Helpful",
+    "not_useful": "Not helpful",
+    "welcome": "Ask me anything about Lyon's bars and clubs!"
+  },
+  "events": {
+    "title": "Events",
+    "tonight": "Tonight",
+    "this_week": "This week",
+    "this_month": "This month",
+    "no_events": "No upcoming events",
+    "tomorrow": "Tomorrow",
+    "see_all_month": "See all month",
+    "event_count": "{count} event{count, plural, one {} other {s}}",
+    "type_all": "All",
+    "type_concert": "Concerts",
+    "type_dj_set": "DJ Sets",
+    "type_soiree": "Theme Nights",
+    "type_quiz": "Quiz",
+    "type_other": "Other",
+    "type_concert_single": "Concert",
+    "type_dj_set_single": "DJ Set",
+    "type_soiree_single": "Theme Night",
+    "type_quiz_single": "Quiz",
+    "type_other_single": "Event"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "An error occurred",
+    "no_results": "No results",
+    "see_more": "See more",
+    "back": "Back",
+    "skip_to_content": "Skip to content"
+  },
+  "footer": {
+    "disclaimer": "Data for informational purposes",
+    "legal": "Legal notices & Cookies"
+  },
+  "cookies": {
+    "consent": "Cookie consent",
+    "close": "Close",
+    "title": "Cookies",
+    "description": "We use technical cookies necessary for the site to function (Mapbox map, theme preferences). No advertising cookies.",
+    "learn_more": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
+  "error_page": {
+    "title": "An error occurred",
+    "description": "Something went wrong. Please try again.",
+    "retry": "Try again"
+  },
+  "not_found_page": {
+    "title": "Page not found",
+    "description": "This page doesn't exist or has been moved.",
+    "home": "Home",
+    "explore": "Explore venues"
+  },
+  "transport": {
+    "title": "Getting there",
+    "uber": "Uber",
+    "bolt": "Bolt",
+    "tcl": "TCL (Public transit)",
+    "tcl_short": "TCL",
+    "directions": "Directions"
+  }
+}
