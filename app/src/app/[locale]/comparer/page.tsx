@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { X, Plus, Search, Share2, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { RatingStars } from "@/components/shared/RatingStars";
 import { MusicTags } from "@/components/shared/MusicTags";
 import { Link } from "@/i18n/navigation";
+import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 
 export default function ComparerPage() {
@@ -17,6 +18,7 @@ export default function ComparerPage() {
   const tLieu = useTranslations("lieu");
   const searchParams = useSearchParams();
   const router = useRouter();
+  const locale = useLocale();
 
   const [allLieux, setAllLieux] = useState<Lieu[]>([]);
   const [selected, setSelected] = useState<Lieu[]>([]);
@@ -33,10 +35,11 @@ export default function ComparerPage() {
       const res = await fetch("/api/lieux?limit=200");
       const json = await res.json();
       if (json.success) {
-        setAllLieux(json.data);
+        const translated = (json.data as Lieu[]).map((l) => translateLieu(l, locale));
+        setAllLieux(translated);
         /* Hydrate from URL ids */
         if (initialIdsRef.current.length > 0) {
-          const fromUrl = (json.data as Lieu[]).filter((l: Lieu) =>
+          const fromUrl = translated.filter((l: Lieu) =>
             initialIdsRef.current.includes(l.id)
           );
           if (fromUrl.length > 0) setSelected(fromUrl);
@@ -109,7 +112,7 @@ export default function ComparerPage() {
           {l.prix.fourchette}
           {l.prix.pinte_moy && (
             <span className="block text-xs text-muted-foreground">
-              Pinte ~{l.prix.pinte_moy}€
+              {locale === "en" ? "Pint" : "Pinte"} ~{l.prix.pinte_moy}€
             </span>
           )}
         </span>
@@ -172,7 +175,7 @@ export default function ComparerPage() {
               ) : (
                 <Share2 className="h-4 w-4" />
               )}
-              {copied ? "Copié !" : t("share")}
+              {copied ? (locale === "en" ? "Copied!" : "Copié !") : t("share")}
             </Button>
           )}
           {selected.length < 4 && (
@@ -192,7 +195,7 @@ export default function ComparerPage() {
                 <div className="relative mb-2">
                   <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    placeholder="Rechercher…"
+                    placeholder={locale === "en" ? "Search…" : "Rechercher…"}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className="pl-8"

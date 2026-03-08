@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
 import { Moon, Sun, PartyPopper, Clock } from "lucide-react";
 import { getContextualSuggestion } from "@/lib/utils/horaires";
 
@@ -13,11 +14,12 @@ const TYPE_ICONS = {
 } as const;
 
 export function ContextualBanner() {
+  const locale = useLocale();
   const [suggestion, setSuggestion] = useState<ReturnType<typeof getContextualSuggestion> | null>(null);
 
   useEffect(() => {
-    setSuggestion(getContextualSuggestion("fr"));
-  }, []);
+    setSuggestion(getContextualSuggestion(locale as "fr" | "en"));
+  }, [locale]);
 
   if (!suggestion) return null;
 

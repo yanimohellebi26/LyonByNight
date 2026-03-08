@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { getDataFilePath } from "@/lib/utils/data-path";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, TrendingUp, MapPin, Calendar, Sparkles } from "lucide-react";
@@ -14,6 +14,7 @@ import {
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ContextualBanner } from "@/components/shared/ContextualBanner";
 import { isOpenTonight } from "@/lib/utils/horaires";
+import { translateLieu, translateEvent } from "@/lib/utils/translations";
 
 function loadTopLieux(): Lieu[] {
   const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
@@ -53,9 +54,12 @@ function getTonightLieuIds(): Set<string> {
 export default async function HomePage() {
   const t = await getTranslations("home");
   const nav = await getTranslations("nav");
+  const locale = await getLocale();
 
-  const allLieux = loadTopLieux();
-  const todayEvents = loadTodayEvents();
+  const rawLieux = loadTopLieux();
+  const allLieux = rawLieux.map((l) => translateLieu(l, locale));
+  const rawEvents = loadTodayEvents();
+  const todayEvents = rawEvents.map((e) => ({ ...translateEvent(e, locale), lieu_nom: e.lieu_nom }));
   const tonightIds = getTonightLieuIds();
 
   /* Top-rated lieux (trending) */

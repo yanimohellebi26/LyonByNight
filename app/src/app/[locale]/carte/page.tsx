@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Search,
   Loader2,
@@ -16,6 +16,7 @@ import { Slider } from "@/components/ui/slider";
 import { MapView } from "@/components/map/MapView";
 import { LieuMiniCard } from "@/components/cards/LieuMiniCard";
 import { AddressSearch } from "@/components/shared/AddressSearch";
+import { translateLieu, translateFilterLabel } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 
 const MUSIC_GENRES = [
@@ -45,6 +46,7 @@ export default function CartePage() {
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   const tFilters = useTranslations("filters");
+  const locale = useLocale();
 
   const [lieux, setLieux] = useState<Lieu[]>([]);
   const [loading, setLoading] = useState(true);
@@ -93,7 +95,7 @@ export default function CartePage() {
       try {
         const res = await fetch(`/api/lieux?${buildParams().toString()}`);
         const json = await res.json();
-        if (json.success) setLieux(json.data);
+        if (json.success) setLieux(json.data.map((l: Lieu) => translateLieu(l, locale)));
       } catch {
         /* noop */
       } finally {
@@ -197,7 +199,7 @@ export default function CartePage() {
                         : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                     }`}
                   >
-                    {genre}
+                    {translateFilterLabel(genre, locale)}
                   </button>
                 );
               })}
@@ -260,26 +262,26 @@ export default function CartePage() {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            {geoLieux.length} résultats
+            {geoLieux.length} {locale === "en" ? "results" : "résultats"}
           </p>
 
           {/* Geo search */}
           <div className="border-t pt-3">
             <p className="mb-1.5 text-xs font-medium text-muted-foreground">
-              Recherche par proximité
+              {locale === "en" ? "Search by proximity" : "Recherche par proximité"}
             </p>
             <AddressSearch
               onSelect={(lat, lng, label) =>
                 setGeoCenter({ lat, lng, label })
               }
               onClear={() => setGeoCenter(null)}
-              placeholder="Adresse…"
+              placeholder={locale === "en" ? "Address…" : "Adresse…"}
               className="mb-2"
             />
             {geoCenter && (
               <div>
                 <p className="mb-1 text-xs text-muted-foreground">
-                  Rayon : <span className="text-foreground font-medium">{radiusKm} km</span>
+                  {locale === "en" ? "Radius" : "Rayon"} : <span className="text-foreground font-medium">{radiusKm} km</span>
                 </p>
                 <Slider
                   min={0.5}
@@ -319,7 +321,7 @@ export default function CartePage() {
               />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              {geoLieux.length} lieux sur la carte
+              {geoLieux.length} {locale === "en" ? "venues on map" : "lieux sur la carte"}
             </p>
           </div>
           <div className="flex-1 overflow-y-auto p-2 space-y-2">

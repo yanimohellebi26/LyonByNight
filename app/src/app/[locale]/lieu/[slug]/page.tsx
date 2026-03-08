@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { readFileSync } from "fs";
 import Image from "next/image";
 import { getDataFilePath } from "@/lib/utils/data-path";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import {
   MapPin,
@@ -19,6 +19,7 @@ import { LieuMapSection } from "@/components/map/LieuMapSection";
 import { LieuEvents } from "@/components/cards/LieuEvents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { getPlaceholderImage } from "@/lib/placeholder-images";
+import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 import type { Metadata } from "next";
 
@@ -86,12 +87,15 @@ export async function generateMetadata({ params }: LieuPageProps): Promise<Metad
 export default async function LieuPage({ params }: LieuPageProps) {
   const { slug } = await params;
   const lieux = loadLieux();
-  const lieu = lieux.find((l) => l.slug === slug);
+  const rawLieu = lieux.find((l) => l.slug === slug);
 
-  if (!lieu) notFound();
+  if (!rawLieu) notFound();
 
   const t = await getTranslations("lieu");
   const tNav = await getTranslations("nav");
+  const locale = await getLocale();
+
+  const lieu = translateLieu(rawLieu, locale);
 
   const coverSrc = lieu.photo_cover ?? getPlaceholderImage(lieu.id, lieu.categorie, lieu.type);
   const dayLabels = {
@@ -106,9 +110,10 @@ export default async function LieuPage({ params }: LieuPageProps) {
       (l) =>
         l.id !== lieu.id &&
         (l.type === lieu.type ||
-          l.musique.some((m) => lieu.musique.includes(m)))
+          l.musique.some((m) => rawLieu.musique.includes(m)))
     )
-    .slice(0, 3);
+    .slice(0, 3)
+    .map((l) => translateLieu(l, locale));
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-6">

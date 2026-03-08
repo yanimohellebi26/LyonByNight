@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Search, Loader2, Moon, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
@@ -23,6 +23,7 @@ import {
   FilterSheet,
 } from "@/components/filters/FilterPanel";
 import { ContextualBanner } from "@/components/shared/ContextualBanner";
+import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 
 interface ApiResponse {
@@ -36,6 +37,7 @@ export default function ExplorerPage() {
   const tSort = useTranslations("sort");
   const tCommon = useTranslations("common");
   const tNav = useTranslations("nav");
+  const locale = useLocale();
 
   const { filters, setFilters, clearFilters, activeCount } = useFilters();
   const { addToCompare, removeFromCompare, isInCompare } = useCompare();
@@ -83,7 +85,7 @@ export default function ExplorerPage() {
         });
         const json: ApiResponse = await res.json();
         if (json.success) {
-          let data = json.data;
+          let data = json.data.map((l) => translateLieu(l, locale));
 
           // Client-side favorites filter (favorites are stored locally)
           if (favoritesMode && isHydrated) {
@@ -116,6 +118,7 @@ export default function ExplorerPage() {
     favoritesMode,
     favoriteIds,
     isHydrated,
+    locale,
   ]);
 
   const handleCompare = useCallback(

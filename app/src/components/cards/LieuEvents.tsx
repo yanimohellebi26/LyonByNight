@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Calendar, Loader2 } from "lucide-react";
 import { EventCard } from "@/components/cards/EventCard";
+import { translateEvent } from "@/lib/utils/translations";
 import type { Evenement } from "@/types";
 
 type EnrichedEvent = Evenement & { lieu_nom: string };
@@ -14,6 +15,7 @@ interface LieuEventsProps {
 
 export function LieuEvents({ lieuId }: LieuEventsProps) {
   const t = useTranslations("lieu");
+  const locale = useLocale();
   const [events, setEvents] = useState<EnrichedEvent[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,10 +23,15 @@ export function LieuEvents({ lieuId }: LieuEventsProps) {
     fetch(`/api/events?lieu_id=${encodeURIComponent(lieuId)}&period=month`)
       .then((r) => r.json())
       .then((json) => {
-        if (json.success) setEvents(json.data);
+        if (json.success) setEvents(
+          (json.data as EnrichedEvent[]).map((e) => ({
+            ...translateEvent(e, locale),
+            lieu_nom: e.lieu_nom,
+          }))
+        );
       })
       .finally(() => setLoading(false));
-  }, [lieuId]);
+  }, [lieuId, locale]);
 
   if (loading) {
     return (

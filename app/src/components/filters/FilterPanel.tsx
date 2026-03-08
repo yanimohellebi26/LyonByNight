@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { SlidersHorizontal, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -13,6 +13,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { translateFilterLabel } from "@/lib/utils/translations";
 
 /* ─── Grouped music genres (simplified from raw data) ─── */
 const MUSIC_GENRES = [
@@ -87,6 +88,7 @@ function FilterContent({
   resultCount,
 }: FilterPanelProps) {
   const t = useTranslations("filters");
+  const locale = useLocale();
 
   return (
     <div className="space-y-6">
@@ -163,7 +165,7 @@ function FilterContent({
                     : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 }`}
               >
-                {genre}
+                {translateFilterLabel(genre, locale)}
               </button>
             );
           })}
@@ -275,7 +277,7 @@ function FilterContent({
                   disabled
                   className="border-muted-foreground/50"
                 />
-                <span className="capitalize">{spec}</span>
+                <span className="capitalize">{translateFilterLabel(spec, locale)}</span>
               </label>
             );
           })}

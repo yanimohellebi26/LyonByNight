@@ -17,6 +17,7 @@ import {
   StaggerList,
   StaggerItem,
 } from "@/components/shared/MotionWrapper";
+import { translateEvent } from "@/lib/utils/translations";
 import type { Evenement } from "@/types";
 
 type EnrichedEvent = Evenement & { lieu_nom: string };
@@ -58,7 +59,10 @@ export default function EvenementsPage() {
         const res = await fetch(`/api/events?${params}`, { signal: controller.signal });
         const json = await res.json();
         if (!cancelled && json.success) {
-          setEvents(json.data);
+          setEvents((json.data as EnrichedEvent[]).map((e) => ({
+            ...translateEvent(e, locale),
+            lieu_nom: e.lieu_nom,
+          })));
         }
       } catch {
         /* aborted */

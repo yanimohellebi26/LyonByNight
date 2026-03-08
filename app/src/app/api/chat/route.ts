@@ -118,7 +118,7 @@ export async function POST(req: Request) {
         await generateText({
           model,
           prompt: "ok",
-          maxOutputTokens: 1,
+          maxOutputTokens: 16,
           maxRetries: 0,
         });
 

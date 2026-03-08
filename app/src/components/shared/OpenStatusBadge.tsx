@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLocale } from "next-intl";
 import type { Horaires } from "@/types";
 import { getOpenStatus } from "@/lib/utils/horaires";
 
@@ -42,6 +43,7 @@ const STATUS_CONFIG = {
 
 export function OpenStatusBadge({ horaires, compact = false }: OpenStatusBadgeProps) {
   const [status, setStatus] = useState<ReturnType<typeof getOpenStatus>>("unknown");
+  const locale = useLocale() as "fr" | "en";
 
   useEffect(() => {
     setStatus(getOpenStatus(horaires));
@@ -60,10 +62,10 @@ export function OpenStatusBadge({ horaires, compact = false }: OpenStatusBadgePr
     return (
       <span
         className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium ${config.text} ${config.bg} border ${config.border}`}
-        title={config.label.fr}
+        title={config.label[locale]}
       >
         <span className={`h-1.5 w-1.5 rounded-full ${config.dot} ${status === "open" ? "animate-pulse" : ""}`} />
-        {config.label.fr}
+        {config.label[locale]}
       </span>
     );
   }
@@ -73,7 +75,7 @@ export function OpenStatusBadge({ horaires, compact = false }: OpenStatusBadgePr
       className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${config.text} ${config.bg} border ${config.border}`}
     >
       <span className={`h-2 w-2 rounded-full ${config.dot} ${status === "open" ? "animate-pulse" : ""}`} />
-      {config.label.fr}
+      {config.label[locale]}
     </span>
   );
 }

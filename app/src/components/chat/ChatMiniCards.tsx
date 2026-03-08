@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { MapPin, Star } from "lucide-react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 
 interface ChatMiniCardsProps {
@@ -11,6 +13,7 @@ interface ChatMiniCardsProps {
 
 export function ChatMiniCards({ lieuIds }: ChatMiniCardsProps) {
   const [lieux, setLieux] = useState<Lieu[]>([]);
+  const locale = useLocale();
 
   useEffect(() => {
     if (lieuIds.length === 0) return;
@@ -22,7 +25,7 @@ export function ChatMiniCards({ lieuIds }: ChatMiniCardsProps) {
           const res = await fetch(`/api/lieux/${encodeURIComponent(id)}`);
           const json = await res.json();
           if (json.success && json.data) {
-            results.push(json.data);
+            results.push(translateLieu(json.data, locale));
           }
         } catch {
           // skip failed fetches
@@ -65,7 +68,7 @@ export function ChatMiniCards({ lieuIds }: ChatMiniCardsProps) {
               </span>
             </div>
           </div>
-          <span className="text-xs text-primary">Voir →</span>
+          <span className="text-xs text-primary">{locale === "en" ? "View →" : "Voir →"}</span>
         </Link>
       ))}
     </div>
