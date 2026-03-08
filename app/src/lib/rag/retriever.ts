@@ -1,6 +1,6 @@
 import { readFile } from "fs/promises";
-import { join } from "path";
 import type { Lieu } from "@/types";
+import { getDataFilePath } from "@/lib/utils/data-path";
 
 let cachedLieux: Lieu[] | null = null;
 
@@ -8,7 +8,7 @@ let cachedLieux: Lieu[] | null = null;
 async function loadLieux(): Promise<Lieu[]> {
   if (cachedLieux) return cachedLieux;
 
-  const filePath = join(process.cwd(), "..", "data", "merged-geocoded.json");
+  const filePath = getDataFilePath("merged-geocoded.json");
   const raw = await readFile(filePath, "utf-8");
   cachedLieux = JSON.parse(raw) as Lieu[];
   return cachedLieux;

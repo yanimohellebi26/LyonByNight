@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
-import { join } from "path";
 import { getTranslations } from "next-intl/server";
+import { getDataFilePath } from "@/lib/utils/data-path";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, TrendingUp, MapPin, Calendar, Sparkles } from "lucide-react";
 import type { Lieu, Evenement } from "@/types";
@@ -16,10 +16,7 @@ import { ContextualBanner } from "@/components/shared/ContextualBanner";
 import { isOpenTonight } from "@/lib/utils/horaires";
 
 function loadTopLieux(): Lieu[] {
-  const raw = readFileSync(
-    join(process.cwd(), "..", "data", "merged-geocoded.json"),
-    "utf-8"
-  );
+  const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
   return JSON.parse(raw) as Lieu[];
 }
 
@@ -27,10 +24,7 @@ type EnrichedEvent = Evenement & { lieu_nom: string };
 
 function loadTodayEvents(): EnrichedEvent[] {
   try {
-    const raw = readFileSync(
-      join(process.cwd(), "..", "data", "events.json"),
-      "utf-8"
-    );
+    const raw = readFileSync(getDataFilePath("events.json"), "utf-8");
     const events = JSON.parse(raw) as Evenement[];
     const today = new Date().toISOString().split("T")[0];
     const lieux = loadTopLieux();
@@ -47,10 +41,7 @@ function loadTodayEvents(): EnrichedEvent[] {
 
 function getTonightLieuIds(): Set<string> {
   try {
-    const raw = readFileSync(
-      join(process.cwd(), "..", "data", "events.json"),
-      "utf-8"
-    );
+    const raw = readFileSync(getDataFilePath("events.json"), "utf-8");
     const events = JSON.parse(raw) as Evenement[];
     const today = new Date().toISOString().split("T")[0];
     return new Set(events.filter((e) => e.date === today).map((e) => e.lieu_id));

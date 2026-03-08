@@ -1,21 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFileSync } from "fs";
-import { join } from "path";
+import { getDataFilePath } from "@/lib/utils/data-path";
 import type { Evenement } from "@/types";
 
 function loadEvents(): Evenement[] {
-  const raw = readFileSync(
-    join(process.cwd(), "..", "data", "events.json"),
-    "utf-8"
-  );
+  const raw = readFileSync(getDataFilePath("events.json"), "utf-8");
   return JSON.parse(raw) as Evenement[];
 }
 
 function loadLieuxMap(): Map<string, string> {
-  const raw = readFileSync(
-    join(process.cwd(), "..", "data", "merged-geocoded.json"),
-    "utf-8"
-  );
+  const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
   const lieux = JSON.parse(raw) as { id: string; nom: string }[];
   return new Map(lieux.map((l) => [l.id, l.nom]));
 }

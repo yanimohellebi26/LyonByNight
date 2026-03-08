@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { readFileSync } from "fs";
-import { join } from "path";
+import { getDataFilePath } from "@/lib/utils/data-path";
 
 interface LieuSlug {
   slug: string;
@@ -12,10 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   let lieux: LieuSlug[] = [];
   try {
-    const raw = readFileSync(
-      join(process.cwd(), "..", "data", "merged-geocoded.json"),
-      "utf-8"
-    );
+    const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
     lieux = JSON.parse(raw) as LieuSlug[];
   } catch {
     // Data not available at build time — return minimal sitemap

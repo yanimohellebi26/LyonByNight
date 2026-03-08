@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFileSync } from "fs";
-import { join } from "path";
+import { getDataFilePath } from "@/lib/utils/data-path";
 
 function loadLieux() {
   try {
-    const path = join(process.cwd(), "..", "data", "merged-geocoded.json");
-    return JSON.parse(readFileSync(path, "utf-8"));
+    return JSON.parse(readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8"));
   } catch {
-    const path = join(process.cwd(), "..", "data", "merged.json");
-    return JSON.parse(readFileSync(path, "utf-8"));
+    return JSON.parse(readFileSync(getDataFilePath("merged.json"), "utf-8"));
   }
 }
 
