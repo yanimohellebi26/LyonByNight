@@ -154,7 +154,17 @@
     "no_results": "Aucun résultat",
     "see_more": "Voir plus",
     "back": "Retour",
-    "skip_to_content": "Aller au contenu"
+    "skip_to_content": "Aller au contenu",
+    "copied": "Copié !",
+    "search_placeholder": "Rechercher…",
+    "rating": "Note",
+    "pint": "Pinte"
+  },
+  "map": {
+    "results_count": "{count} résultats",
+    "search_proximity": "Recherche par proximité",
+    "radius": "Rayon",
+    "venues_on_map": "{count} lieux sur la carte"
   },
   "footer": {
     "disclaimer": "Données à titre indicatif",

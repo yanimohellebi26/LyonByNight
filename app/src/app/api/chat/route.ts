@@ -79,8 +79,18 @@ export async function POST(req: Request) {
     const models = getModels();
 
     // Extract text from the last user message
+    // Cap conversation length and message size to prevent abuse
+    if (messages.length > 40) {
+      return new Response(
+        JSON.stringify({ error: "Conversation too long. Please start a new chat." }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const lastUserMsg = [...messages].reverse().find((m) => m.role === "user");
-    const lastUserMessage = lastUserMsg ? extractTextFromMessage(lastUserMsg) : "";
+    const lastUserMessage = lastUserMsg
+      ? extractTextFromMessage(lastUserMsg).slice(0, 500)
+      : "";
 
     // Retrieve relevant local lieux — generous limit for better coverage
     const localLieux = await retrieveLieux(lastUserMessage, { limit: 10, minScore: 2 });
@@ -140,9 +150,10 @@ export async function POST(req: Request) {
     throw lastError ?? new Error("All AI models failed");
   } catch (error) {
     console.error("Chat API error:", error);
-    const message = error instanceof Error ? error.message : "Internal server error";
+    const isKnownSafe = error instanceof Error && error.message === "Messages array is required";
+    const clientMessage = isKnownSafe ? error.message : "Something went wrong. Please try again.";
     return new Response(
-      JSON.stringify({ error: message }),
+      JSON.stringify({ error: clientMessage }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }

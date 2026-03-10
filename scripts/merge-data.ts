@@ -56,6 +56,32 @@ interface L3Entry {
   capacite?: number;
 }
 
+interface L4Entry {
+  id: number;
+  nom: string;
+  categorie: string;
+  sous_categories: string[];
+  adresse: string;
+  arrondissement: string | null;
+  quartier: string | null;
+  note_google: number;
+  musique: string[];
+  prix: {
+    fourchette: string;
+    pinte_moy: number | null;
+    cocktail_moy: number | null;
+  };
+  specificites: string[];
+  horaires: string;
+  google_maps: string;
+  website: string | null;
+  instagram: string | null;
+  clientele: string;
+  telephone: string | null;
+  source_api: string;
+  photos_source: string[];
+}
+
 interface MergedLieu {
   id: string;
   nom: string;
@@ -236,7 +262,7 @@ function main() {
         coordonnees: null,
         note: e.note_google,
         prix: {
-          fourchette: (e.prix.fourchette as "€" | "€€" | "€€€") || "€€",
+          fourchette: parsePriceRange(e.prix.fourchette),
           pinte_moy: e.prix.pinte_moy,
           cocktail_moy: e.prix.cocktail_moy,
           entree: e.prix.entree,
@@ -384,6 +410,101 @@ function main() {
         };
         seen.set(key, lieu);
       }
+    }
+  }
+
+  // ---- liste4.json (scraped from Yelp + Foursquare, enrich or add) ----
+  let l4Count = 0;
+  try {
+    const l4Data = loadJSON<{ categorie: string; etablissements: L4Entry[] }[]>("liste4.json");
+    for (const cat of l4Data) {
+      for (const e of cat.etablissements) {
+        const key = normalize(e.nom);
+        l4Count++;
+        if (seen.has(key)) {
+          // Enrich existing entry with any missing data
+          const existing = seen.get(key)!;
+          const enriched: MergedLieu = {
+            ...existing,
+            site_web: existing.site_web ?? e.website ?? null,
+            telephone: existing.telephone ?? e.telephone ?? null,
+            note: existing.note ?? (e.note_google || null),
+            adresse: existing.adresse.length < 10 ? e.adresse : existing.adresse,
+            arrondissement: existing.arrondissement ?? e.arrondissement,
+            photos: existing.photos.length > 0 ? existing.photos : (e.photos_source ?? []),
+            photo_cover: existing.photo_cover ?? (e.photos_source?.[0] ?? null),
+            sources: [...new Set([...existing.sources, "liste4"])],
+          };
+          seen.set(key, enriched);
+        } else {
+          // New entry from API scrape
+          const lieu: MergedLieu = {
+            id: `l4-${e.id}`,
+            nom: e.nom,
+            slug: slugify(e.nom),
+            type: e.categorie === "club" ? "club" : inferType({ categorie: e.categorie, sous_categories: e.sous_categories }),
+            categorie: cat.categorie,
+            sous_categories: [...e.sous_categories],
+            adresse: e.adresse,
+            arrondissement: e.arrondissement,
+            quartier: e.quartier,
+            coordonnees: null,
+            note: e.note_google || null,
+            prix: {
+              fourchette: parsePriceRange(e.prix.fourchette),
+              pinte_moy: e.prix.pinte_moy,
+              cocktail_moy: e.prix.cocktail_moy,
+            },
+            musique: [...e.musique],
+            specificites: [...e.specificites],
+            clientele: e.clientele || null,
+            capacite: null,
+            horaires: e.horaires ? { texte: e.horaires } : null,
+            description: e.specificites.join(". ") + ".",
+            resume_avis: null,
+            photos: e.photos_source ?? [],
+            photo_cover: e.photos_source?.[0] ?? null,
+            site_web: e.website,
+            instagram: e.instagram,
+            google_maps: e.google_maps,
+            telephone: e.telephone ?? null,
+            evenements: [],
+            happy_hours: null,
+            sources: ["liste4"],
+            date_maj: now,
+          };
+          seen.set(key, lieu);
+        }
+      }
+    }
+    console.log(`   - liste4: ${l4Count} entries (scraped)`);
+  } catch (err: unknown) {
+    if (err instanceof Error && "code" in err && (err as NodeJS.ErrnoException).code === "ENOENT") {
+      // liste4.json not present — skip
+    } else {
+      throw err;
+    }
+  }
+
+  // ---- Normalize category names ----
+  const CATEGORY_CANONICAL: Record<string, string> = {
+    "cocktail & speakeasy": "Bars à cocktails & Speakeasy",
+    "bars à cocktails & speakeasy": "Bars à cocktails & Speakeasy",
+    "lgbt-friendly": "Bars & Clubs LGBT-friendly",
+    "bars & clubs lgbt-friendly": "Bars & Clubs LGBT-friendly",
+    "rooftop & bar à vins": "Rooftops & Bars à vins",
+    "rooftops & bars à vins": "Rooftops & Bars à vins",
+    "bar à vins": "Rooftops & Bars à vins",
+    "bar à bières": "Bars à bières, Pubs & Bars insolites",
+    "bars à bières, pubs & bars insolites": "Bars à bières, Pubs & Bars insolites",
+    "pub": "Pubs irlandais, écossais & Bars du Vieux Lyon",
+    "pubs irlandais, écossais & bars du vieux lyon": "Pubs irlandais, écossais & Bars du Vieux Lyon",
+  };
+
+  for (const [, lieu] of seen) {
+    const canonKey = lieu.categorie.toLowerCase();
+    if (CATEGORY_CANONICAL[canonKey]) {
+      lieu.categorie = CATEGORY_CANONICAL[canonKey];
     }
   }
 

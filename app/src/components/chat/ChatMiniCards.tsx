@@ -19,23 +19,22 @@ export function ChatMiniCards({ lieuIds }: ChatMiniCardsProps) {
     if (lieuIds.length === 0) return;
 
     async function fetchLieux() {
-      const results: Lieu[] = [];
-      for (const id of lieuIds.slice(0, 4)) {
-        try {
-          const res = await fetch(`/api/lieux/${encodeURIComponent(id)}`);
-          const json = await res.json();
-          if (json.success && json.data) {
-            results.push(translateLieu(json.data, locale));
+      const results = await Promise.all(
+        lieuIds.slice(0, 4).map(async (id) => {
+          try {
+            const res = await fetch(`/api/lieux/${encodeURIComponent(id)}`);
+            const json = await res.json();
+            return json.success && json.data ? translateLieu(json.data, locale) : null;
+          } catch {
+            return null;
           }
-        } catch {
-          // skip failed fetches
-        }
-      }
-      setLieux(results);
+        })
+      );
+      setLieux(results.filter((l): l is Lieu => l !== null));
     }
 
     fetchLieux();
-  }, [lieuIds]);
+  }, [lieuIds, locale]);
 
   if (lieux.length === 0) return null;
 

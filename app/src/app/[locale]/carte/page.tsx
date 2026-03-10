@@ -46,6 +46,7 @@ export default function CartePage() {
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   const tFilters = useTranslations("filters");
+  const tMap = useTranslations("map");
   const locale = useLocale();
 
   const [lieux, setLieux] = useState<Lieu[]>([]);
@@ -72,7 +73,7 @@ export default function CartePage() {
 
   /* Build query params from filters */
   const buildParams = useCallback(() => {
-    const params = new URLSearchParams({ limit: "200" });
+    const params = new URLSearchParams({ limit: "1000" });
     if (search) params.set("q", search);
     if (filters.type) params.set("type", filters.type);
     if (filters.musique.length > 0)
@@ -103,7 +104,7 @@ export default function CartePage() {
       }
     }
     load();
-  }, [buildParams]);
+  }, [buildParams, locale]);
 
   const geoLieux = lieux.filter((l) => l.coordonnees != null);
 
@@ -262,26 +263,26 @@ export default function CartePage() {
           </div>
 
           <p className="text-xs text-muted-foreground">
-            {geoLieux.length} {locale === "en" ? "results" : "résultats"}
+            {tMap("results_count", { count: geoLieux.length })}
           </p>
 
           {/* Geo search */}
           <div className="border-t pt-3">
             <p className="mb-1.5 text-xs font-medium text-muted-foreground">
-              {locale === "en" ? "Search by proximity" : "Recherche par proximité"}
+              {tMap("search_proximity")}
             </p>
             <AddressSearch
               onSelect={(lat, lng, label) =>
                 setGeoCenter({ lat, lng, label })
               }
               onClear={() => setGeoCenter(null)}
-              placeholder={locale === "en" ? "Address…" : "Adresse…"}
+              placeholder={tFilters("address_placeholder")}
               className="mb-2"
             />
             {geoCenter && (
               <div>
                 <p className="mb-1 text-xs text-muted-foreground">
-                  {locale === "en" ? "Radius" : "Rayon"} : <span className="text-foreground font-medium">{radiusKm} km</span>
+                  {tMap("radius")} : <span className="text-foreground font-medium">{radiusKm} km</span>
                 </p>
                 <Slider
                   min={0.5}
@@ -321,7 +322,7 @@ export default function CartePage() {
               />
             </div>
             <p className="mt-2 text-xs text-muted-foreground">
-              {geoLieux.length} {locale === "en" ? "venues on map" : "lieux sur la carte"}
+              {tMap("venues_on_map", { count: geoLieux.length })}
             </p>
           </div>
           <div className="flex-1 overflow-y-auto p-2 space-y-2">

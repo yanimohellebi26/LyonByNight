@@ -33,11 +33,29 @@ interface LieuPageProps {
   params: Promise<{ slug: string; locale: string }>;
 }
 
+let cachedLieux: Lieu[] | null = null;
+
 function loadLieux(): Lieu[] {
+  if (cachedLieux) return cachedLieux;
+
   try {
-    return JSON.parse(readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8"));
-  } catch {
-    return JSON.parse(readFileSync(getDataFilePath("merged.json"), "utf-8"));
+    const parsed = JSON.parse(
+      readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8")
+    ) as Lieu[];
+    cachedLieux = parsed;
+    return parsed;
+  } catch (primaryErr) {
+    console.error("[loadLieux] primary file failed:", primaryErr);
+    try {
+      const parsed = JSON.parse(
+        readFileSync(getDataFilePath("merged.json"), "utf-8")
+      ) as Lieu[];
+      cachedLieux = parsed;
+      return parsed;
+    } catch (fallbackErr) {
+      console.error("[loadLieux] fallback file also failed:", fallbackErr);
+      throw new Error("Failed to load venue data");
+    }
   }
 }
 
@@ -129,8 +147,8 @@ export default async function LieuPage({ params }: LieuPageProps) {
       (l) =>
         l.id !== lieu.id &&
         (l.categorie === rawLieu.categorie ||
-          l.type === rawLieu.type &&
-          l.musique.some((m) => rawLieu.musique.includes(m)))
+          (l.type === rawLieu.type &&
+          l.musique.some((m) => rawLieu.musique.includes(m))))
     )
     .sort((a, b) => (b.note ?? 0) - (a.note ?? 0))
     .slice(0, 6)
@@ -152,7 +170,10 @@ export default async function LieuPage({ params }: LieuPageProps) {
           <ArrowLeft className="h-4 w-4" />
           {tNav("explore")}
         </Link>
-        <button className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <button
+          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          aria-label={t("share")}
+        >
           <Share2 className="h-4 w-4" />
           {t("share")}
         </button>

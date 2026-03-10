@@ -46,6 +46,7 @@ export function OpenStatusBadge({ horaires, compact = false }: OpenStatusBadgePr
   const locale = useLocale() as "fr" | "en";
 
   useEffect(() => {
+    // Set correct status after mount (avoids server/client timezone mismatch)
     setStatus(getOpenStatus(horaires));
 
     // Refresh every 5 minutes

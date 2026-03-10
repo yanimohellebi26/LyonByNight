@@ -3,13 +3,33 @@ import { readFileSync } from "fs";
 import { haversineDistance } from "@/lib/utils/geo";
 import { isOpenTonight } from "@/lib/utils/horaires";
 import { getDataFilePath } from "@/lib/utils/data-path";
-import type { Horaires } from "@/types";
+import type { Lieu } from "@/types";
 
-function loadLieux() {
+type LieuWithDistance = Lieu & { _distance?: number | null };
+
+let cachedLieux: Lieu[] | null = null;
+
+function loadLieux(): Lieu[] {
+  if (cachedLieux) return cachedLieux;
+
   try {
-    return JSON.parse(readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8"));
-  } catch {
-    return JSON.parse(readFileSync(getDataFilePath("merged.json"), "utf-8"));
+    const parsed = JSON.parse(
+      readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8")
+    ) as Lieu[];
+    cachedLieux = parsed;
+    return parsed;
+  } catch (primaryErr) {
+    console.error("[loadLieux] primary file failed:", primaryErr);
+    try {
+      const parsed = JSON.parse(
+        readFileSync(getDataFilePath("merged.json"), "utf-8")
+      ) as Lieu[];
+      cachedLieux = parsed;
+      return parsed;
+    } catch (fallbackErr) {
+      console.error("[loadLieux] fallback file also failed:", fallbackErr);
+      throw new Error("Failed to load venue data");
+    }
   }
 }
 
@@ -23,8 +43,9 @@ export async function GET(request: NextRequest) {
   const noteMin = searchParams.get("note_min");
   const q = searchParams.get("q");
   const sort = searchParams.get("sort") ?? "note";
-  const page = parseInt(searchParams.get("page") ?? "1", 10);
-  const limit = Math.min(parseInt(searchParams.get("limit") ?? "20", 10), 100);
+  const page = Math.max(1, parseInt(searchParams.get("page") ?? "1", 10) || 1);
+  const limitParam = parseInt(searchParams.get("limit") ?? "20", 10);
+  const limit = isNaN(limitParam) || limitParam < 1 ? 20 : Math.min(limitParam, 1000);
 
   /* Geo params */
   const latParam = searchParams.get("lat");
@@ -35,48 +56,37 @@ export async function GET(request: NextRequest) {
   const rayonKm = rayonParam ? parseFloat(rayonParam) : null;
   const tonight = searchParams.get("tonight") === "true";
 
-  let lieux = loadLieux();
+  let lieux: LieuWithDistance[] = loadLieux();
 
   // "Ce soir" mode — filter venues open tonight
   if (tonight) {
-    lieux = lieux.filter((l: { horaires: Horaires | null }) =>
-      isOpenTonight(l.horaires)
-    );
+    lieux = lieux.filter((l) => isOpenTonight(l.horaires));
   }
 
   // Filters
   if (type) {
-    lieux = lieux.filter((l: { type: string }) => l.type === type);
+    lieux = lieux.filter((l) => l.type === type);
   }
   if (arrondissement) {
-    lieux = lieux.filter(
-      (l: { arrondissement: string | null }) =>
-        l.arrondissement === arrondissement
-    );
+    lieux = lieux.filter((l) => l.arrondissement === arrondissement);
   }
   if (musique) {
     const genres = musique.split(",").map((g) => g.trim().toLowerCase());
-    lieux = lieux.filter((l: { musique: string[] }) =>
-      l.musique?.some((m: string) =>
-        genres.some((g) => m.toLowerCase().includes(g))
-      )
+    lieux = lieux.filter((l) =>
+      l.musique?.some((m) => genres.some((g) => m.toLowerCase().includes(g)))
     );
   }
   if (fourchette) {
-    lieux = lieux.filter(
-      (l: { prix: { fourchette: string } }) => l.prix?.fourchette === fourchette
-    );
+    lieux = lieux.filter((l) => l.prix?.fourchette === fourchette);
   }
   if (noteMin) {
     const min = parseFloat(noteMin);
-    lieux = lieux.filter(
-      (l: { note: number | null }) => l.note !== null && l.note >= min
-    );
+    lieux = lieux.filter((l) => l.note !== null && l.note >= min);
   }
   if (q) {
     const query = q.toLowerCase();
     lieux = lieux.filter(
-      (l: { nom: string; description: string | null; categorie: string }) =>
+      (l) =>
         l.nom.toLowerCase().includes(query) ||
         l.description?.toLowerCase().includes(query) ||
         l.categorie?.toLowerCase().includes(query)
@@ -85,29 +95,26 @@ export async function GET(request: NextRequest) {
 
   /* Compute distance and filter by radius */
   if (userLat != null && userLng != null) {
-    lieux = lieux.map(
-      (l: { coordonnees: { lat: number; lng: number } | null }) => {
-        if (!l.coordonnees) return { ...l, _distance: null };
-        const dist = haversineDistance(
-          userLat,
-          userLng,
-          l.coordonnees.lat,
-          l.coordonnees.lng
-        );
-        return { ...l, _distance: Math.round(dist * 100) / 100 };
-      }
-    );
+    lieux = lieux.map((l) => {
+      if (!l.coordonnees) return { ...l, _distance: null };
+      const dist = haversineDistance(
+        userLat,
+        userLng,
+        l.coordonnees.lat,
+        l.coordonnees.lng
+      );
+      return { ...l, _distance: Math.round(dist * 100) / 100 };
+    });
 
     if (rayonKm != null) {
       lieux = lieux.filter(
-        (l: { _distance: number | null }) =>
-          l._distance != null && l._distance <= rayonKm
+        (l) => l._distance != null && l._distance <= rayonKm
       );
     }
   }
 
-  // Sort
-  lieux.sort((a: { note: number | null; nom: string; prix: { pinte_moy: number | null }; _distance?: number | null }, b: { note: number | null; nom: string; prix: { pinte_moy: number | null }; _distance?: number | null }) => {
+  // Sort (spread to avoid mutating cached array)
+  lieux = [...lieux].sort((a, b) => {
     switch (sort) {
       case "note":
         return (b.note ?? 0) - (a.note ?? 0);

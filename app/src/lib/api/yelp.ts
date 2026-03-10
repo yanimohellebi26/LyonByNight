@@ -70,7 +70,7 @@ export async function searchYelpLyon(
 /** Convert a Yelp business to a partial Lieu-like object for chat display */
 export function yelpBusinessToLieu(biz: YelpBusiness): Partial<Lieu> & { nom: string; _source: string } {
   const priceMap: Record<string, string> = {
-    "€": "€",
+    "$": "€",
     "$$": "€€",
     "$$$": "€€€",
     "$$$$": "€€€",

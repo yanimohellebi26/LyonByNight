@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Search, Loader2, Moon, Heart } from "lucide-react";
+import { Search, Moon, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,

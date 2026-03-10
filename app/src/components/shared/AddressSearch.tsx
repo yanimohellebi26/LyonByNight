@@ -98,10 +98,11 @@ export function AddressSearch({
 
   const handleGeolocate = () => {
     if (geo.latitude != null && geo.longitude != null) {
-      setSelectedLabel("Ma position");
-      setQuery("Ma position");
+      const label = document.documentElement.lang === "en" ? "My location" : "Ma position";
+      setSelectedLabel(label);
+      setQuery(label);
       setOpen(false);
-      onSelect(geo.latitude, geo.longitude, "Ma position");
+      onSelect(geo.latitude, geo.longitude, label);
     }
   };
 
@@ -130,6 +131,7 @@ export function AddressSearch({
             <button
               onClick={handleClear}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              aria-label="Clear address"
             >
               <X className="h-3.5 w-3.5" />
             </button>
@@ -142,6 +144,7 @@ export function AddressSearch({
           onClick={handleGeolocate}
           disabled={geo.loading || geo.error != null}
           title="Utiliser ma position"
+          aria-label="Use my location"
         >
           <LocateFixed className="h-4 w-4" />
         </Button>

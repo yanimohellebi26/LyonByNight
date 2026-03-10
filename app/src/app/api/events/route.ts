@@ -3,15 +3,22 @@ import { readFileSync } from "fs";
 import { getDataFilePath } from "@/lib/utils/data-path";
 import type { Evenement } from "@/types";
 
+let cachedEvents: Evenement[] | null = null;
+let cachedLieuxMap: Map<string, string> | null = null;
+
 function loadEvents(): Evenement[] {
+  if (cachedEvents) return cachedEvents;
   const raw = readFileSync(getDataFilePath("events.json"), "utf-8");
-  return JSON.parse(raw) as Evenement[];
+  cachedEvents = JSON.parse(raw) as Evenement[];
+  return cachedEvents;
 }
 
 function loadLieuxMap(): Map<string, string> {
+  if (cachedLieuxMap) return cachedLieuxMap;
   const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
   const lieux = JSON.parse(raw) as { id: string; nom: string }[];
-  return new Map(lieux.map((l) => [l.id, l.nom]));
+  cachedLieuxMap = new Map(lieux.map((l) => [l.id, l.nom]));
+  return cachedLieuxMap;
 }
 
 export async function GET(request: NextRequest) {
@@ -22,7 +29,7 @@ export async function GET(request: NextRequest) {
   const lieuId = searchParams.get("lieu_id"); // specific venue
   const period = searchParams.get("period"); // "tonight" | "week" | "month"
 
-  let events = loadEvents();
+  let events: Evenement[] = loadEvents();
   const today = new Date().toISOString().split("T")[0];
 
   // Filter by period
@@ -55,8 +62,8 @@ export async function GET(request: NextRequest) {
     events = events.filter((e) => e.lieu_id === lieuId);
   }
 
-  // Sort by date, then time
-  events.sort((a, b) => {
+  // Sort by date, then time (spread to avoid mutating cached array)
+  events = [...events].sort((a, b) => {
     const dateComp = a.date.localeCompare(b.date);
     if (dateComp !== 0) return dateComp;
     return a.heure_debut.localeCompare(b.heure_debut);

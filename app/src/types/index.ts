@@ -77,6 +77,7 @@ export interface Lieu {
 
   // Informations clés
   readonly note: number | null;
+  readonly note_originale?: number | null;
   readonly prix: PrixInfo;
   readonly musique: readonly string[];
   readonly specificites: readonly string[];

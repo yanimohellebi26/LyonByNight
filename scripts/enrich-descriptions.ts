@@ -1,0 +1,189 @@
+/**
+ * Enrich venue descriptions: generate proper French descriptions
+ * from structured data instead of just concatenating specificites.
+ *
+ * Run: npx tsx scripts/enrich-descriptions.ts
+ */
+
+import { readFileSync, writeFileSync } from "fs";
+import { resolve } from "path";
+
+interface Lieu {
+  id: string;
+  nom: string;
+  type: "bar" | "club";
+  categorie: string;
+  sous_categories: string[];
+  arrondissement: string | null;
+  quartier: string | null;
+  note: number | null;
+  prix: { fourchette: string; pinte_moy: number | null; cocktail_moy: number | null };
+  musique: string[];
+  specificites: string[];
+  clientele: string | null;
+  capacite: number | null;
+  horaires: { texte?: string } | null;
+  description: string;
+  resume_avis: string | null;
+  happy_hours: string | null;
+  [key: string]: unknown;
+}
+
+/* ─── Helpers ─── */
+
+function capitalize(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+function priceLabel(f: string): string {
+  if (f === "€") return "abordable";
+  if (f === "€€") return "milieu de gamme";
+  return "haut de gamme";
+}
+
+function locationPhrase(l: Lieu): string {
+  if (l.quartier && l.arrondissement) {
+    return `dans le quartier ${l.quartier} (Lyon ${l.arrondissement})`;
+  }
+  if (l.quartier) return `dans le quartier ${l.quartier}`;
+  if (l.arrondissement) return `à Lyon ${l.arrondissement}`;
+  return "à Lyon";
+}
+
+function musicPhrase(genres: string[]): string {
+  if (genres.length === 0) return "";
+  if (genres.length === 1) return genres[0];
+  const last = genres[genres.length - 1];
+  const rest = genres.slice(0, -1);
+  return `${rest.join(", ")} et ${last}`;
+}
+
+function pickSpecificites(specs: string[], maxChars: number): string[] {
+  const picked: string[] = [];
+  let total = 0;
+  for (const s of specs) {
+    if (total + s.length > maxChars) break;
+    // Skip specs that are too generic or are slogans
+    if (s.toLowerCase().startsWith("slogan:")) continue;
+    picked.push(s);
+    total += s.length;
+  }
+  return picked;
+}
+
+/* ─── Main description builder ─── */
+
+function buildDescription(l: Lieu): string {
+  const parts: string[] = [];
+
+  /* Sentence 1: Identity — what is this place? */
+  const typeLabel = l.type === "club" ? "club" : "bar";
+
+  if (l.categorie) {
+    parts.push(
+      `${l.nom} est un ${typeLabel} de type ${l.categorie.toLowerCase()} situé ${locationPhrase(l)}.`
+    );
+  } else {
+    parts.push(`${l.nom} est un ${typeLabel} situé ${locationPhrase(l)}.`);
+  }
+
+  /* Sentence 2: Specificites / music */
+  const ambianceSpecs = pickSpecificites(l.specificites, 120);
+  const musicText = musicPhrase(l.musique.slice(0, 4));
+
+  if (ambianceSpecs.length > 0 && musicText) {
+    parts.push(
+      `Ses points forts : ${ambianceSpecs.map((s) => s.toLowerCase()).join(", ")}. La programmation musicale est orientée ${musicText}.`
+    );
+  } else if (ambianceSpecs.length > 0) {
+    parts.push(
+      `Ses points forts : ${ambianceSpecs.map((s) => s.toLowerCase()).join(", ")}.`
+    );
+  } else if (musicText) {
+    parts.push(`La programmation musicale est orientée ${musicText}.`);
+  }
+
+  /* Sentence 3: Price + clientele + capacity */
+  const details: string[] = [];
+
+  if (l.prix.fourchette) {
+    const pLabel = priceLabel(l.prix.fourchette);
+    if (l.prix.pinte_moy) {
+      details.push(`budget ${pLabel} (pinte ~${l.prix.pinte_moy}€)`);
+    } else if (l.prix.cocktail_moy) {
+      details.push(`budget ${pLabel} (cocktail ~${l.prix.cocktail_moy}€)`);
+    } else {
+      details.push(`budget ${pLabel}`);
+    }
+  }
+
+  if (l.clientele) {
+    details.push(`clientèle ${l.clientele.toLowerCase()}`);
+  }
+
+  if (l.capacite) {
+    details.push(`capacité de ${l.capacite} personnes`);
+  }
+
+  if (details.length > 0) {
+    parts.push(capitalize(details.join(", ")) + ".");
+  }
+
+  /* Sentence 4: Additional specificites not yet used */
+  const remaining = l.specificites.filter(
+    (s) => !ambianceSpecs.includes(s) && !s.toLowerCase().startsWith("slogan:")
+  );
+  if (remaining.length > 0) {
+    const extras = remaining.slice(0, 3).map((s) => s.toLowerCase());
+    parts.push(`À noter : ${extras.join(", ")}.`);
+  }
+
+  /* Sentence 5: Hours if available */
+  if (l.horaires?.texte) {
+    parts.push(`Horaires : ${l.horaires.texte}.`);
+  }
+
+  return parts.join(" ");
+}
+
+/* ─── Run ─── */
+
+const dataPath = resolve(__dirname, "../app/data/merged-geocoded.json");
+const backupPath = resolve(__dirname, "../app/data/merged-geocoded.backup.json");
+const data: Lieu[] = JSON.parse(readFileSync(dataPath, "utf-8"));
+
+// Backup
+writeFileSync(backupPath, readFileSync(dataPath, "utf-8"));
+console.log(`✓ Backup saved to ${backupPath}`);
+
+let enriched = 0;
+let unchanged = 0;
+
+for (const lieu of data) {
+  const oldDesc = lieu.description || "";
+  // Only re-generate if description is missing or is just joined specificites
+  const joinedSpecs = lieu.specificites.join(". ") + ".";
+  const isAutoGenerated =
+    !oldDesc ||
+    oldDesc.length < 50 ||
+    oldDesc.replace(/\s+/g, " ").trim() === joinedSpecs.replace(/\s+/g, " ").trim();
+
+  if (isAutoGenerated) {
+    lieu.description = buildDescription(lieu);
+    enriched++;
+  } else {
+    unchanged++;
+  }
+}
+
+writeFileSync(dataPath, JSON.stringify(data, null, 2), "utf-8");
+console.log(`✓ Enriched ${enriched} descriptions (${unchanged} kept as-is)`);
+console.log(`✓ Written to ${dataPath}`);
+
+// Show samples
+console.log("\n─── Sample enriched descriptions ───");
+const samples = data.filter((l) => l.description.startsWith(l.nom)).slice(0, 5);
+for (const s of samples) {
+  console.log(`\n[${s.nom}]`);
+  console.log(`  ${s.description}`);
+}

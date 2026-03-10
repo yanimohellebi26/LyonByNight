@@ -16,9 +16,13 @@ import { ContextualBanner } from "@/components/shared/ContextualBanner";
 import { isOpenTonight } from "@/lib/utils/horaires";
 import { translateLieu, translateEvent } from "@/lib/utils/translations";
 
+let cachedTopLieux: Lieu[] | null = null;
+
 function loadTopLieux(): Lieu[] {
+  if (cachedTopLieux) return cachedTopLieux;
   const raw = readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8");
-  return JSON.parse(raw) as Lieu[];
+  cachedTopLieux = JSON.parse(raw) as Lieu[];
+  return cachedTopLieux;
 }
 
 type EnrichedEvent = Evenement & { lieu_nom: string };
@@ -61,6 +65,7 @@ export default async function HomePage() {
   const rawEvents = loadTodayEvents();
   const todayEvents = rawEvents.map((e) => ({ ...translateEvent(e, locale), lieu_nom: e.lieu_nom }));
   const tonightIds = getTonightLieuIds();
+  const serverToday = new Date().toISOString().split("T")[0];
 
   /* Top-rated lieux (trending) */
   const trending = [...allLieux]
@@ -211,7 +216,7 @@ export default async function HomePage() {
           <StaggerList className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {todayEvents.slice(0, 6).map((evt) => (
               <StaggerItem key={evt.id}>
-                <EventCard event={evt} />
+                <EventCard event={evt} serverToday={serverToday} />
               </StaggerItem>
             ))}
           </StaggerList>

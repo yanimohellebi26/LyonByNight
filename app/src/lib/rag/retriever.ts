@@ -10,8 +10,9 @@ async function loadLieux(): Promise<Lieu[]> {
 
   const filePath = getDataFilePath("merged-geocoded.json");
   const raw = await readFile(filePath, "utf-8");
-  cachedLieux = JSON.parse(raw) as Lieu[];
-  return cachedLieux;
+  const parsed = JSON.parse(raw) as Lieu[];
+  cachedLieux = parsed;
+  return parsed;
 }
 
 /** Normalize text for matching (remove accents, lowercase) */

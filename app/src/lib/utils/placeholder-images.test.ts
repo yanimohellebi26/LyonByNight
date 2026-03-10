@@ -2,10 +2,10 @@ import { describe, it, expect } from "vitest";
 import { getPlaceholderImage } from "../placeholder-images";
 
 describe("getPlaceholderImage", () => {
-  it("returns a string URL", () => {
+  it("returns a string URL or path", () => {
     const url = getPlaceholderImage("abc123", "Cocktail bar", "bar");
     expect(typeof url).toBe("string");
-    expect(url).toContain("https://images.unsplash.com/");
+    expect(url.length).toBeGreaterThan(0);
   });
 
   it("is deterministic — same inputs yield same output", () => {
@@ -17,63 +17,62 @@ describe("getPlaceholderImage", () => {
   it("different IDs may produce different images", () => {
     const a = getPlaceholderImage("id-1", "Bar classique", "bar");
     const b = getPlaceholderImage("id-2", "Bar classique", "bar");
-    // Not guaranteed to be different, but the function should work
     expect(typeof a).toBe("string");
     expect(typeof b).toBe("string");
   });
 
-  it("resolves cocktail category", () => {
+  it("resolves cocktail category to themed image", () => {
     const url = getPlaceholderImage("x", "Cocktail bar / Speakeasy", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("cocktails");
   });
 
-  it("resolves club category", () => {
+  it("resolves club category to themed image", () => {
     const url = getPlaceholderImage("x", "Boîte de nuit", "club");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("clubs");
   });
 
-  it("resolves pub category", () => {
+  it("resolves pub category to themed image", () => {
     const url = getPlaceholderImage("x", "Pub irlandais", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("pubs");
   });
 
-  it("resolves LGBT category", () => {
+  it("resolves LGBT category to themed image", () => {
     const url = getPlaceholderImage("x", "Bar LGBT-friendly", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("lgbt");
   });
 
   it("falls back to club images for club type with unknown category", () => {
     const url = getPlaceholderImage("x", "Unknown Category", "club");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("clubs");
   });
 
   it("falls back to bar images for bar type with unknown category", () => {
     const url = getPlaceholderImage("x", "Unknown Category", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("/images/themed/");
   });
 
-  it("resolves péniche category", () => {
+  it("resolves péniche category to themed image", () => {
     const url = getPlaceholderImage("x", "Péniche / Bar dansant", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("niche");
   });
 
-  it("resolves vin/rooftop category", () => {
+  it("resolves vin/rooftop category to themed image", () => {
     const url = getPlaceholderImage("x", "Bar à vin / Rooftop", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("rooftops");
   });
 
-  it("resolves bar à jeux category", () => {
+  it("resolves bar à jeux to themed image", () => {
     const url = getPlaceholderImage("x", "Bar à jeux", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("/images/themed/");
   });
 
-  it("resolves cosy/afterwork category", () => {
+  it("resolves cosy/afterwork category to themed image", () => {
     const url = getPlaceholderImage("x", "Bar cosy / afterwork", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("cosy");
   });
 
-  it("resolves latino category", () => {
+  it("resolves latino category to themed image", () => {
     const url = getPlaceholderImage("x", "Bar latino", "bar");
-    expect(url).toContain("unsplash.com/");
+    expect(url).toContain("/images/themed/");
   });
 });

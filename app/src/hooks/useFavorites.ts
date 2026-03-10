@@ -28,7 +28,7 @@ export function useFavorites() {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Load from localStorage on mount
+  // Load from localStorage after mount to avoid hydration mismatch
   useEffect(() => {
     setFavoriteIds(loadFavorites());
     setIsHydrated(true);

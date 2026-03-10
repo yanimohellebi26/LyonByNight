@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { getContextualSuggestion } from "@/lib/utils/horaires";
 
 interface ChatSuggestionsProps {
@@ -59,11 +59,8 @@ function getContextualChatSuggestions(locale: "fr" | "en" = "fr"): string[] {
 
 export function ChatSuggestions({ onSelect }: ChatSuggestionsProps) {
   const t = useTranslations("chat");
-  const [contextual, setContextual] = useState<string[]>([]);
-
-  useEffect(() => {
-    setContextual(getContextualChatSuggestions("fr"));
-  }, []);
+  const locale = useLocale() as "fr" | "en";
+  const [contextual] = useState<string[]>(() => getContextualChatSuggestions(locale));
 
   // Mix static i18n suggestions with contextual ones
   const staticSuggestions = [
@@ -99,11 +96,10 @@ export function ChatSuggestions({ onSelect }: ChatSuggestionsProps) {
 
 /** Banner-style contextual suggestion for the chat welcome screen */
 export function ChatContextBanner({ onSelect }: ChatSuggestionsProps) {
-  const [suggestion, setSuggestion] = useState<ReturnType<typeof getContextualSuggestion> | null>(null);
-
-  useEffect(() => {
-    setSuggestion(getContextualSuggestion("fr"));
-  }, []);
+  const locale = useLocale() as "fr" | "en";
+  const [suggestion] = useState<ReturnType<typeof getContextualSuggestion> | null>(() =>
+    getContextualSuggestion(locale)
+  );
 
   if (!suggestion) return null;
 

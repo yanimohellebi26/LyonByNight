@@ -154,7 +154,17 @@
     "no_results": "No results",
     "see_more": "See more",
     "back": "Back",
-    "skip_to_content": "Skip to content"
+    "skip_to_content": "Skip to content",
+    "copied": "Copied!",
+    "search_placeholder": "Search…",
+    "rating": "Rating",
+    "pint": "Pint"
+  },
+  "map": {
+    "results_count": "{count} results",
+    "search_proximity": "Search by proximity",
+    "radius": "Radius",
+    "venues_on_map": "{count} venues on map"
   },
   "footer": {
     "disclaimer": "Data for informational purposes",

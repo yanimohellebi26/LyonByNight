@@ -16,6 +16,7 @@ import type { Lieu } from "@/types";
 export default function ComparerPage() {
   const t = useTranslations("compare");
   const tLieu = useTranslations("lieu");
+  const tCommon = useTranslations("common");
   const searchParams = useSearchParams();
   const router = useRouter();
   const locale = useLocale();
@@ -32,7 +33,7 @@ export default function ComparerPage() {
   /* Load all venues once + hydrate from URL params */
   useEffect(() => {
     async function load() {
-      const res = await fetch("/api/lieux?limit=200");
+      const res = await fetch("/api/lieux?limit=1000");
       const json = await res.json();
       if (json.success) {
         const translated = (json.data as Lieu[]).map((l) => translateLieu(l, locale));
@@ -48,7 +49,7 @@ export default function ComparerPage() {
       }
     }
     load();
-  }, []);
+  }, [locale]);
 
   /* Sync selected IDs → URL */
   useEffect(() => {
@@ -102,7 +103,7 @@ export default function ComparerPage() {
     render: (lieu: Lieu) => React.ReactNode;
   }[] = [
     {
-      label: tLieu("reviews_summary").replace("Résumé des avis", "Note"),
+      label: tCommon("rating"),
       render: (l) => <RatingStars note={l.note} />,
     },
     {
@@ -112,7 +113,7 @@ export default function ComparerPage() {
           {l.prix.fourchette}
           {l.prix.pinte_moy && (
             <span className="block text-xs text-muted-foreground">
-              {locale === "en" ? "Pint" : "Pinte"} ~{l.prix.pinte_moy}€
+              {tCommon("pint")} ~{l.prix.pinte_moy}€
             </span>
           )}
         </span>
@@ -175,7 +176,7 @@ export default function ComparerPage() {
               ) : (
                 <Share2 className="h-4 w-4" />
               )}
-              {copied ? (locale === "en" ? "Copied!" : "Copié !") : t("share")}
+              {copied ? tCommon("copied") : t("share")}
             </Button>
           )}
           {selected.length < 4 && (
@@ -195,7 +196,7 @@ export default function ComparerPage() {
                 <div className="relative mb-2">
                   <Search className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
-                    placeholder={locale === "en" ? "Search…" : "Rechercher…"}
+                    placeholder={tCommon("search_placeholder")}
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     className="pl-8"
@@ -217,7 +218,7 @@ export default function ComparerPage() {
                   ))}
                   {query && filtered.length === 0 && (
                     <p className="py-3 text-center text-xs text-muted-foreground">
-                      Aucun résultat
+                      {tCommon("no_results")}
                     </p>
                   )}
                 </div>
@@ -256,7 +257,7 @@ export default function ComparerPage() {
                       <button
                         onClick={() => removeLieu(lieu.id)}
                         className="absolute right-2 top-2 rounded-full p-1 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-                        aria-label="Retirer"
+                        aria-label={tLieu("remove_compare")}
                       >
                         <X className="h-4 w-4" />
                       </button>
@@ -278,6 +279,7 @@ export default function ComparerPage() {
                     <button
                       onClick={() => setSearchOpen(true)}
                       className="flex h-24 w-full items-center justify-center rounded-xl border-2 border-dashed border-muted-foreground/30 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                      aria-label="Add venue to compare"
                     >
                       <Plus className="h-6 w-6" />
                     </button>
@@ -310,7 +312,7 @@ export default function ComparerPage() {
                   <td key={lieu.id} className="p-3">
                     <Link href={`/lieu/${lieu.slug}`}>
                       <Button variant="outline" size="sm" className="w-full">
-                        Voir la fiche
+                        {tCommon("see_more")}
                       </Button>
                     </Link>
                   </td>

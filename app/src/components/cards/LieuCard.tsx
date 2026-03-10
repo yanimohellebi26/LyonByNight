@@ -108,9 +108,9 @@ export function LieuCard({
         <div className="flex items-center justify-between">
           <RatingStars note={lieu.note} />
           <PriceDisplay
-            fourchette={lieu.prix.fourchette}
-            pinte_moy={lieu.prix.pinte_moy}
-            cocktail_moy={lieu.prix.cocktail_moy}
+            fourchette={lieu.prix?.fourchette ?? "€€"}
+            pinte_moy={lieu.prix?.pinte_moy ?? null}
+            cocktail_moy={lieu.prix?.cocktail_moy ?? null}
           />
         </div>
 

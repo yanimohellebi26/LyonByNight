@@ -311,8 +311,7 @@ export function FilterSheet(props: FilterPanelProps) {
 
   return (
     <Sheet>
-      <SheetTrigger>
-        <Button variant="outline" size="sm" className="gap-2 lg:hidden">
+      <SheetTrigger className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md border border-input bg-background px-3 text-sm font-medium shadow-xs transition-colors hover:bg-accent hover:text-accent-foreground lg:hidden h-8">
           <SlidersHorizontal className="h-4 w-4" />
           {t("title")}
           {props.activeCount > 0 && (
@@ -320,7 +319,6 @@ export function FilterSheet(props: FilterPanelProps) {
               {props.activeCount}
             </span>
           )}
-        </Button>
       </SheetTrigger>
       <SheetContent side="bottom" className="max-h-[85vh] overflow-y-auto rounded-t-2xl">
         <SheetHeader>

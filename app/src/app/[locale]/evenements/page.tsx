@@ -73,7 +73,7 @@ export default function EvenementsPage() {
 
     void load();
     return () => { cancelled = true; controller.abort(); };
-  }, [period, typeFilter]);
+  }, [period, typeFilter, locale]);
 
   // Group events by date
   const grouped = events.reduce<Record<string, EnrichedEvent[]>>((acc, evt) => {
@@ -148,7 +148,7 @@ export default function EvenementsPage() {
           </Select>
 
           <span className="text-sm text-muted-foreground">
-            {events.length} {events.length === 1 ? (locale === "en" ? "event" : "événement") : (locale === "en" ? "events" : "événements")}
+            {t("event_count", { count: events.length })}
           </span>
         </div>
       </FadeIn>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, Clock, MapPin, Music, Ticket } from "lucide-react";
+import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
@@ -9,9 +10,11 @@ import type { Evenement } from "@/types";
 interface EventCardProps {
   readonly event: Evenement & { lieu_nom?: string };
   readonly compact?: boolean;
+  /** ISO date string (YYYY-MM-DD) for "today", passed from server to prevent hydration mismatch */
+  readonly serverToday?: string;
 }
 
-export function EventCard({ event, compact }: EventCardProps) {
+export function EventCard({ event, compact, serverToday }: EventCardProps) {
   const t = useTranslations("events");
   const locale = useLocale();
 
@@ -23,18 +26,23 @@ export function EventCard({ event, compact }: EventCardProps) {
     autre: { emoji: "✨", labelKey: "type_other_single", color: "bg-emerald-500/10 text-emerald-400" },
   };
 
-  function formatDate(isoDate: string): string {
-    const date = new Date(isoDate + "T00:00:00");
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+  /* Use server-provided date when available to avoid server/client timezone mismatch */
+  const todayIso = useMemo(() => {
+    if (serverToday) return serverToday;
+    const now = new Date();
+    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  }, [serverToday]);
 
+  function formatDate(isoDate: string): string {
+    const eventDate = new Date(isoDate + "T00:00:00");
+    const today = new Date(todayIso + "T00:00:00");
     const tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
 
-    if (date.getTime() === today.getTime()) return t("tonight");
-    if (date.getTime() === tomorrow.getTime()) return t("tomorrow");
+    if (eventDate.getTime() === today.getTime()) return t("tonight");
+    if (eventDate.getTime() === tomorrow.getTime()) return t("tomorrow");
 
-    return date.toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR", {
+    return eventDate.toLocaleDateString(locale === "en" ? "en-GB" : "fr-FR", {
       weekday: "short",
       day: "numeric",
       month: "short",
