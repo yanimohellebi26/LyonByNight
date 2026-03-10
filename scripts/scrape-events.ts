@@ -72,6 +72,29 @@ function todayIso(): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
+/** Clean HTML entities, unicode escapes, and special characters from text */
+function sanitizeText(text: string): string {
+  return text
+    // Decode unicode escapes: \u00e9 → é, \ud83c\udf89 → 🎉
+    .replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+    // Decode HTML numeric entities: &#233; → é
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code, 10)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    // Decode HTML named entities
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    // Clean escapes
+    .replace(/\\\//g, "/")
+    .replace(/\\n/g, "\n")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 /** Classify event type from title + description keywords */
 function classifyEvent(title: string, desc: string): EventType {
   const text = `${title} ${desc}`.toLowerCase();
@@ -449,9 +472,9 @@ async function scrapeEsnLyon(): Promise<ScrapedEvent[]> {
         const endTs = data.end ? Number(data.end) : null;
         const endDate = endTs ? new Date(endTs * 1000) : null;
 
-        const desc = String(data.description ?? "").replace(/\\n/g, "\n");
+        const desc = sanitizeText(String(data.description ?? ""));
         const dealUrl = String(data.dealUrl ?? "");
-        const address = String(data.address ?? "");
+        const address = sanitizeText(String(data.address ?? ""));
 
         // Extract price from description
         let price: string | undefined;
@@ -463,16 +486,16 @@ async function scrapeEsnLyon(): Promise<ScrapedEvent[]> {
         const venue = address || (desc.match(/📍\s*(.+?)(?:\n|$)/)?.[1]?.trim()) || "Lyon";
 
         events.push({
-          titre: title.slice(0, 200),
+          titre: sanitizeText(title).slice(0, 200),
           description: desc.slice(0, 500),
           date: `${startDate.getFullYear()}-${String(startDate.getMonth() + 1).padStart(2, "0")}-${String(startDate.getDate()).padStart(2, "0")}`,
           heure_debut: `${String(startDate.getHours()).padStart(2, "0")}:${String(startDate.getMinutes()).padStart(2, "0")}`,
           heure_fin: endDate ? `${String(endDate.getHours()).padStart(2, "0")}:${String(endDate.getMinutes()).padStart(2, "0")}` : undefined,
-          type: classifyEvent(title, desc) === "autre" ? "erasmus" : classifyEvent(title, desc),
+          type: "erasmus", // All ESN CosmoLyon events are Erasmus by definition
           prix_entree: price,
           source: "esn_cosmolyon",
           url: dealUrl ? `https://www.esnlyon.org${dealUrl}` : url,
-          lieu_nom: venue.slice(0, 100),
+          lieu_nom: sanitizeText(venue).slice(0, 100),
         });
       } catch {
         // skip unparseable event
