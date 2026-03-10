@@ -69,11 +69,13 @@ export async function GET(request: NextRequest) {
     return a.heure_debut.localeCompare(b.heure_debut);
   });
 
-  // Enrich with venue name
+  // Enrich with venue name (scraped events may already have lieu_nom)
   const lieuxMap = loadLieuxMap();
   const enriched = events.map((e) => ({
     ...e,
-    lieu_nom: lieuxMap.get(e.lieu_id) ?? "Lieu inconnu",
+    lieu_nom: e.lieu_id
+      ? (lieuxMap.get(e.lieu_id) ?? e.lieu_nom ?? "Lieu inconnu")
+      : (e.lieu_nom ?? "Lyon"),
   }));
 
   return NextResponse.json({

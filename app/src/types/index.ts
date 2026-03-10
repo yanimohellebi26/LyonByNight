@@ -9,7 +9,21 @@ export type LieuType = "bar" | "club";
 export type PriceRange = "€" | "€€" | "€€€";
 
 /** Type d'événement */
-export type EventType = "concert" | "dj_set" | "soiree_theme" | "quiz" | "autre";
+export type EventType =
+  | "concert"
+  | "dj_set"
+  | "soiree_theme"
+  | "quiz"
+  | "cultural"
+  | "student"
+  | "erasmus"
+  | "scientific"
+  | "theater"
+  | "festival"
+  | "expo"
+  | "workshop"
+  | "sport"
+  | "autre";
 
 /** Coordonnées géographiques */
 export interface Coordonnees {
@@ -58,6 +72,12 @@ export interface Evenement {
   readonly prix_entree?: string;
   readonly artiste?: string;
   readonly image?: string;
+  /** Source website name (e.g. "eventbrite", "esn_lyon") */
+  readonly source?: string;
+  /** Direct URL to the event page */
+  readonly url?: string;
+  /** Venue name for external events not linked to a venue in DB */
+  readonly lieu_nom?: string;
 }
 
 /** Schéma principal — Lieu */

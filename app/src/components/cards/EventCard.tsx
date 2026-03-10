@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar, Clock, MapPin, Music, Ticket } from "lucide-react";
+import { Calendar, Clock, ExternalLink, MapPin, Music, Ticket } from "lucide-react";
 import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -23,6 +23,15 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
     dj_set: { emoji: "🎧", labelKey: "type_dj_set_single", color: "bg-purple-500/10 text-purple-400" },
     soiree_theme: { emoji: "🎉", labelKey: "type_soiree_single", color: "bg-pink-500/10 text-pink-400" },
     quiz: { emoji: "🧠", labelKey: "type_quiz_single", color: "bg-amber-500/10 text-amber-400" },
+    cultural: { emoji: "🏛️", labelKey: "type_cultural_single", color: "bg-teal-500/10 text-teal-400" },
+    student: { emoji: "🎓", labelKey: "type_student_single", color: "bg-orange-500/10 text-orange-400" },
+    erasmus: { emoji: "🌍", labelKey: "type_erasmus_single", color: "bg-cyan-500/10 text-cyan-400" },
+    scientific: { emoji: "🔬", labelKey: "type_scientific_single", color: "bg-indigo-500/10 text-indigo-400" },
+    theater: { emoji: "🎭", labelKey: "type_theater_single", color: "bg-rose-500/10 text-rose-400" },
+    festival: { emoji: "🎪", labelKey: "type_festival_single", color: "bg-violet-500/10 text-violet-400" },
+    expo: { emoji: "🖼️", labelKey: "type_expo_single", color: "bg-lime-500/10 text-lime-400" },
+    workshop: { emoji: "🛠️", labelKey: "type_workshop_single", color: "bg-sky-500/10 text-sky-400" },
+    sport: { emoji: "⚽", labelKey: "type_sport_single", color: "bg-red-500/10 text-red-400" },
     autre: { emoji: "✨", labelKey: "type_other_single", color: "bg-emerald-500/10 text-emerald-400" },
   };
 
@@ -141,6 +150,17 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
               <Ticket className="h-3.5 w-3.5 text-primary" />
               <span>{event.prix_entree}</span>
             </div>
+          )}
+          {event.url && (
+            <a
+              href={event.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              <ExternalLink className="h-3 w-3" />
+              {t("view_original")}
+            </a>
           )}
         </div>
       </div>

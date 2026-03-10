@@ -6,6 +6,10 @@
     "build": "npm --prefix app run build",
     "start": "npm --prefix app run start",
     "lint": "npm --prefix app run lint",
-    "test": "npm --prefix app run test"
+    "test": "npm --prefix app run test",
+    "scrape-events": "npx tsx scripts/scrape-events.ts"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0"
   }
 }

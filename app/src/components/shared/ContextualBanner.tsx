@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocale } from "next-intl";
 import { Moon, Sun, PartyPopper, Clock } from "lucide-react";
 import { getContextualSuggestion } from "@/lib/utils/horaires";
@@ -15,9 +15,13 @@ const TYPE_ICONS = {
 
 export function ContextualBanner() {
   const locale = useLocale() as "fr" | "en";
-  const [suggestion] = useState<ReturnType<typeof getContextualSuggestion> | null>(
-    () => getContextualSuggestion(locale)
-  );
+  const [suggestion, setSuggestion] = useState<ReturnType<typeof getContextualSuggestion> | null>(null);
+
+  // Defer to useEffect to avoid hydration mismatch — time-dependent logic
+  // must only run on the client where the user's timezone is known.
+  useEffect(() => {
+    setSuggestion(getContextualSuggestion(locale));
+  }, [locale]);
 
   if (!suggestion) return null;
 

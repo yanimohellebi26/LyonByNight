@@ -28,6 +28,15 @@ const EVENT_TYPES = [
   { value: "dj_set", labelKey: "type_dj_set" },
   { value: "soiree_theme", labelKey: "type_soiree" },
   { value: "quiz", labelKey: "type_quiz" },
+  { value: "cultural", labelKey: "type_cultural" },
+  { value: "student", labelKey: "type_student" },
+  { value: "erasmus", labelKey: "type_erasmus" },
+  { value: "scientific", labelKey: "type_scientific" },
+  { value: "theater", labelKey: "type_theater" },
+  { value: "festival", labelKey: "type_festival" },
+  { value: "expo", labelKey: "type_expo" },
+  { value: "workshop", labelKey: "type_workshop" },
+  { value: "sport", labelKey: "type_sport" },
   { value: "autre", labelKey: "type_other" },
 ] as const;
 
