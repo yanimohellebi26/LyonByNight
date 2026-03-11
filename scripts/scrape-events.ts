@@ -272,6 +272,127 @@ async function scrapeVisiterLyon(): Promise<ScrapedEvent[]> {
   return events;
 }
 
+/** Map lyon.fr categories to our EventType */
+function mapLyonFrCategory(cat: string, title: string): EventType {
+  const c = cat.toLowerCase();
+  if (c.includes("concert") || c.includes("musique")) return "concert";
+  if (c.includes("exposition")) return "expo";
+  if (c.includes("spectacle") || c.includes("théâtre") || c.includes("theatre") || c.includes("danse")) return "theater";
+  if (c.includes("festival")) return "festival";
+  if (c.includes("conférence") || c.includes("débat") || c.includes("rencontre")) return "scientific";
+  if (c.includes("atelier") || c.includes("formation") || c.includes("emploi")) return "workshop";
+  if (c.includes("sport") || c.includes("trail") || c.includes("course")) return "sport";
+  if (c.includes("patrimoine") || c.includes("visite") || c.includes("archéo")) return "cultural";
+  return classifyEvent(title, cat);
+}
+
+/**
+ * PRIORITY SOURCE: lyon.fr/agenda (official Lyon city agenda)
+ * Drupal server-rendered HTML. Paginated (~9 per page, 4+ pages).
+ * Structure: div.visuel-paysage-large > img + h3 > a[href*="/evenement/"] + p tags
+ * P tags order: date, category, "Equipement", venue name, description
+ */
+async function scrapeLyonFr(): Promise<ScrapedEvent[]> {
+  console.log("  [lyon.fr] Scraping...");
+  const events: ScrapedEvent[] = [];
+  const maxPages = 8;
+
+  const today = todayIso();
+  const nextMonth = new Date();
+  nextMonth.setMonth(nextMonth.getMonth() + 3); // 3 months ahead for more events
+  const endDate = `${nextMonth.getFullYear()}-${String(nextMonth.getMonth() + 1).padStart(2, "0")}-${String(nextMonth.getDate()).padStart(2, "0")}`;
+
+  for (let page = 0; page < maxPages; page++) {
+    try {
+      const url = `https://www.lyon.fr/agenda?field_lieu=All&field_main_category=All&field_auj_periode=date&field_date_evenement_debut=${today}&field_date_evenement_fin_1=${endDate}&page=${page}`;
+      const html = await fetchHtml(url);
+      const $ = cheerio.load(html);
+
+      let pageCount = 0;
+
+      // Each event card: div.suggestion-event > div.edito-suggestion-image (img)
+      //   + div.edito-suggestion-texte > h3 > a.stretched-link
+      //   + div.edito-suggestion-tags > event-date p, span.first-tag (category),
+      //     div.location-text (venue), div.field--name-field-accroche (description)
+      $("div.suggestion-event").each((_, el) => {
+        const card = $(el);
+        const anchor = card.find("a.stretched-link").first();
+        if (!anchor.length) return;
+
+        const href = anchor.attr("href") ?? "";
+        const title = anchor.text().trim();
+
+        if (!title || title.length < 3 || title.length > 200) return;
+
+        // Date: prefer <time datetime="..."> for accurate ISO dates
+        // Range events have "Du X au <time datetime='...'>" — use end date for active events
+        const dateContainer = card.find(".event-date").first();
+        const timeEl = dateContainer.find("time[datetime]").last(); // last = end date
+        const dateText = dateContainer.text().trim();
+
+        let parsedDate: string | null = null;
+        if (timeEl.length) {
+          // Use ISO datetime from <time> element
+          const dt = timeEl.attr("datetime") ?? "";
+          const isoMatch = dt.match(/^(\d{4}-\d{2}-\d{2})/);
+          if (isoMatch) parsedDate = isoMatch[1];
+        }
+        // Fallback to text parsing
+        if (!parsedDate) parsedDate = parseFrDate(dateText);
+
+        if (!parsedDate) return;
+        // For range events, keep if end date is today or later
+        if (parsedDate < today) return;
+
+        // Category from span.first-tag
+        const category = card.find("span.first-tag").first().text().trim();
+
+        // Venue from .location-text, field--name-field-equipement, or event-places
+        const rawVenue = card.find(".location-text").first().text().trim()
+          || card.find(".field--name-field-equipement .field--item").first().text().trim()
+          || card.find(".event-places").first().text().trim();
+        const venue = rawVenue.replace(/\s+/g, " ").trim();
+
+        // Description from field--name-field-accroche
+        const description = card.find(".field--name-field-accroche .field--item").first().text().trim();
+
+        // Get image (try src, data-src, data-lazy-src)
+        const imgEl = card.find("img").first();
+        const img = imgEl.attr("src") || imgEl.attr("data-src") || imgEl.attr("data-lazy-src");
+        const imageUrl = img
+          ? (img.startsWith("http") ? img : `https://www.lyon.fr${img}`)
+          : undefined;
+
+        const fullUrl = href.startsWith("http") ? href : `https://www.lyon.fr${href}`;
+
+        events.push({
+          titre: sanitizeText(title).slice(0, 200),
+          description: sanitizeText(description).slice(0, 500),
+          date: parsedDate,
+          heure_debut: parseTime(dateText) ?? "19:00",
+          type: category ? mapLyonFrCategory(category, title) : classifyEvent(title, description),
+          source: "lyon_fr",
+          url: fullUrl,
+          image: imageUrl,
+          lieu_nom: venue || "Lyon",
+        });
+        pageCount++;
+      });
+
+      console.log(`    Page ${page}: ${pageCount} events`);
+      if (pageCount === 0 && page > 0) break;
+
+      await sleep(1500);
+    } catch (err) {
+      console.error(`    Page ${page} error:`, err instanceof Error ? err.message : err);
+      break;
+    }
+  }
+
+  console.log(`  -> ${events.length} events from lyon.fr`);
+  return events;
+}
+
 /**
  * Eventbrite: scrape JSON-LD structured data from event search page
  */
@@ -804,9 +925,10 @@ async function main() {
   const allScraped: ScrapedEvent[] = [];
 
   const scrapers = [
-    scrapeVisiterLyon,       // Primary: 600+ events, SSR
-    scrapeEventbrite,        // Secondary: JSON-LD
-    scrapePetitBulletin,     // Secondary: cultural events
+    scrapeLyonFr,            // Official Lyon city: cultural, theater, expos, with images
+    scrapeVisiterLyon,       // Tourism: 600+ events, SSR
+    scrapeEventbrite,        // Eventbrite: JSON-LD
+    scrapePetitBulletin,     // Cultural: concerts, theater, expos
     scrapeEsnLyon,           // ESN CosmoLyon: Erasmus/student events
     scrapeMuseeConfluences,  // Museum: exhibitions, performances
     scrapeMacLyon,           // MAC Lyon: contemporary art, student nights

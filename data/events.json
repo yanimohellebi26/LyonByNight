@@ -143,534 +143,6 @@
     "image": null
   },
   {
-    "titre": "Yulianna Avdeeva",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "concert",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/yulianna-avdeeva",
-    "lieu_nom": "Lyon",
-    "id": "scraped-21",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Soirée Jean Genet - TNP - Festival Écrans Mixtes",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/soiree-jean-genet-tnp-festival-ecrans-mixtes",
-    "lieu_nom": "Lyon",
-    "id": "scraped-22",
-    "lieu_id": ""
-  },
-  {
-    "titre": "J’aime beaucoup ce que vous faites",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/j-aime-beaucoup-ce-que-vous-faites",
-    "lieu_nom": "Lyon",
-    "id": "scraped-23",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Magnifique Printemps",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "festival",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/festivals/magnifique-printemps",
-    "lieu_nom": "Lyon",
-    "id": "scraped-24",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Jean Luc Bertrand - Stand up magic",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/jean-luc-bertrand-stand-up-magic",
-    "lieu_nom": "Lyon",
-    "id": "scraped-25",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Nelvar – le royaume sans peuple",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/nelvar-le-royaume-sans-peuple",
-    "lieu_nom": "Lyon",
-    "id": "scraped-28",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Freda - Les Pleureuses de feu",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/freda-les-pleureuses-de-feu",
-    "lieu_nom": "Lyon",
-    "id": "scraped-35",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Il était une fois un studio d’animation - Foire de Lyon",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "expo",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/expositions/il-etait-une-fois-un-studio-d-animation-foire-de-lyon",
-    "lieu_nom": "Lyon",
-    "id": "scraped-77",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Le Plaisir, la Peur et le Triomphe",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "theater",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/le-plaisir-la-peur-et-le-triomphe",
-    "lieu_nom": "Lyon",
-    "id": "scraped-81",
-    "lieu_id": ""
-  },
-  {
-    "titre": "DEVTEAMDRINK - Lyon #20 Spécial Event!",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.ca/e/billets-devteamdrink-lyon-20-special-event-1983355241919?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-161",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Building AI Agents with Multimodal Models Workshop from  NVIDIA",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "08:30",
-    "type": "workshop",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.com/e/billets-building-ai-agents-with-multimodal-models-workshop-from-nvidia-1983213953321?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-162",
-    "lieu_id": ""
-  },
-  {
-    "titre": "WWG26 - Exhibition \"Crafting (in) Time\"",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "02:00",
-    "type": "expo",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.ch/e/wwg26-exhibition-crafting-in-time-tickets-1984468969107?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-163",
-    "lieu_id": ""
-  },
-  {
-    "titre": "50 ans d'art contemporain à Lyon - mercredi 29 avril après-midi au macLYON",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "02:30",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mercredi-29-avril-apres-midi-au-maclyon-tickets-1983546366578?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-164",
-    "lieu_id": ""
-  },
-  {
-    "titre": "art3f LYON 2026",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-art3f-lyon-2026-1372657899729?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-165",
-    "lieu_id": ""
-  },
-  {
-    "titre": "50 ans d'art contemporain à Lyon - mardi 28 avril après-midi à l'Ensba Lyon",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "02:30",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mardi-28-avril-apres-midi-a-lensba-lyon-tickets-1983544484950?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-166",
-    "lieu_id": ""
-  },
-  {
-    "titre": "50 ans d'art contemporain à Lyon - mardi 28 avril matin à l'Ensba Lyon",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "09:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mardi-28-avril-matin-a-lensba-lyon-tickets-1983543372623?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-167",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Démos de calligraphie",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "02:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.com/e/billets-demos-de-calligraphie-1677680129429?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-168",
-    "lieu_id": ""
-  },
-  {
-    "titre": "ATELIERS PHOTO FÉMINISTE- Déconstruire le male gaze",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/ateliers-photo-feministe-deconstruire-le-male-gaze-tickets-1741122547409?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-169",
-    "lieu_id": ""
-  },
-  {
-    "titre": "STAGE D'ÉTÉ LYON, À LA DÉCOUVERTE DU DESIGN À STRATE, ÉCOLE DE DESIGN",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "09:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/stage-dete-lyon-a-la-decouverte-du-design-a-strate-ecole-de-design-tickets-1728089083969?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-170",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Ciné-club de la collection Lemaître avec Maïté Marra",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "06:30",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/cine-club-de-la-collection-lemaitre-avec-maite-marra-tickets-1983789294181?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-171",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Atelier d'écriture avec Pauline Harmange",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "04:00",
-    "type": "workshop",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/atelier-decriture-avec-pauline-harmange-tickets-1982275494365?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-172",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Atelier Aquarelle",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "01:30",
-    "type": "workshop",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-atelier-aquarelle-1984123639216?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-173",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 18 MARS 2026 A 14H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "02:30",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-18-mars-2026-a-14h30-1984033868710?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-174",
-    "lieu_id": ""
-  },
-  {
-    "titre": "JOURNEE DECOUVERTE #3 PLASTICIEN MAQUILLEUR FX",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "10:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-journee-decouverte-3-plasticien-maquilleur-fx-1983610199504?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-175",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 18 MARS 2026 A 9H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-18-mars-2026-a-9h30-1984033517660?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-176",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 12H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-12h30-1984034951950?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-177",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 11 MARS 2026 A 12H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "12:30",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-11-mars-2026-a-12h30-1984032597909?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-178",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Peur bleue et Peinture froide",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/peur-bleue-et-peinture-froide-tickets-1981838709931?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-179",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 9H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-9h30-1984034269910?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-180",
-    "lieu_id": ""
-  },
-  {
-    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 14H30",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "autre",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-14h30-1984035103403?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-181",
-    "lieu_id": ""
-  },
-  {
-    "titre": "ATELIERS PHOTO DÉCOUVERTE - Street photo - la rue en début de soirée",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "soiree_theme",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.fr/e/ateliers-photo-decouverte-street-photo-la-rue-en-debut-de-soiree-tickets-1714894548759?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-182",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Vernissage exposition Horizons Croizés – Joey Farrezzi et David Pénoël",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "expo",
-    "source": "eventbrite",
-    "url": "https://www.eventbrite.com/e/vernissage-exposition-horizons-croizes-joey-farrezzi-et-david-penoel-tickets-1982766960353?aff=ebdssbdestsearch",
-    "lieu_nom": "Lyon",
-    "id": "scraped-183",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Carpenter Brut + Danger",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "19:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-316790-carpenter-brut-danger.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-184",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Richard Youngs",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "21:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-317287-richard-youngs.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-185",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Jon Batiste, Vulfpeck, Beirut, Jeff Mills : Jazz à Vienne 2026 voit large",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/article-80532-jon-batiste-vulfpeck-beirut-jeff-mills-jazz-a-vienne-2026-voit-large.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-189",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Traces d'une présence invisible",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/article-80533-traces-d-une-presence-invisible.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-190",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Pulp, Massive attack, Lorde, Little Simz, Kery James : les Nuits de Fourvière 2026 entre grandes figures et hybridation des styles",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/article-80531-pulp-massive-attack-lorde-little-simz-kery-james-les-nuits-de-fourviere-2026-entre-grandes-figures-et-hybridation-des-styles.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-191",
-    "lieu_id": ""
-  },
-  {
-    "titre": "80 ans des Nuits de Fourvière : bals, cirques et performances",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "concert",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/article-80534-80-ans-des-nuits-de-fourviere-8239-bals-cirques-et-performances.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-192",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Absalon, Absalon !",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "13:00",
-    "type": "theater",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-315647-absalon-absalon.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-196",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Ponte del Diavolo + Witchorious + Anahera",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "expo",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-317288-ponte-del-diavolo-witchorious-anahera.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-198",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Le Cercle des poètes disparus",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "expo",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-311684-le-cercle-des-poetes-disparus.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-199",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Karim Duval",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "20:00",
-    "type": "expo",
-    "source": "petit_bulletin",
-    "url": "https://www.petit-bulletin.fr/agenda-308337-karim-duval.html",
-    "lieu_nom": "Lyon",
-    "id": "scraped-200",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Le Nuage des petits",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "10:00",
-    "type": "cultural",
-    "source": "musee_confluences",
-    "url": "https://www.museedesconfluences.fr/fr/agenda/le-nuage-des-petits-0",
-    "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-205",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Nocturne étudiante 2026",
-    "description": "",
-    "date": "2026-03-10",
-    "heure_debut": "18:30",
-    "type": "student",
-    "source": "mac_lyon",
-    "url": "https://www.mac-lyon.com/fr/programmation/nocturne-etudiante-2026",
-    "lieu_nom": "MAC Lyon, Cité Internationale",
-    "id": "scraped-228",
-    "lieu_id": ""
-  },
-  {
     "id": "evt-007",
     "lieu_id": "l3-5",
     "titre": "Dégustation Whisky Rare",
@@ -697,6 +169,30 @@
     "image": null
   },
   {
+    "titre": "Liya Petrova et Adam Laloum",
+    "description": "Liya Petrova et Adam Laloum pratiquent la musique de chambre avec un bonheur et un sens du partage qui allient sensibilité, poésie et ferveur.",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/liya-petrova-et-adam-laloum",
+    "lieu_nom": "Lyon",
+    "id": "scraped-21",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Festival Transforme",
+    "description": "Des spectacles pluridisciplinaires en prise avec le monde contemporain.",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/festival-transforme",
+    "lieu_nom": "Lyon",
+    "id": "scraped-26",
+    "lieu_id": ""
+  },
+  {
     "titre": "Frag'Ils",
     "description": "",
     "date": "2026-03-11",
@@ -705,7 +201,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/frag-ils",
     "lieu_nom": "Lyon",
-    "id": "scraped-26",
+    "id": "scraped-36",
     "lieu_id": ""
   },
   {
@@ -717,7 +213,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/le-chant-des-lucioles-jeune-public",
     "lieu_nom": "Lyon",
-    "id": "scraped-27",
+    "id": "scraped-37",
     "lieu_id": ""
   },
   {
@@ -729,7 +225,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-foret-ou-j-ai-pied-par-la-cie-nourhizomes",
     "lieu_nom": "Lyon",
-    "id": "scraped-38",
+    "id": "scraped-48",
     "lieu_id": ""
   },
   {
@@ -741,7 +237,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/mounia-nassangar-sons-of-wind-stuck-bounce",
     "lieu_nom": "Lyon",
-    "id": "scraped-40",
+    "id": "scraped-50",
     "lieu_id": ""
   },
   {
@@ -753,7 +249,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/sports-et-jeux/tournoi-de-qualification-a-la-coupe-du-monde-2026",
     "lieu_nom": "Lyon",
-    "id": "scraped-54",
+    "id": "scraped-64",
     "lieu_id": ""
   },
   {
@@ -765,7 +261,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/very-hot-line",
     "lieu_nom": "Lyon",
-    "id": "scraped-85",
+    "id": "scraped-95",
     "lieu_id": ""
   },
   {
@@ -777,7 +273,499 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-317288-ponte-del-diavolo-witchorious-anahera.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-186",
+    "id": "scraped-195",
+    "lieu_id": ""
+  },
+  {
+    "titre": "DEVTEAMDRINK - Lyon #20 Spécial Event!",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.ca/e/billets-devteamdrink-lyon-20-special-event-1983355241919?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-249",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Building AI Agents with Multimodal Models Workshop from  NVIDIA",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "08:30",
+    "type": "workshop",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.com/e/billets-building-ai-agents-with-multimodal-models-workshop-from-nvidia-1983213953321?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-250",
+    "lieu_id": ""
+  },
+  {
+    "titre": "WWG26 - Exhibition \"Crafting (in) Time\"",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "02:00",
+    "type": "expo",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.ch/e/wwg26-exhibition-crafting-in-time-tickets-1984468969107?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-251",
+    "lieu_id": ""
+  },
+  {
+    "titre": "50 ans d'art contemporain à Lyon - mercredi 29 avril après-midi au macLYON",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "02:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mercredi-29-avril-apres-midi-au-maclyon-tickets-1983546366578?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-252",
+    "lieu_id": ""
+  },
+  {
+    "titre": "art3f LYON 2026",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-art3f-lyon-2026-1372657899729?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-253",
+    "lieu_id": ""
+  },
+  {
+    "titre": "50 ans d'art contemporain à Lyon - mardi 28 avril après-midi à l'Ensba Lyon",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "02:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mardi-28-avril-apres-midi-a-lensba-lyon-tickets-1983544484950?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-254",
+    "lieu_id": ""
+  },
+  {
+    "titre": "50 ans d'art contemporain à Lyon - mardi 28 avril matin à l'Ensba Lyon",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "09:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/50-ans-dart-contemporain-a-lyon-mardi-28-avril-matin-a-lensba-lyon-tickets-1983543372623?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-255",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Démos de calligraphie",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "02:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.com/e/billets-demos-de-calligraphie-1677680129429?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-256",
+    "lieu_id": ""
+  },
+  {
+    "titre": "ATELIERS PHOTO FÉMINISTE- Déconstruire le male gaze",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/ateliers-photo-feministe-deconstruire-le-male-gaze-tickets-1741122547409?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-257",
+    "lieu_id": ""
+  },
+  {
+    "titre": "STAGE D'ÉTÉ LYON, À LA DÉCOUVERTE DU DESIGN À STRATE, ÉCOLE DE DESIGN",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "09:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/stage-dete-lyon-a-la-decouverte-du-design-a-strate-ecole-de-design-tickets-1728089083969?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-258",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Ciné-club de la collection Lemaître avec Maïté Marra",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "06:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/cine-club-de-la-collection-lemaitre-avec-maite-marra-tickets-1983789294181?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-259",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Atelier d'écriture avec Pauline Harmange",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "04:00",
+    "type": "workshop",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/atelier-decriture-avec-pauline-harmange-tickets-1982275494365?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-260",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Atelier Aquarelle",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "01:30",
+    "type": "workshop",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-atelier-aquarelle-1984123639216?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-261",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 18 MARS 2026 A 14H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "02:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-18-mars-2026-a-14h30-1984033868710?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-262",
+    "lieu_id": ""
+  },
+  {
+    "titre": "JOURNEE DECOUVERTE #3 PLASTICIEN MAQUILLEUR FX",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "10:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-journee-decouverte-3-plasticien-maquilleur-fx-1983610199504?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-263",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 18 MARS 2026 A 9H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-18-mars-2026-a-9h30-1984033517660?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-264",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 12H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-12h30-1984034951950?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-265",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS MERCREDI 11 MARS 2026 A 12H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "12:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-mercredi-11-mars-2026-a-12h30-1984032597909?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-266",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Peur bleue et Peinture froide",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/peur-bleue-et-peinture-froide-tickets-1981838709931?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-267",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 9H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-9h30-1984034269910?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-268",
+    "lieu_id": ""
+  },
+  {
+    "titre": "VISITE PRO ENSEIGNANTS JEUDI 12 MARS 2026 A 14H30",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-visite-pro-enseignants-jeudi-12-mars-2026-a-14h30-1984035103403?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-269",
+    "lieu_id": ""
+  },
+  {
+    "titre": "ATELIERS PHOTO DÉCOUVERTE - Street photo - la rue en début de soirée",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "soiree_theme",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/ateliers-photo-decouverte-street-photo-la-rue-en-debut-de-soiree-tickets-1714894548759?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-270",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Vernissage exposition Horizons Croizés – Joey Farrezzi et David Pénoël",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.com/e/vernissage-exposition-horizons-croizes-joey-farrezzi-et-david-penoel-tickets-1982766960353?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-271",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Jon Batiste, Vulfpeck, Beirut, Jeff Mills : Jazz à Vienne 2026 voit large",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "concert",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/article-80532-jon-batiste-vulfpeck-beirut-jeff-mills-jazz-a-vienne-2026-voit-large.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-272",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Pulp, Massive attack, Lorde, Little Simz, Kery James : les Nuits de Fourvière 2026 entre grandes figures et hybridation des styles",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "concert",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/article-80531-pulp-massive-attack-lorde-little-simz-kery-james-les-nuits-de-fourviere-2026-entre-grandes-figures-et-hybridation-des-styles.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-273",
+    "lieu_id": ""
+  },
+  {
+    "titre": "80 ans des Nuits de Fourvière : bals, cirques et performances",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "concert",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/article-80534-80-ans-des-nuits-de-fourviere-8239-bals-cirques-et-performances.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-274",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Absalon, Absalon !",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "13:00",
+    "type": "theater",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/agenda-315647-absalon-absalon.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-275",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le Cercle des poètes disparus",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "expo",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/agenda-311684-le-cercle-des-poetes-disparus.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-276",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Karim Duval",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "expo",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/agenda-308337-karim-duval.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-277",
+    "lieu_id": ""
+  },
+  {
+    "titre": "William Bouguereau et les lyonnais",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "expo",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/agenda-315538-william-bouguereau-et-les-lyonnais.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-278",
+    "lieu_id": ""
+  },
+  {
+    "titre": "P.R2B + Belfour",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "20:00",
+    "type": "expo",
+    "source": "petit_bulletin",
+    "url": "https://www.petit-bulletin.fr/agenda-289285-p-r2b-belfour.html",
+    "lieu_nom": "Lyon",
+    "id": "scraped-279",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le Nuage des petits",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "10:00",
+    "type": "cultural",
+    "source": "musee_confluences",
+    "url": "https://www.museedesconfluences.fr/fr/agenda/le-nuage-des-petits-0",
+    "lieu_nom": "Musée des Confluences, Lyon 2e",
+    "id": "scraped-280",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Nocturne étudiante 2026",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "18:30",
+    "type": "student",
+    "source": "mac_lyon",
+    "url": "https://www.mac-lyon.com/fr/programmation/nocturne-etudiante-2026",
+    "lieu_nom": "MAC Lyon, Cité Internationale",
+    "id": "scraped-281",
+    "lieu_id": ""
+  },
+  {
+    "titre": "OpenLab du Management#7 - \"Questionner : tout un art\"",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "06:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/openlab-du-management7-questionner-tout-un-art-tickets-1982123429535?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-330",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Soirée internationale",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "soiree_theme",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/soiree-internationale-tickets-1984675815791?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-331",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Nuit Blanche au Théâtre",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "06:30",
+    "type": "theater",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.com/e/nuit-blanche-au-theatre-tickets-1977288142060?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-332",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Rencontre avec Apolline Bazin pour Drag Fever",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "07:15",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/rencontre-avec-apolline-bazin-pour-drag-fever-tickets-1983084620483?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-333",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Match d'improvisation Théatrale sur 12 round",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "sport",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/match-dimprovisation-theatrale-sur-12-round-tickets-1980380442213?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-334",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Apollo Boxing Night",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "06:00",
+    "type": "soiree_theme",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-apollo-boxing-night-1812772684899?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-335",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Atelier : Les hiéroglyphes comme langage symbolique",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "19:00",
+    "type": "workshop",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-atelier-les-hieroglyphes-comme-langage-symbolique-1979475094293?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-336",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Seule-en-scène musical  \"Comme des Silences qu'on dit tout haut\" de Milena",
+    "description": "",
+    "date": "2026-03-11",
+    "heure_debut": "07:30",
+    "type": "autre",
+    "source": "eventbrite",
+    "url": "https://www.eventbrite.fr/e/billets-seule-en-scene-musical-comme-des-silences-quon-dit-tout-haut-de-milena-1980636833085?aff=ebdssbdestsearch",
+    "lieu_nom": "Lyon",
+    "id": "scraped-337",
     "lieu_id": ""
   },
   {
@@ -815,7 +803,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/giacometti-la-vision-dechainee",
     "lieu_nom": "Lyon",
-    "id": "scraped-29",
+    "id": "scraped-39",
     "lieu_id": ""
   },
   {
@@ -827,7 +815,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/let-s-talk-quand-l-influence-met-sont-grain-de-sel",
     "lieu_nom": "Lyon",
-    "id": "scraped-30",
+    "id": "scraped-40",
     "lieu_id": ""
   },
   {
@@ -839,7 +827,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/fabulosa-descarga-dj-set-initiation-salsa-concert",
     "lieu_nom": "Lyon",
-    "id": "scraped-31",
+    "id": "scraped-41",
     "lieu_id": ""
   },
   {
@@ -851,7 +839,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/tchaikovski-symphonie-n-5",
     "lieu_nom": "Lyon",
-    "id": "scraped-39",
+    "id": "scraped-49",
     "lieu_id": ""
   },
   {
@@ -863,7 +851,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/festivals/festival-les-chants-de-mars",
     "lieu_nom": "Lyon",
-    "id": "scraped-135",
+    "id": "scraped-145",
     "lieu_id": ""
   },
   {
@@ -875,7 +863,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-311684-le-cercle-des-poetes-disparus.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-193",
+    "id": "scraped-202",
     "lieu_id": ""
   },
   {
@@ -887,7 +875,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/conference-scolaire-zombis-quand-les-champignons-prennent-le-controle",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-216",
+    "id": "scraped-225",
     "lieu_id": ""
   },
   {
@@ -899,7 +887,33 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/entre-la-vie-et-la-mort-dans-le-cerveau-des-revenants",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-217",
+    "id": "scraped-226",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Ecrans mixtes",
+    "description": "Le festival consacré au cinéma queer revient pour sa 16e édition. Un rendez-vous incontournable pour les cinéphiles.",
+    "date": "2026-03-12",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/ecrans-mixtes",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/ecrans-mixtes-p.jpg",
+    "lieu_nom": "Lieu Edito\n                  Lyon et métropole",
+    "id": "scraped-282",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Nelvar, le royaume sans peuple",
+    "description": "Cette fable ambitieuse et détonante prend le parti de l’heroic fantasy pour questionner l’utopie républicaine et notre échec à nous souder.",
+    "date": "2026-03-12",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/nelvar-le-royaume-sans-peuple",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-03/nelvar-p.jpg",
+    "lieu_nom": "Equipement\n          Théâtre Point du Jour",
+    "id": "scraped-283",
     "lieu_id": ""
   },
   {
@@ -916,6 +930,18 @@
     "image": null
   },
   {
+    "titre": "Afterwork",
+    "description": "Vivez la magie d’un concert live et découvrez de grands classiques dans un format court, idéal pour une première rencontre avec l’Auditorium.",
+    "date": "2026-03-13",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/afterwork",
+    "lieu_nom": "Lyon",
+    "id": "scraped-29",
+    "lieu_id": ""
+  },
+  {
     "titre": "Symphony on Titan",
     "description": "",
     "date": "2026-03-13",
@@ -924,7 +950,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/symphony-on-titan",
     "lieu_nom": "Lyon",
-    "id": "scraped-32",
+    "id": "scraped-42",
     "lieu_id": ""
   },
   {
@@ -936,7 +962,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/afterwork-1",
     "lieu_nom": "Lyon",
-    "id": "scraped-33",
+    "id": "scraped-43",
     "lieu_id": ""
   },
   {
@@ -948,7 +974,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/le-voisin-the-neighbour",
     "lieu_nom": "Lyon",
-    "id": "scraped-34",
+    "id": "scraped-44",
     "lieu_id": ""
   },
   {
@@ -960,7 +986,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/tito-sono-concert-de-musique-peruvienne",
     "lieu_nom": "Lyon",
-    "id": "scraped-36",
+    "id": "scraped-46",
     "lieu_id": ""
   },
   {
@@ -972,7 +998,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/boom-un-spectacle-de-claire-petit-et-sylvain-desplagnes",
     "lieu_nom": "Lyon",
-    "id": "scraped-41",
+    "id": "scraped-51",
     "lieu_id": ""
   },
   {
@@ -984,7 +1010,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/echo-sphere",
     "lieu_nom": "Lyon",
-    "id": "scraped-44",
+    "id": "scraped-54",
     "lieu_id": ""
   },
   {
@@ -996,7 +1022,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/absalon-absalon-!-severine-chavrier",
     "lieu_nom": "Lyon",
-    "id": "scraped-48",
+    "id": "scraped-58",
     "lieu_id": ""
   },
   {
@@ -1008,7 +1034,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-289285-p-r2b-belfour.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-187",
+    "id": "scraped-196",
     "lieu_id": ""
   },
   {
@@ -1020,7 +1046,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-308337-karim-duval.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-194",
+    "id": "scraped-203",
     "lieu_id": ""
   },
   {
@@ -1033,7 +1059,7 @@
     "source": "esn_cosmolyon",
     "url": "https://www.esnlyon.org/collect/description/685085-g-cosmocrawl",
     "lieu_nom": "Lyon",
-    "id": "scraped-201",
+    "id": "scraped-210",
     "lieu_id": ""
   },
   {
@@ -1071,7 +1097,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/marvel-infinity-saga",
     "lieu_nom": "Lyon",
-    "id": "scraped-37",
+    "id": "scraped-47",
     "lieu_id": ""
   },
   {
@@ -1083,7 +1109,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/saqqara-transformation-d-un-site-de-necropole-en-quartier-urbain",
     "lieu_nom": "Lyon",
-    "id": "scraped-42",
+    "id": "scraped-52",
     "lieu_id": ""
   },
   {
@@ -1095,7 +1121,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/les-crocodiles-dans-les-embrouilles",
     "lieu_nom": "Lyon",
-    "id": "scraped-43",
+    "id": "scraped-53",
     "lieu_id": ""
   },
   {
@@ -1107,7 +1133,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/cine/retrospective-bruce-willis",
     "lieu_nom": "Lyon",
-    "id": "scraped-124",
+    "id": "scraped-134",
     "lieu_id": ""
   },
   {
@@ -1119,7 +1145,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-perruche",
     "lieu_nom": "Lyon",
-    "id": "scraped-131",
+    "id": "scraped-141",
     "lieu_id": ""
   },
   {
@@ -1131,7 +1157,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-291458-biga-ranx.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-188",
+    "id": "scraped-197",
     "lieu_id": ""
   },
   {
@@ -1143,7 +1169,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-293607-panayotis-pascot.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-195",
+    "id": "scraped-204",
     "lieu_id": ""
   },
   {
@@ -1157,7 +1183,7 @@
     "source": "esn_cosmolyon",
     "url": "https://www.esnlyon.org\\/collect\\/description\\/685276-u-contemporary-art-museum-visit-mac-lyon",
     "lieu_nom": "In front of the museum MAC Lyon (Musée d'Arts Contemporains) - 81 quai Charles de Gaulle Cité Intern",
-    "id": "scraped-202",
+    "id": "scraped-211",
     "lieu_id": ""
   },
   {
@@ -1171,7 +1197,46 @@
     "source": "esn_cosmolyon",
     "url": "https://www.esnlyon.org\\/collect\\/description\\/685694-o-cosmovisit-wwii-resistance-museum",
     "lieu_nom": "Centre d’Histoire de la Résistance et de la Déportation (14 Av. Berthelot, 69007 Lyon) 🚇 Métro A (P",
-    "id": "scraped-203",
+    "id": "scraped-212",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Que d'espoir !",
+    "description": "Transformations à vue, personnages déjantés, humour grinçant : Valérie Lesort met toute son inventivité au service d'un cabaret satirique.",
+    "date": "2026-03-14",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/que-despoir",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-12/que_d_espoir_fabrice_robin.webp",
+    "lieu_nom": "Equipement\n          Les Célestins - Théâtre de Lyon",
+    "id": "scraped-284",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Stuck / Bounce",
+    "description": "Mounia Nassangar et les Sons of Wind réunis pour un plateau partagé à la croisée des esthétiques hip hop et clubbing.",
+    "date": "2026-03-14",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/danse/stuck-bounce",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/Sons_of_Wind_In_Da_Box.webp",
+    "lieu_nom": "Equipement\n          Maison de la Danse",
+    "id": "scraped-285",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Écho-Sphère",
+    "description": "Écho-Sphère, une conférence-spectacle inédite qui place la santé unique au cœur d’une expérience artistique et scientifique.",
+    "date": "2026-03-14",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/spectacle/echo-sphere",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-03/Echo%20Sphere-Format-Horizontal%20copie.webp",
+    "lieu_nom": "Equipement\n          Salle Paul Garcin, salle municipale",
+    "id": "scraped-286",
     "lieu_id": ""
   },
   {
@@ -1209,7 +1274,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/murmuration-level-2",
     "lieu_nom": "Lyon",
-    "id": "scraped-45",
+    "id": "scraped-55",
     "lieu_id": ""
   },
   {
@@ -1221,7 +1286,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/vivaldi-battle",
     "lieu_nom": "Lyon",
-    "id": "scraped-46",
+    "id": "scraped-56",
     "lieu_id": ""
   },
   {
@@ -1233,7 +1298,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-fleur-qui-me-ressemble",
     "lieu_nom": "Lyon",
-    "id": "scraped-47",
+    "id": "scraped-57",
     "lieu_id": ""
   },
   {
@@ -1247,7 +1312,7 @@
     "source": "esn_cosmolyon",
     "url": "https://www.esnlyon.org\\/collect\\/description\\/685481-x-cosmocafe-des-langues-15-03",
     "lieu_nom": "Cavendish 2 Rue Professeur Rollet 69008 LYON France",
-    "id": "scraped-204",
+    "id": "scraped-213",
     "lieu_id": ""
   },
   {
@@ -1259,7 +1324,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/rosalia-lux-tour",
     "lieu_nom": "Lyon",
-    "id": "scraped-49",
+    "id": "scraped-59",
     "lieu_id": ""
   },
   {
@@ -1271,7 +1336,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/irish-celtic",
     "lieu_nom": "Lyon",
-    "id": "scraped-50",
+    "id": "scraped-60",
     "lieu_id": ""
   },
   {
@@ -1283,7 +1348,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/schubert-quintette",
     "lieu_nom": "Lyon",
-    "id": "scraped-51",
+    "id": "scraped-61",
     "lieu_id": ""
   },
   {
@@ -1295,7 +1360,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/soleil-launiere",
     "lieu_nom": "Lyon",
-    "id": "scraped-52",
+    "id": "scraped-62",
     "lieu_id": ""
   },
   {
@@ -1307,7 +1372,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/biographies",
     "lieu_nom": "Lyon",
-    "id": "scraped-53",
+    "id": "scraped-63",
     "lieu_id": ""
   },
   {
@@ -1319,7 +1384,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/liberons-nous-de-nos-programmations-autobloquantes-!-thomas-d-ansembourg",
     "lieu_nom": "Lyon",
-    "id": "scraped-55",
+    "id": "scraped-65",
     "lieu_id": ""
   },
   {
@@ -1331,7 +1396,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/linda-hayford-shapeshifting-alshe-me",
     "lieu_nom": "Lyon",
-    "id": "scraped-57",
+    "id": "scraped-67",
     "lieu_id": ""
   },
   {
@@ -1343,7 +1408,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/armin-hokmi-shiraz",
     "lieu_nom": "Lyon",
-    "id": "scraped-58",
+    "id": "scraped-68",
     "lieu_id": ""
   },
   {
@@ -1355,7 +1420,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/romancero-queer-virginie-despentes",
     "lieu_nom": "Lyon",
-    "id": "scraped-83",
+    "id": "scraped-93",
     "lieu_id": ""
   },
   {
@@ -1367,7 +1432,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/david-hallyday-requiem-pour-un-fou",
     "lieu_nom": "Lyon",
-    "id": "scraped-56",
+    "id": "scraped-66",
     "lieu_id": ""
   },
   {
@@ -1379,7 +1444,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/starmusical",
     "lieu_nom": "Lyon",
-    "id": "scraped-59",
+    "id": "scraped-69",
     "lieu_id": ""
   },
   {
@@ -1391,7 +1456,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/shopping/les-soirees-vigneronnes",
     "lieu_nom": "Lyon",
-    "id": "scraped-60",
+    "id": "scraped-70",
     "lieu_id": ""
   },
   {
@@ -1403,7 +1468,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/alex-montembault-melba",
     "lieu_nom": "Lyon",
-    "id": "scraped-61",
+    "id": "scraped-71",
     "lieu_id": ""
   },
   {
@@ -1415,7 +1480,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/orchestre-de-chambre-de-lyon-saint-patrick",
     "lieu_nom": "Lyon",
-    "id": "scraped-64",
+    "id": "scraped-74",
     "lieu_id": ""
   },
   {
@@ -1427,7 +1492,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/mer-un-spectacke-de-tamara-al-saadi",
     "lieu_nom": "Lyon",
-    "id": "scraped-69",
+    "id": "scraped-79",
     "lieu_id": ""
   },
   {
@@ -1439,7 +1504,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/tristan-yseult-par-le-theatre-du-lyon-la-bande-a-mandrin",
     "lieu_nom": "Lyon",
-    "id": "scraped-80",
+    "id": "scraped-90",
     "lieu_id": ""
   },
   {
@@ -1451,7 +1516,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/florent-pagny",
     "lieu_nom": "Lyon",
-    "id": "scraped-95",
+    "id": "scraped-105",
     "lieu_id": ""
   },
   {
@@ -1463,7 +1528,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/prendre-soin",
     "lieu_nom": "Lyon",
-    "id": "scraped-96",
+    "id": "scraped-106",
     "lieu_id": ""
   },
   {
@@ -1475,7 +1540,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/roman-doduik-nouveau-spectacle",
     "lieu_nom": "Lyon",
-    "id": "scraped-140",
+    "id": "scraped-150",
     "lieu_id": ""
   },
   {
@@ -1487,7 +1552,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/ben-mazue",
     "lieu_nom": "Lyon",
-    "id": "scraped-62",
+    "id": "scraped-72",
     "lieu_id": ""
   },
   {
@@ -1499,7 +1564,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/cine/tournage-les-nouvelles-sorties-des-usines-lumiere",
     "lieu_nom": "Lyon",
-    "id": "scraped-63",
+    "id": "scraped-73",
     "lieu_id": ""
   },
   {
@@ -1511,7 +1576,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/cine/tournage-des-nouvelles-sorties-d-usine-2026",
     "lieu_nom": "Lyon",
-    "id": "scraped-65",
+    "id": "scraped-75",
     "lieu_id": ""
   },
   {
@@ -1523,7 +1588,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/cirque-dyptique-la-bete-noire-petite-reine",
     "lieu_nom": "Lyon",
-    "id": "scraped-72",
+    "id": "scraped-82",
     "lieu_id": ""
   },
   {
@@ -1535,7 +1600,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/gerald-dahan-j-imite-donc-je-suis",
     "lieu_nom": "Lyon",
-    "id": "scraped-76",
+    "id": "scraped-86",
     "lieu_id": ""
   },
   {
@@ -1547,7 +1612,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/le-dictateur",
     "lieu_nom": "Lyon",
-    "id": "scraped-79",
+    "id": "scraped-89",
     "lieu_id": ""
   },
   {
@@ -1559,7 +1624,7 @@
     "source": "petit_bulletin",
     "url": "https://www.petit-bulletin.fr/agenda-315665-barbara.html",
     "lieu_nom": "Lyon",
-    "id": "scraped-197",
+    "id": "scraped-206",
     "lieu_id": ""
   },
   {
@@ -1571,7 +1636,20 @@
     "source": "mac_lyon",
     "url": "https://www.mac-lyon.com/fr/programmation/cine-club-de-la-collection-lemaitre-avec-maite-marra",
     "lieu_nom": "MAC Lyon, Cité Internationale",
-    "id": "scraped-227",
+    "id": "scraped-236",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Pour un oui pour un non + Elle est là",
+    "description": "Deux pièces de Nathalie Sarraute qui racontent le grotesque et le tragique des relations humaines.",
+    "date": "2026-03-19",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/pour-un-oui-pour-un-non-elle-est-la",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/Pour-un-oui-pour-un-non-Elle-est-la.webp",
+    "lieu_nom": "Equipement\n          L’Assemblée - fabrique artistique",
+    "id": "scraped-287",
     "lieu_id": ""
   },
   {
@@ -1583,7 +1661,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-demande-en-mariage-l-ours",
     "lieu_nom": "Lyon",
-    "id": "scraped-66",
+    "id": "scraped-76",
     "lieu_id": ""
   },
   {
@@ -1595,7 +1673,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/daniel-lavoie",
     "lieu_nom": "Lyon",
-    "id": "scraped-67",
+    "id": "scraped-77",
     "lieu_id": ""
   },
   {
@@ -1607,7 +1685,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/cavalcade-en-cocazie-reder-nouhaj-frederic-jouhannet-les-vibrants-defricheurs",
     "lieu_nom": "Lyon",
-    "id": "scraped-68",
+    "id": "scraped-78",
     "lieu_id": ""
   },
   {
@@ -1619,7 +1697,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/rencontre-litteraire-theories-feministes-camille-froidevaux-metterie",
     "lieu_nom": "Lyon",
-    "id": "scraped-70",
+    "id": "scraped-80",
     "lieu_id": ""
   },
   {
@@ -1631,7 +1709,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/theodora",
     "lieu_nom": "Lyon",
-    "id": "scraped-71",
+    "id": "scraped-81",
     "lieu_id": ""
   },
   {
@@ -1643,7 +1721,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/concert-kuma-kura",
     "lieu_nom": "Lyon",
-    "id": "scraped-73",
+    "id": "scraped-83",
     "lieu_id": ""
   },
   {
@@ -1655,7 +1733,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/la-tremenda-rumba-de-la-sazon-salsa-clasica",
     "lieu_nom": "Lyon",
-    "id": "scraped-74",
+    "id": "scraped-84",
     "lieu_id": ""
   },
   {
@@ -1667,7 +1745,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/leonard-lasry-et-sophie-de-quai",
     "lieu_nom": "Lyon",
-    "id": "scraped-75",
+    "id": "scraped-85",
     "lieu_id": ""
   },
   {
@@ -1679,7 +1757,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/festivals/salon-du-livre-du-festival-europeen-latin-grec",
     "lieu_nom": "Lyon",
-    "id": "scraped-88",
+    "id": "scraped-98",
     "lieu_id": ""
   },
   {
@@ -1691,7 +1769,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/salon-du-randonneur",
     "lieu_nom": "Lyon",
-    "id": "scraped-94",
+    "id": "scraped-104",
     "lieu_id": ""
   },
   {
@@ -1703,7 +1781,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/innova-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-99",
+    "id": "scraped-109",
     "lieu_id": ""
   },
   {
@@ -1715,7 +1793,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/cleanmania",
     "lieu_nom": "Lyon",
-    "id": "scraped-104",
+    "id": "scraped-114",
     "lieu_id": ""
   },
   {
@@ -1727,7 +1805,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/kaddish-la-femme-chauve-en-peignoir-rouge-margaux-eskenazi",
     "lieu_nom": "Lyon",
-    "id": "scraped-120",
+    "id": "scraped-130",
     "lieu_id": ""
   },
   {
@@ -1739,7 +1817,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/foire-de-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-153",
+    "id": "scraped-162",
     "lieu_id": ""
   },
   {
@@ -1751,7 +1829,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/au-coeur-de-nos-fermes",
     "lieu_nom": "Lyon",
-    "id": "scraped-154",
+    "id": "scraped-163",
     "lieu_id": ""
   },
   {
@@ -1763,7 +1841,57 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/fetes/quartier-des-gones",
     "lieu_nom": "Lyon",
-    "id": "scraped-156",
+    "id": "scraped-165",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Familiarités",
+    "description": "Un spectacle drôle et tendre sur les photos de famille. Familiarités est un conte théâtralisé qui réveille en chacun de nous des souvenirs personnels.",
+    "date": "2026-03-20",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/spectacle/familiarites",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/familiarit%C3%A9s-p.jpg",
+    "lieu_nom": "Equipement\n          Agend'Arts",
+    "id": "scraped-288",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Quinzaine de l'emploi au féminin",
+    "description": "Du 9 au 20 mars, la MMIe, en partenariat avec le CIDFF, France Travail et la Ville de Lyon organisent des ateliers dédiés à l'emploi au féminin.",
+    "date": "2026-03-20",
+    "heure_debut": "19:00",
+    "type": "workshop",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/atelier/quinzaine-de-lemploi-au-feminin",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-03/quinzaine.webp",
+    "lieu_nom": "Lyon",
+    "id": "scraped-289",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Madjoun et Leïla",
+    "description": "Voyage poétique au cœur d’un conte millénaire. Un spectacle qui mêle musique, danse, chant et narration.",
+    "date": "2026-03-21",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/spectacle/madjoun-et-leila",
+    "lieu_nom": "Lyon",
+    "id": "scraped-22",
+    "lieu_id": ""
+  },
+  {
+    "titre": "L'histoire en mouvement",
+    "description": "Visite entre danse et histoire dans l'exposition permanente du Centre d'Histoire de la Résistance et de la Déportation.",
+    "date": "2026-03-21",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/visite/lhistoire-en-mouvement",
+    "lieu_nom": "Lyon",
+    "id": "scraped-30",
     "lieu_id": ""
   },
   {
@@ -1775,7 +1903,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/gospel-pour-100-voix-deliverance-tour",
     "lieu_nom": "Lyon",
-    "id": "scraped-78",
+    "id": "scraped-88",
     "lieu_id": ""
   },
   {
@@ -1787,7 +1915,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/christophe-aleveque-revue-de-presse",
     "lieu_nom": "Lyon",
-    "id": "scraped-82",
+    "id": "scraped-92",
     "lieu_id": ""
   },
   {
@@ -1799,7 +1927,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/die-zahl-des-himmels",
     "lieu_nom": "Lyon",
-    "id": "scraped-84",
+    "id": "scraped-94",
     "lieu_id": ""
   },
   {
@@ -1811,7 +1939,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/diner-spectacle-chippendales-elegance-energie-et-show",
     "lieu_nom": "Lyon",
-    "id": "scraped-86",
+    "id": "scraped-96",
     "lieu_id": ""
   },
   {
@@ -1823,7 +1951,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/ensemble-o-8-voix-classiques",
     "lieu_nom": "Lyon",
-    "id": "scraped-87",
+    "id": "scraped-97",
     "lieu_id": ""
   },
   {
@@ -1835,7 +1963,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/casimir",
     "lieu_nom": "Lyon",
-    "id": "scraped-89",
+    "id": "scraped-99",
     "lieu_id": ""
   },
   {
@@ -1847,7 +1975,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/match-d-improvisation-theatrale-les-guily-lyon-vs-la-lila-lille",
     "lieu_nom": "Lyon",
-    "id": "scraped-90",
+    "id": "scraped-100",
     "lieu_id": ""
   },
   {
@@ -1859,7 +1987,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/tout-mais-pas-beyrouth-rencontre-dedicaces-mathieu-diez-et-jibe",
     "lieu_nom": "Lyon",
-    "id": "scraped-91",
+    "id": "scraped-101",
     "lieu_id": ""
   },
   {
@@ -1871,7 +1999,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/tropicana-4-yorki-dj-ale-regueton-funk-bresilienne",
     "lieu_nom": "Lyon",
-    "id": "scraped-92",
+    "id": "scraped-102",
     "lieu_id": ""
   },
   {
@@ -1883,7 +2011,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/etienne-fletcher-et-clementine-weck",
     "lieu_nom": "Lyon",
-    "id": "scraped-93",
+    "id": "scraped-103",
     "lieu_id": ""
   },
   {
@@ -1895,7 +2023,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/maison-pop-au-mob-hotel-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-100",
+    "id": "scraped-110",
     "lieu_id": ""
   },
   {
@@ -1907,7 +2035,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/bl-cafe-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-102",
+    "id": "scraped-112",
     "lieu_id": ""
   },
   {
@@ -1919,7 +2047,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/gones-games-le-salon-du-jeu-video-et-de-l-e-sport",
     "lieu_nom": "Lyon",
-    "id": "scraped-103",
+    "id": "scraped-113",
     "lieu_id": ""
   },
   {
@@ -1931,7 +2059,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/collectif-xy-le-pas-du-monde",
     "lieu_nom": "Lyon",
-    "id": "scraped-129",
+    "id": "scraped-139",
     "lieu_id": ""
   },
   {
@@ -1943,7 +2071,20 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/marjan-le-dernier-lion-dafghanistan",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-206",
+    "id": "scraped-215",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Double jeu - Sabine Leclercq et Guillaume Perez",
+    "description": "La BF15 présente le travail des artistes lyonnais Sabine Leclercq et Guillaume Perez.",
+    "date": "2026-03-21",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/double-jeu-sabine-leclercq-et-guillaume-perez",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/sabine-leclercq-double-jeu-bf15-p.webp",
+    "lieu_nom": "Equipement\n          La BF15",
+    "id": "scraped-290",
     "lieu_id": ""
   },
   {
@@ -1955,7 +2096,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/les-petits-touts",
     "lieu_nom": "Lyon",
-    "id": "scraped-97",
+    "id": "scraped-107",
     "lieu_id": ""
   },
   {
@@ -1967,7 +2108,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/baaziz-la-rechute",
     "lieu_nom": "Lyon",
-    "id": "scraped-98",
+    "id": "scraped-108",
     "lieu_id": ""
   },
   {
@@ -1979,7 +2120,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/grand-chaeur-sacree-musique",
     "lieu_nom": "Lyon",
-    "id": "scraped-101",
+    "id": "scraped-111",
     "lieu_id": ""
   },
   {
@@ -1991,7 +2132,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/lara-fabian",
     "lieu_nom": "Lyon",
-    "id": "scraped-105",
+    "id": "scraped-115",
     "lieu_id": ""
   },
   {
@@ -2003,7 +2144,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/hans-zimmer",
     "lieu_nom": "Lyon",
-    "id": "scraped-106",
+    "id": "scraped-116",
     "lieu_id": ""
   },
   {
@@ -2015,7 +2156,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/brad-mehldau-christian-mcbride",
     "lieu_nom": "Lyon",
-    "id": "scraped-107",
+    "id": "scraped-117",
     "lieu_id": ""
   },
   {
@@ -2027,7 +2168,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/miroir",
     "lieu_nom": "Lyon",
-    "id": "scraped-108",
+    "id": "scraped-118",
     "lieu_id": ""
   },
   {
@@ -2039,7 +2180,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/les-24h-du-mot-les-10-ans2",
     "lieu_nom": "Lyon",
-    "id": "scraped-109",
+    "id": "scraped-119",
     "lieu_id": ""
   },
   {
@@ -2051,7 +2192,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/festivals/festival-du-film-de-rando-histoires-crapahutes-saison-3",
     "lieu_nom": "Lyon",
-    "id": "scraped-110",
+    "id": "scraped-120",
     "lieu_id": ""
   },
   {
@@ -2063,7 +2204,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/festivals/quartier-d-hiver-a-l-antiquaille-la-belle-mauniere-de-schubert",
     "lieu_nom": "Lyon",
-    "id": "scraped-111",
+    "id": "scraped-121",
     "lieu_id": ""
   },
   {
@@ -2075,7 +2216,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/concert-du-collectif-les-saoneurs-la-belle-meuniere-cycle-de-franz-schubert",
     "lieu_nom": "Lyon",
-    "id": "scraped-112",
+    "id": "scraped-122",
     "lieu_id": ""
   },
   {
@@ -2087,7 +2228,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/koudour-hatice-oezer-compagnie-la-neige-la-nuit",
     "lieu_nom": "Lyon",
-    "id": "scraped-113",
+    "id": "scraped-123",
     "lieu_id": ""
   },
   {
@@ -2099,7 +2240,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/spectacle-e-mouvoir",
     "lieu_nom": "Lyon",
-    "id": "scraped-114",
+    "id": "scraped-124",
     "lieu_id": ""
   },
   {
@@ -2111,7 +2252,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/monde-nouveau",
     "lieu_nom": "Lyon",
-    "id": "scraped-127",
+    "id": "scraped-137",
     "lieu_id": ""
   },
   {
@@ -2123,7 +2264,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-vie-secrete-des-vieux-mohamed-el-khatib",
     "lieu_nom": "Lyon",
-    "id": "scraped-132",
+    "id": "scraped-142",
     "lieu_id": ""
   },
   {
@@ -2135,7 +2276,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/la-veritable-fausse-histoire-de-jack-l-eventreur-comedie-absurde",
     "lieu_nom": "Lyon",
-    "id": "scraped-137",
+    "id": "scraped-147",
     "lieu_id": ""
   },
   {
@@ -2147,7 +2288,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/expositions/retrospective-pamphyle-un-gone-du-vieux-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-149",
+    "id": "scraped-158",
     "lieu_id": ""
   },
   {
@@ -2159,7 +2300,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/jeremy-frerot-gamin-des-sables",
     "lieu_nom": "Lyon",
-    "id": "scraped-115",
+    "id": "scraped-125",
     "lieu_id": ""
   },
   {
@@ -2171,7 +2312,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/thylacine",
     "lieu_nom": "Lyon",
-    "id": "scraped-116",
+    "id": "scraped-126",
     "lieu_id": ""
   },
   {
@@ -2183,7 +2324,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/warm-up-coupe-du-monde-d-improvisation-fff",
     "lieu_nom": "Lyon",
-    "id": "scraped-117",
+    "id": "scraped-127",
     "lieu_id": ""
   },
   {
@@ -2195,7 +2336,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/la-rueda-del-colectivo-cimarrones-invites",
     "lieu_nom": "Lyon",
-    "id": "scraped-118",
+    "id": "scraped-128",
     "lieu_id": ""
   },
   {
@@ -2207,7 +2348,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/spectacle-koudour",
     "lieu_nom": "Lyon",
-    "id": "scraped-123",
+    "id": "scraped-133",
     "lieu_id": ""
   },
   {
@@ -2219,7 +2360,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/tu-voeux-ou-tu-voeux-pas",
     "lieu_nom": "Lyon",
-    "id": "scraped-139",
+    "id": "scraped-149",
     "lieu_id": ""
   },
   {
@@ -2231,7 +2372,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/geographie-vaudou-des-rives-du-benin-aux-terres-dhaiti",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-218",
+    "id": "scraped-227",
     "lieu_id": ""
   },
   {
@@ -2243,7 +2384,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/eros-ramazotti",
     "lieu_nom": "Lyon",
-    "id": "scraped-119",
+    "id": "scraped-129",
     "lieu_id": ""
   },
   {
@@ -2255,7 +2396,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/flor-de-caju-bal-forro",
     "lieu_nom": "Lyon",
-    "id": "scraped-121",
+    "id": "scraped-131",
     "lieu_id": ""
   },
   {
@@ -2267,7 +2408,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/cine/cine-debat-les-meilleures-parlons-amour-et-tolerance",
     "lieu_nom": "Lyon",
-    "id": "scraped-122",
+    "id": "scraped-132",
     "lieu_id": ""
   },
   {
@@ -2279,7 +2420,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/nouveau-monde",
     "lieu_nom": "Lyon",
-    "id": "scraped-126",
+    "id": "scraped-136",
     "lieu_id": ""
   },
   {
@@ -2291,7 +2432,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/coupe-du-monde-d-improvisation-fff",
     "lieu_nom": "Lyon",
-    "id": "scraped-134",
+    "id": "scraped-144",
     "lieu_id": ""
   },
   {
@@ -2303,7 +2444,19 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/stabat-mater-de-pergolese",
     "lieu_nom": "Lyon",
-    "id": "scraped-146",
+    "id": "scraped-155",
+    "lieu_id": ""
+  },
+  {
+    "titre": "ArchéoLyon",
+    "description": "Découvrez l’actualité de la recherche archéologique lyonnaise. Les archéologues de la Ville présentent leurs fouilles et découvertes.",
+    "date": "2026-03-28",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/conference/archeolyon",
+    "lieu_nom": "Lyon",
+    "id": "scraped-23",
     "lieu_id": ""
   },
   {
@@ -2315,7 +2468,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/jean-baptiste-guegan",
     "lieu_nom": "Lyon",
-    "id": "scraped-125",
+    "id": "scraped-135",
     "lieu_id": ""
   },
   {
@@ -2327,7 +2480,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/l-arbre-et-l-oiseau",
     "lieu_nom": "Lyon",
-    "id": "scraped-128",
+    "id": "scraped-138",
     "lieu_id": ""
   },
   {
@@ -2339,7 +2492,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/blanc-flocon",
     "lieu_nom": "Lyon",
-    "id": "scraped-130",
+    "id": "scraped-140",
     "lieu_id": ""
   },
   {
@@ -2351,7 +2504,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/fest-noz-a-lyon",
     "lieu_nom": "Lyon",
-    "id": "scraped-133",
+    "id": "scraped-143",
     "lieu_id": ""
   },
   {
@@ -2363,7 +2516,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/concert-rap-flenn-uva",
     "lieu_nom": "Lyon",
-    "id": "scraped-136",
+    "id": "scraped-146",
     "lieu_id": ""
   },
   {
@@ -2375,7 +2528,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/les-eclipses-grands-spectacles-astronomiques",
     "lieu_nom": "Lyon",
-    "id": "scraped-138",
+    "id": "scraped-148",
     "lieu_id": ""
   },
   {
@@ -2387,7 +2540,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/conferences-et-debats/master-class-silowe-gospel",
     "lieu_nom": "Lyon",
-    "id": "scraped-141",
+    "id": "scraped-151",
     "lieu_id": ""
   },
   {
@@ -2399,7 +2552,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/sports-et-jeux/ekiden-lyon-metropole",
     "lieu_nom": "Lyon",
-    "id": "scraped-142",
+    "id": "scraped-152",
     "lieu_id": ""
   },
   {
@@ -2411,7 +2564,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/lyon-tattoo-convention",
     "lieu_nom": "Lyon",
-    "id": "scraped-145",
+    "id": "scraped-154",
     "lieu_id": ""
   },
   {
@@ -2423,7 +2576,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/jarry",
     "lieu_nom": "Lyon",
-    "id": "scraped-150",
+    "id": "scraped-159",
     "lieu_id": ""
   },
   {
@@ -2435,7 +2588,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/kidexpo",
     "lieu_nom": "Lyon",
-    "id": "scraped-151",
+    "id": "scraped-160",
     "lieu_id": ""
   },
   {
@@ -2447,7 +2600,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/salon-baby",
     "lieu_nom": "Lyon",
-    "id": "scraped-152",
+    "id": "scraped-161",
     "lieu_id": ""
   },
   {
@@ -2459,7 +2612,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/rencontre-avec-erol-josue",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-207",
+    "id": "scraped-216",
     "lieu_id": ""
   },
   {
@@ -2471,7 +2624,45 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/erol-josue-sextet",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-208",
+    "id": "scraped-217",
+    "lieu_id": ""
+  },
+  {
+    "titre": "La vie secrète des vieux",
+    "description": "Mohamed El Khatib invite sur scène des femmes et des hommes âgés de 75 à 102 ans pour nous parler de leurs histoires de coeur.",
+    "date": "2026-03-28",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/la-vie-secrete-des-vieux",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/la-vie-secr%C3%A8te-des-vieux.jpg",
+    "lieu_nom": "Lyon",
+    "id": "scraped-291",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Les Chants de Mars",
+    "description": "Depuis vingt ans, ce festival engagé pour les artistes émergents fait battre le cœur de la scène francophone à Lyon et sa métropole.",
+    "date": "2026-03-28",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/les-chants-de-mars",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/Chants%20de%20Mars_700x394_Cre%CC%81dit%20M.Morice-p.webp",
+    "lieu_nom": "Lieu Edito\n                  Lyon et alentour",
+    "id": "scraped-292",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Lyon Urban Trail",
+    "description": "Une autre façon de courir et de découvrir la ville des lumières et son patrimoine exceptionnel classé UNESCO.",
+    "date": "2026-03-29",
+    "heure_debut": "19:00",
+    "type": "cultural",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/sport/lyon-urban-trail",
+    "lieu_nom": "Lyon",
+    "id": "scraped-24",
     "lieu_id": ""
   },
   {
@@ -2483,19 +2674,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/les-plus-belles-musiques-des-films-de-miyazaki",
     "lieu_nom": "Lyon",
-    "id": "scraped-143",
-    "lieu_id": ""
-  },
-  {
-    "titre": "Lyon Urban Trail",
-    "description": "",
-    "date": "2026-03-29",
-    "heure_debut": "19:00",
-    "type": "sport",
-    "source": "visiter_lyon",
-    "url": "https://www.visiterlyon.com/sortir/l-agenda/sports-et-jeux/lyon-urban-trail",
-    "lieu_nom": "Lyon",
-    "id": "scraped-144",
+    "id": "scraped-153",
     "lieu_id": ""
   },
   {
@@ -2507,7 +2686,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/mystere-au-manoir-le-diamant-de-toutankhamon",
     "lieu_nom": "Lyon",
-    "id": "scraped-147",
+    "id": "scraped-156",
     "lieu_id": ""
   },
   {
@@ -2519,7 +2698,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/shopping/le-printemps-des-creations-vide-atelier-diy",
     "lieu_nom": "Lyon",
-    "id": "scraped-148",
+    "id": "scraped-157",
     "lieu_id": ""
   },
   {
@@ -2531,7 +2710,32 @@
     "source": "mac_lyon",
     "url": "https://www.mac-lyon.com/fr/programmation/improvisations-musicales-au-coeur-des-expositions",
     "lieu_nom": "MAC Lyon, Cité Internationale",
-    "id": "scraped-229",
+    "id": "scraped-238",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Magnifique Printemps",
+    "description": "Le festival de la poésie et de la francophonie, revient pour sa 10e édition avec des lectures, spectacles, rencontres, performances...",
+    "date": "2026-03-29",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/magnifique-printemps",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/magnifique-printemps-p.webp",
+    "lieu_nom": "Lieu Edito\n                  Lyon et région",
+    "id": "scraped-293",
+    "lieu_id": ""
+  },
+  {
+    "titre": "La petite graine - Avant première",
+    "description": "Tourné entre Lyon et le village de Perreux dans la Loire, le film \"La petite graine\" est réalisé les lyonnais Mathias et Colas Rifkiss.",
+    "date": "2026-03-30",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/cinema/la-petite-graine-avant-premiere",
+    "lieu_nom": "Lyon",
+    "id": "scraped-25",
     "lieu_id": ""
   },
   {
@@ -2543,7 +2747,45 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/dans-l-atelier-des-debussy-s",
     "lieu_nom": "Lyon",
-    "id": "scraped-155",
+    "id": "scraped-164",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Foire de Lyon",
+    "description": "Un lieu pour porter un projet, dénicher des bons plans, ou tout simplement flâner en famille pour se balader, découvrir et s’amuser...",
+    "date": "2026-03-30",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/salon/foire-de-lyon",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/Foire%20de%20Lyon.webp",
+    "lieu_nom": "Equipement\n          Eurexpo",
+    "id": "scraped-294",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Je me demande bien à quoi j'ai passé ma vie",
+    "description": "Un apéritif convivial, les révélations d'une femme à priori ordinaire, et tout bascule.",
+    "date": "2026-03-30",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/je-me-demande-bien-quoi-jai-passe-ma-vie",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/Je-me-demande-bien-a-quoi.webp",
+    "lieu_nom": "Equipement\n          Théâtre des Clochards Célestes",
+    "id": "scraped-295",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Hallucinations Collectives",
+    "description": "Pour découvrir des oeuvres rares, étranges, parfois dérangeantes, souvent oubliées, et en tout cas toujours surprenantes.",
+    "date": "2026-03-31",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/hallucinations-collectives",
+    "lieu_nom": "Lyon",
+    "id": "scraped-27",
     "lieu_id": ""
   },
   {
@@ -2555,7 +2797,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/les-lyonnais-font-leur-cirque",
     "lieu_nom": "Lyon",
-    "id": "scraped-157",
+    "id": "scraped-166",
     "lieu_id": ""
   },
   {
@@ -2567,7 +2809,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/musique-concerts/concert-noetile-quartet-soufflant",
     "lieu_nom": "Lyon",
-    "id": "scraped-158",
+    "id": "scraped-167",
     "lieu_id": ""
   },
   {
@@ -2579,7 +2821,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/spectacles/rock-the-casbah",
     "lieu_nom": "Lyon",
-    "id": "scraped-159",
+    "id": "scraped-168",
     "lieu_id": ""
   },
   {
@@ -2591,7 +2833,7 @@
     "source": "visiter_lyon",
     "url": "https://www.visiterlyon.com/sortir/l-agenda/foires-et-salons/salon-horizon-seniors",
     "lieu_nom": "Lyon",
-    "id": "scraped-160",
+    "id": "scraped-169",
     "lieu_id": ""
   },
   {
@@ -2603,7 +2845,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/nocturne-marionnettes",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-219",
+    "id": "scraped-228",
     "lieu_id": ""
   },
   {
@@ -2615,7 +2857,20 @@
     "source": "mac_lyon",
     "url": "https://www.mac-lyon.com/fr/programmation/quais-du-polar-rencontre-avec-petra-klabouchova-et-andrei-kourkov",
     "lieu_nom": "MAC Lyon, Cité Internationale",
-    "id": "scraped-230",
+    "id": "scraped-239",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Festival Transforme",
+    "description": "Des spectacles pluridisciplinaires en prise avec le monde contemporain.",
+    "date": "2026-04-03",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/festival-transforme",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/tranforme-en-fanfaaare-p.jpg",
+    "lieu_nom": "Equipement\n          Les Subs",
+    "id": "scraped-296",
     "lieu_id": ""
   },
   {
@@ -2627,7 +2882,59 @@
     "source": "mac_lyon",
     "url": "https://www.mac-lyon.com/fr/programmation/les-vacances-au-musee",
     "lieu_nom": "MAC Lyon, Cité Internationale",
-    "id": "scraped-231",
+    "id": "scraped-240",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Mois des langues",
+    "description": "À l’occasion de la semaine des langues organisée par l’Education nationale, venez célébrer les langues vivantes !",
+    "date": "2026-04-04",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/livre/mois-des-langues",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/2Paysage_Inside%20Out%20Project%2C%20Times%20Square%2C%20Aerial%20view%2C%20New%20York%2C%20USA%2C%202....webp",
+    "lieu_nom": "Equipement\n          Médiathèque du Bachut - Marguerite Duras",
+    "id": "scraped-297",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le Printemps des Petits Lecteurs",
+    "description": "Rendez-vous dans les bibliothèques de Lyon pour des ateliers et spectacles qui feront voyager petits et grands aux quatre coins du monde !",
+    "date": "2026-04-04",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/livre/le-printemps-des-petits-lecteurs",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/PPL%20Paysage.webp",
+    "lieu_nom": "Lieu Edito\n                  Réseau des bibliothèques municipales",
+    "id": "scraped-298",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Quais du Polar",
+    "description": "Le festival Quais du Polar est de retour pour une 22e édition sous le signe des sciences !",
+    "date": "2026-04-05",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/livre/quais-du-polar",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/QDP-AGENDA%20LYON.webp",
+    "lieu_nom": "Lieu Edito\n                  Lyon",
+    "id": "scraped-299",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Hallucinations Collectives",
+    "description": "Pour découvrir des oeuvres rares, étranges, parfois dérangeantes, souvent oubliées, et en tout cas toujours surprenantes.",
+    "date": "2026-04-06",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/hallucinations-collectives",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/hallucinations-collectives-p.webp",
+    "lieu_nom": "Equipement\n          Cinéma Comoedia",
+    "id": "scraped-300",
     "lieu_id": ""
   },
   {
@@ -2639,7 +2946,20 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/os-pas-si-fragile",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-220",
+    "id": "scraped-229",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Festival d’opéras - Parier sur la beauté",
+    "description": "Trois œuvres : Manon Lescaut de Giacomo Puccini, Traviata – Vous méritez un avenir meilleur d’après Giuseppe Verdi et Billy Budd de Benjamin Britten.",
+    "date": "2026-04-07",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/festival-doperas-parier-sur-la-beaute",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/billy-budd-ABM-studio-p.webp",
+    "lieu_nom": "Lieu Edito\n                  Opéra de Lyon et TNP Villeurbanne",
+    "id": "scraped-301",
     "lieu_id": ""
   },
   {
@@ -2651,7 +2971,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/bonjour-le-monde",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-221",
+    "id": "scraped-230",
     "lieu_id": ""
   },
   {
@@ -2663,7 +2983,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/le-carnaval-des-animomes",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-209",
+    "id": "scraped-218",
     "lieu_id": ""
   },
   {
@@ -2675,7 +2995,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/planetes",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-222",
+    "id": "scraped-231",
     "lieu_id": ""
   },
   {
@@ -2687,7 +3007,46 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/tintamare",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-210",
+    "id": "scraped-219",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Semaine des Jobs d'été",
+    "description": "Vous cherchez un job saisonnier pour juillet / août ? Venez participer aux ateliers pour trouver votre job d'été ou votre premier emploi.",
+    "date": "2026-04-17",
+    "heure_debut": "19:00",
+    "type": "workshop",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/atelier/semaine-des-jobs-dete",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-03/forum%20job%20%C3%A9t%C3%A9_r.webp",
+    "lieu_nom": "Lyon",
+    "id": "scraped-302",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Récif",
+    "description": "Les nouvelles scènes jazz se retrouvent au festival Récif ! 5 jours, 14 concerts, 3 lieux.",
+    "date": "2026-04-18",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/recif",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/recif.webp",
+    "lieu_nom": "Lieu Edito\n                  Le Périscope, Le Marché Gare et Le Sucre.",
+    "id": "scraped-303",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Concours International de Musique de Chambre de Lyon",
+    "description": "Conçu comme un festival, le CIMCL permet de vibrer avec les artistes et de découvrir des créations et jeunes ensembles du monde entier.",
+    "date": "2026-04-18",
+    "heure_debut": "19:00",
+    "type": "festival",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/festival/concours-international-de-musique-de-chambre-de-lyon",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-03/cimcl-2026-p.webp",
+    "lieu_nom": "Lieu Edito\n                  Lyon",
+    "id": "scraped-304",
     "lieu_id": ""
   },
   {
@@ -2699,7 +3058,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/une-histoire-de-levolution-de-lhumanite",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-223",
+    "id": "scraped-232",
     "lieu_id": ""
   },
   {
@@ -2711,7 +3070,45 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/mande-sila-la-voix-de-lempire-mandingue-habib-koite",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-211",
+    "id": "scraped-220",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Monarques",
+    "description": "Un périple sur les traces de la plus longue migration saisonnière observée chez un insecte : le papillon monarque.",
+    "date": "2026-04-26",
+    "heure_debut": "19:00",
+    "type": "theater",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/theatre/monarques",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/monarques_christophe_raynaud_de_lage.webp",
+    "lieu_nom": "Equipement\n          Les Célestins - Théâtre de Lyon",
+    "id": "scraped-305",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Ça tiregnol",
+    "description": "Ça Tiregnol, c‘est un impromptu réalisé sous vos yeux, c‘est l‘actualité brûlante traitée en temps réel !",
+    "date": "2026-04-30",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/spectacle/ca-tiregnol",
+    "lieu_nom": "Lyon",
+    "id": "scraped-28",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Afterwork",
+    "description": "Vivez la magie d’un concert live et découvrez de grands classiques dans un format court, idéal pour une première rencontre avec l’Auditorium.",
+    "date": "2026-05-06",
+    "heure_debut": "19:00",
+    "type": "concert",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/afterwork",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/2021-02/onl-17-09-20-nicolas-auproux-p.jpg",
+    "lieu_nom": "Equipement\n          Auditorium - Orchestre national de Lyon",
+    "id": "scraped-306",
     "lieu_id": ""
   },
   {
@@ -2723,7 +3120,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/nocturne-lheure-bleue",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-224",
+    "id": "scraped-233",
     "lieu_id": ""
   },
   {
@@ -2735,7 +3132,33 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/blue-hour-alain-roche",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-212",
+    "id": "scraped-221",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Récitals grandes voix",
+    "description": "Cette saison, découvrez de grandes voix en duo piano/voix à l'Opéra de Lyon.",
+    "date": "2026-05-22",
+    "heure_debut": "19:00",
+    "type": "concert",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/recitals-grandes-voix",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2024-12/op%C3%A9ra-de-lyon-p.jpg",
+    "lieu_nom": "Equipement\n          Opéra national de Lyon",
+    "id": "scraped-307",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Ultra Boucle de la Sarra",
+    "description": "Un circuit d’environ 2km et 90m de D+ à parcourir pendant 6h... ou 24h. Avec 563 marches d’escalier sur le parcours !",
+    "date": "2026-05-23",
+    "heure_debut": "19:00",
+    "type": "sport",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/sport/ultra-boucle-de-la-sarra",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/2021-03/ubs-p.jpg",
+    "lieu_nom": "Equipement\n          Piste de la Sarra",
+    "id": "scraped-308",
     "lieu_id": ""
   },
   {
@@ -2747,7 +3170,20 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/la-science-decalee-de-julien-bobroff",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-225",
+    "id": "scraped-234",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Midi de l'Audi",
+    "description": "Déjeuner sur le pouce tout en s’offrant une parenthèse musicale au cœur de la journée, c’est possible avec les Midis de l’Audi !",
+    "date": "2026-05-28",
+    "heure_debut": "19:00",
+    "type": "concert",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/concert/midi-de-laudi",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2024-10/midiao-p.jpg",
+    "lieu_nom": "Equipement\n          Auditorium - Orchestre national de Lyon",
+    "id": "scraped-309",
     "lieu_id": ""
   },
   {
@@ -2759,7 +3195,7 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/weekend-radio-live",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-213",
+    "id": "scraped-222",
     "lieu_id": ""
   },
   {
@@ -2771,7 +3207,20 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/radio-live",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-214",
+    "id": "scraped-223",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Les samedis Célestins",
+    "description": "Ateliers, dialogues avec les artistes, conférences, projections et concerts rythment la saison en écho à la programmation.",
+    "date": "2026-05-30",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/animation/les-samedis-celestins",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2024-09/samedis-celestins-p.jpg",
+    "lieu_nom": "Equipement\n          Les Célestins - Théâtre de Lyon",
+    "id": "scraped-310",
     "lieu_id": ""
   },
   {
@@ -2783,7 +3232,20 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/isam-elias-electro-orientale",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-215",
+    "id": "scraped-224",
+    "lieu_id": ""
+  },
+  {
+    "titre": "L'histoire en mouvement",
+    "description": "Visite entre danse et histoire dans l'exposition permanente du Centre d'Histoire de la Résistance et de la Déportation.",
+    "date": "2026-05-31",
+    "heure_debut": "19:00",
+    "type": "cultural",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/visite/lhistoire-en-mouvement",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-03/visite-choregraphiee-chrd-stylistik-p.jpg",
+    "lieu_nom": "Equipement\n          Centre d'Histoire de la Résistance et de la Déportation",
+    "id": "scraped-311",
     "lieu_id": ""
   },
   {
@@ -2795,7 +3257,241 @@
     "source": "musee_confluences",
     "url": "https://www.museedesconfluences.fr/fr/agenda/nocturne-cine-zombis",
     "lieu_nom": "Musée des Confluences, Lyon 2e",
-    "id": "scraped-226",
+    "id": "scraped-235",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Visites en LSF avec Gadagne",
+    "description": "Visites des collections et balades urbaines en langue des signes française vous invitent à découvrir l’histoire de Lyon.",
+    "date": "2026-06-06",
+    "heure_debut": "19:00",
+    "type": "cultural",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/visite/visites-en-lsf-avec-gadagne",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-03/MHL_BU_Lyon-se-la-raconte_Photo-gadagne-p.webp",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-312",
+    "lieu_id": ""
+  },
+  {
+    "titre": "La guerre en jeux",
+    "description": "La nouvelle exposition du CHRD est consacrée à une thématique aussi sensible qu’inédite : l’enfance en temps de guerre.",
+    "date": "2026-06-07",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/la-guerre-en-jeux",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-10/Enfants_Guerre_En_Jeux_CHRDLyon-p.webp",
+    "lieu_nom": "Equipement\n          Centre d'Histoire de la Résistance et de la Déportation",
+    "id": "scraped-313",
+    "lieu_id": ""
+  },
+  {
+    "titre": "C'est canon ! L'art chez les Romains",
+    "description": "Pour marquer son jubilé, le musée présente une grande exposition qui explore le rapport à l’art et à l’héritage culturel il y a 2 000 ans.",
+    "date": "2026-06-07",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/cest-canon-lart-chez-les-romains",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/lugdunum-expo-est-canon-p.webp",
+    "lieu_nom": "Equipement\n          Lugdunum - Musée et théâtres romains",
+    "id": "scraped-314",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Tremplin poétique",
+    "description": "Un programme dédié aux pratiques d’écriture amateures avec un concours, des lectures et divers ateliers.",
+    "date": "2026-06-20",
+    "heure_debut": "19:00",
+    "type": "autre",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/livre/tremplin-poetique",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/Tremplin%20po%C3%A9tique%20%20Paysage.webp",
+    "lieu_nom": "Lieu Edito\n                  Réseau des bibliothèques municipales",
+    "id": "scraped-315",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Heure de la découverte",
+    "description": "Participez à des visites exclusives en petit comité pour explorer les trésors de la Bibliothèque municipale de Lyon !",
+    "date": "2026-06-27",
+    "heure_debut": "19:00",
+    "type": "cultural",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/visite/heure-de-la-decouverte",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-01/HDD%20vdl%202026%20vignette.webp",
+    "lieu_nom": "Lieu Edito\n                  Plusieurs bibliothèques municipales",
+    "id": "scraped-316",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le Parc de la Tête d'or, patrimoine vivant",
+    "description": "Une exposition pour tout savoir sur ce parc emblématique de Lyon, bien commun des Lyonnais par excellence.",
+    "date": "2026-06-30",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/le-parc-de-la-tete-dor-patrimoine-vivant",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-07/archives_entree_principale_parc_tete_dor_p.webp",
+    "lieu_nom": "Equipement\n          Parc de la Tête d'Or, sud-ouest du lac",
+    "id": "scraped-317",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Encore lui ! Une exposition de Jean-Claude Guillaumon",
+    "description": "Artiste autodidacte, facétieux, adepte du happening et d’art éphémère, Jean-Claude Guillaumon a marqué la scène artistique lyonnaise.",
+    "date": "2026-07-12",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/encore-lui-une-exposition-de-jean-claude-guillaumon",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/jean-claude-guillaumon-p.jpg",
+    "lieu_nom": "Equipement\n          Musée d'art contemporain",
+    "id": "scraped-318",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Peinture froide - Giulia Andreani",
+    "description": "Une exposition qui retrace plus d’une décennie de la pratique artistique de Giulia Andreani et révèle l’évolution de sa peinture.",
+    "date": "2026-07-12",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/peinture-froide-giulia-andreani",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/giulia-andreani-p.jpg",
+    "lieu_nom": "Equipement\n          Musée d'art contemporain",
+    "id": "scraped-319",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Regards sensibles, œuvres vidéos de la collection Lemaître",
+    "description": "Découvrez une trentaine de films dans un parcours sensible, à contre-courant de la pratique actuelle du scrolling.",
+    "date": "2026-07-12",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/regards-sensibles-oeuvres-videos-de-la-collection-lemaitre",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2026-02/enrique-ramirez-p.jpg",
+    "lieu_nom": "Equipement\n          Musée d'art contemporain",
+    "id": "scraped-320",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le musée de l’Imprimerie hors les murs",
+    "description": "En 2025, le musée de l'Imprimerie et de la communication graphique ferme pour entamer sa grande transformation. Rendez-vous hors les murs !",
+    "date": "2026-08-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/le-musee-de-limprimerie-hors-les-murs",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-06/musee-imprimerie-hors-les-murs-p.webp",
+    "lieu_nom": "Lieu Edito\n                  Hors les murs à Lyon",
+    "id": "scraped-321",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Merveilleux Moyen-Âge",
+    "description": "À travers les plus belles pièces de sa collection sculptée médiévale, le musée d'Histoire de Lyon vous invite à découvrir le Moyen Âge lyonnais.",
+    "date": "2026-11-01",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/merveilleux-moyen-age",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-09/gadagne-merveilleux-moyen-age-p.webp",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-322",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Carte blanche à la Compagnie À",
+    "description": "Une exposition immersive pour découvrir l'univers de la Compagnie À et leur approche singulière du théâtre d’objets.",
+    "date": "2027-03-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/carte-blanche-la-compagnie",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-03/carte-blanche-p_0.webp",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-323",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Voyages en cité",
+    "description": "1973-1990 : vivre dans les quartiers populaires. Posez un nouveau regard sur la vie dans les cités de l’agglomération lyonnaise.",
+    "date": "2027-12-18",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/voyages-en-cite",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2025-11/tony-garnier-expo-construction-des-trois-mats-p.webp",
+    "lieu_nom": "Equipement\n          Cité Musée Tony Garnier",
+    "id": "scraped-324",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Lyon dans la guerre 39-45",
+    "description": "L'exposition permanente du CHRD retrace l'histoire de la Seconde guerre mondiale, particulièrement à Lyon.",
+    "date": "2030-12-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/lyon-dans-la-guerre-39-45",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/CHRD_ExpositionPermanente-p.jpg",
+    "lieu_nom": "Equipement\n          Centre d'Histoire de la Résistance et de la Déportation",
+    "id": "scraped-325",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Musée des arts de la marionnette",
+    "description": "Entre découverte et manipulation, le parcours invite petits et grands à un beau voyage autour des secrets des arts de la marionnette.",
+    "date": "2030-12-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/musee-des-arts-de-la-marionnette",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/mam-p.jpg",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-326",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Le Musée Lumière",
+    "description": "En 1895, le cinéma naissait à Lyon. Le Musée Lumière célèbre son histoire, sa beauté et sa puissance. Un trésor du patrimoine mondial !",
+    "date": "2030-12-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/le-musee-lumiere",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/2020-06/musee-lumiere-p.jpg",
+    "lieu_nom": "Equipement\n          Musée de l'Institut Lumière",
+    "id": "scraped-327",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Musée d’histoire de Lyon",
+    "description": "Le musée d’histoire de Lyon parle de la ville d’aujourd’hui et de son héritage, entre histoire passée et grandes questions contemporaines.",
+    "date": "2030-12-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/musee-dhistoire-de-lyon",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/content/2023-11/gadagne-mhl-p.jpg",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-328",
+    "lieu_id": ""
+  },
+  {
+    "titre": "Qu'est ce que tu fabriques ?",
+    "description": "Cette exposition du musée d’histoire de Lyon retrace l’aventure industrielle lyonnaise, des foires du 15e siècle à l’industrie d’aujourd'hui.",
+    "date": "2030-12-31",
+    "heure_debut": "19:00",
+    "type": "expo",
+    "source": "lyon_fr",
+    "url": "https://www.lyon.fr/evenement/exposition/quest-ce-que-tu-fabriques",
+    "image": "https://www.lyon.fr/sites/lyonfr/files/2022-10/mhl-gadagne_qqtf-p_0.jpg",
+    "lieu_nom": "Equipement\n          Gadagne et ses deux musées",
+    "id": "scraped-329",
     "lieu_id": ""
   }
 ]
