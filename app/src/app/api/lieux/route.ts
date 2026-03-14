@@ -1,37 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFileSync } from "fs";
+import { getAllLieux } from "@/lib/data/lieux";
 import { haversineDistance } from "@/lib/utils/geo";
 import { isOpenTonight } from "@/lib/utils/horaires";
-import { getDataFilePath } from "@/lib/utils/data-path";
 import type { Lieu } from "@/types";
 
 type LieuWithDistance = Lieu & { _distance?: number | null };
-
-let cachedLieux: Lieu[] | null = null;
-
-function loadLieux(): Lieu[] {
-  if (cachedLieux) return cachedLieux;
-
-  try {
-    const parsed = JSON.parse(
-      readFileSync(getDataFilePath("merged-geocoded.json"), "utf-8")
-    ) as Lieu[];
-    cachedLieux = parsed;
-    return parsed;
-  } catch (primaryErr) {
-    console.error("[loadLieux] primary file failed:", primaryErr);
-    try {
-      const parsed = JSON.parse(
-        readFileSync(getDataFilePath("merged.json"), "utf-8")
-      ) as Lieu[];
-      cachedLieux = parsed;
-      return parsed;
-    } catch (fallbackErr) {
-      console.error("[loadLieux] fallback file also failed:", fallbackErr);
-      throw new Error("Failed to load venue data");
-    }
-  }
-}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
@@ -56,7 +29,17 @@ export async function GET(request: NextRequest) {
   const rayonKm = rayonParam ? parseFloat(rayonParam) : null;
   const tonight = searchParams.get("tonight") === "true";
 
-  let lieux: LieuWithDistance[] = loadLieux();
+  let lieux: LieuWithDistance[];
+
+  try {
+    lieux = await getAllLieux();
+  } catch (err) {
+    console.error("[GET /api/lieux] Failed to load data:", err);
+    return NextResponse.json(
+      { success: false, error: "Failed to load venue data" },
+      { status: 500 }
+    );
+  }
 
   // "Ce soir" mode — filter venues open tonight
   if (tonight) {
@@ -113,7 +96,7 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Sort (spread to avoid mutating cached array)
+  // Sort (spread to avoid mutating)
   lieux = [...lieux].sort((a, b) => {
     switch (sort) {
       case "note":

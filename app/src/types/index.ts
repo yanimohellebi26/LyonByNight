@@ -78,6 +78,8 @@ export interface Evenement {
   readonly url?: string;
   /** Venue name for external events not linked to a venue in DB */
   readonly lieu_nom?: string;
+  /** Supabase UUID (when different from id, which may be old_id) */
+  readonly _supabase_id?: string;
 }
 
 /** Schéma principal — Lieu */
@@ -126,6 +128,77 @@ export interface Lieu {
   // Source & traçabilité
   readonly sources: readonly string[];
   readonly date_maj: string; // ISO date
+}
+
+// ============================================================
+// Groups & Votes
+// ============================================================
+
+/** Vote value for group events */
+export type VoteValue = "interested" | "maybe" | "not_interested";
+
+/** Group privacy setting */
+export type GroupPrivacy = "public" | "private";
+
+/** Group member role */
+export type GroupRole = "admin" | "member";
+
+/** Group */
+export interface Group {
+  readonly id: string;
+  readonly owner_id: string;
+  readonly nom: string;
+  readonly description: string;
+  readonly emoji: string;
+  readonly privacy: GroupPrivacy;
+  readonly invite_code: string;
+  readonly created_at: string;
+  readonly updated_at: string;
+}
+
+/** Group member (with profile info) */
+export interface GroupMember {
+  readonly id: string;
+  readonly group_id: string;
+  readonly user_id: string;
+  readonly role: GroupRole;
+  readonly joined_at: string;
+  readonly display_name?: string;
+  readonly avatar_url?: string | null;
+}
+
+/** Group event (shared event in a group) */
+export interface GroupEvent {
+  readonly id: string;
+  readonly group_id: string;
+  readonly added_by: string;
+  readonly evenement_id: string | null;
+  readonly user_event_id: string | null;
+  readonly note: string;
+  readonly added_at: string;
+  // Joined event data
+  readonly event?: Evenement;
+  // Vote tallies
+  readonly votes?: readonly EventVote[];
+  readonly vote_summary?: VoteSummary;
+}
+
+/** Single vote on a group event */
+export interface EventVote {
+  readonly id: string;
+  readonly group_event_id: string;
+  readonly user_id: string;
+  readonly vote: VoteValue;
+  readonly voted_at: string;
+  readonly display_name?: string;
+}
+
+/** Aggregated vote counts */
+export interface VoteSummary {
+  readonly interested: number;
+  readonly maybe: number;
+  readonly not_interested: number;
+  readonly total: number;
 }
 
 // ============================================================

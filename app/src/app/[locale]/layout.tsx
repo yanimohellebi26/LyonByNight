@@ -10,6 +10,7 @@ import { Footer } from "@/components/layout/Footer";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { ChatPanel } from "@/components/chat/ChatPanel";
 import { ThemeProvider } from "@/components/shared/ThemeProvider";
+import { AuthProvider } from "@/components/auth/AuthProvider";
 import { CookieBanner } from "@/components/shared/CookieBanner";
 import { ServiceWorkerRegister } from "@/components/shared/ServiceWorkerRegister";
 import "../globals.css";
@@ -63,6 +64,7 @@ export default async function LocaleLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NuqsAdapter>
+          <AuthProvider>
           <ThemeProvider>
             <a
               href="#main-content"
@@ -78,6 +80,7 @@ export default async function LocaleLayout({
             <CookieBanner />
             <ServiceWorkerRegister />
           </ThemeProvider>
+          </AuthProvider>
           </NuqsAdapter>
         </NextIntlClientProvider>
       </body>

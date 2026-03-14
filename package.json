@@ -7,9 +7,11 @@
     "start": "npm --prefix app run start",
     "lint": "npm --prefix app run lint",
     "test": "npm --prefix app run test",
-    "scrape-events": "npx tsx scripts/scrape-events.ts"
+    "scrape-events": "npx tsx scripts/scrape-events.ts",
+    "seed-supabase": "npx tsx scripts/seed-supabase.ts"
   },
   "devDependencies": {
+    "@supabase/supabase-js": "^2.98.0",
     "cheerio": "^1.2.0"
   }
 }

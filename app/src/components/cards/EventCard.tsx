@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
+import { ShareToGroupButton } from "@/components/groups/ShareToGroupButton";
 import type { Evenement } from "@/types";
 
 interface EventCardProps {
@@ -182,12 +183,18 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
         )}
 
         <div className="flex items-center justify-between pt-1">
-          {event.prix_entree && (
-            <div className="flex items-center gap-1 text-sm font-medium">
-              <Ticket className="h-3.5 w-3.5 text-primary" />
-              <span>{event.prix_entree}</span>
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            {event.prix_entree && (
+              <div className="flex items-center gap-1 text-sm font-medium">
+                <Ticket className="h-3.5 w-3.5 text-primary" />
+                <span>{event.prix_entree}</span>
+              </div>
+            )}
+            <ShareToGroupButton
+              evenementId={event.source !== "user" ? event._supabase_id : undefined}
+              userEventId={event.source === "user" ? event._supabase_id : undefined}
+            />
+          </div>
           {event.url && (
             <a
               href={event.url}

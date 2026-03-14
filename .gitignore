@@ -1,2 +1,25 @@
-.vercel
+# dependencies
+node_modules/
+package-lock.json
+
+# env files
+.env
+.env.*
 .env*.local
+
+# vercel
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# claude
+.claude/
+
+# data (generated/scraped)
+data/*.json
+
+# misc
+*.log
+*.pem

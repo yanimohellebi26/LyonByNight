@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Calendar, Loader2, Filter } from "lucide-react";
+import { Calendar, Loader2, Filter, Plus } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -48,7 +50,9 @@ const PERIOD_OPTIONS = [
 
 export default function EvenementsPage() {
   const t = useTranslations("events");
+  const tCreate = useTranslations("create_event");
   const locale = useLocale();
+  const { user } = useAuth();
 
   const [events, setEvents] = useState<EnrichedEvent[]>([]);
   const [loading, setLoading] = useState(true);
@@ -115,9 +119,19 @@ export default function EvenementsPage() {
     <div className="mx-auto max-w-6xl px-4 py-8">
       {/* Header */}
       <FadeIn>
-        <div className="mb-8 flex items-center gap-3">
-          <Calendar className="h-7 w-7 text-primary" />
-          <h1 className="text-3xl font-bold">{t("title")}</h1>
+        <div className="mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Calendar className="h-7 w-7 text-primary" />
+            <h1 className="text-3xl font-bold">{t("title")}</h1>
+          </div>
+          {user && (
+            <Link href="/evenements/creer">
+              <Button size="sm">
+                <Plus className="mr-1 h-4 w-4" />
+                {tCreate("cta")}
+              </Button>
+            </Link>
+          )}
         </div>
       </FadeIn>
 
