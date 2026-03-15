@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hors ligne — Lyon Night Guide</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0a0a0a;
+      color: #e5e5e5;
+      font-family: system-ui, -apple-system, sans-serif;
+      padding: 1.5rem;
+    }
+    .container {
+      text-align: center;
+      max-width: 400px;
+    }
+    .icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 1.5rem;
+      background: #7c3aed;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      color: #a3a3a3;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    button {
+      background: #7c3aed;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    button:hover { background: #6d28d9; }
+    button:active { background: #5b21b6; }
+    .wifi-icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 1rem;
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <svg class="wifi-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="1" y1="1" x2="23" y2="23"></line>
+      <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+      <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+      <path d="M10.71 5.05A16 16 0 0 1 22.56 9"></path>
+      <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+      <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+      <line x1="12" y1="20" x2="12.01" y2="20"></line>
+    </svg>
+    <div class="icon">N</div>
+    <h1 id="title">Hors ligne</h1>
+    <p id="message">Vous semblez ne pas avoir de connexion internet. Vérifiez votre connexion et réessayez.</p>
+    <button onclick="window.location.reload()" id="retry">Réessayer</button>
+  </div>
+  <script>
+    if (navigator.language && !navigator.language.startsWith('fr')) {
+      document.getElementById('title').textContent = 'You are offline';
+      document.getElementById('message').textContent = 'You don\'t seem to have an internet connection. Check your connection and try again.';
+      document.getElementById('retry').textContent = 'Try again';
+      document.documentElement.lang = 'en';
+    }
+  </script>
+</body>
+</html>

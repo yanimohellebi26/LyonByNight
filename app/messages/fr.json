@@ -324,5 +324,15 @@
     "error_leave": "Erreur lors du départ",
     "remove_member": "Retirer du groupe",
     "share_event_to_group": "Partager dans un groupe"
+  },
+  "pwa": {
+    "install_title": "Installer Lyon Night Guide",
+    "install_description": "Accès rapide depuis votre écran d'accueil",
+    "install_button": "Installer",
+    "install_dismiss": "Plus tard",
+    "ios_title": "Installer l'appli",
+    "ios_instructions": "Appuyez sur le bouton Partager puis « Sur l'écran d'accueil »",
+    "update_available": "Nouvelle version disponible",
+    "update_button": "Mettre à jour"
   }
 }

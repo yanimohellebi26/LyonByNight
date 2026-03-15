@@ -324,5 +324,15 @@
     "error_leave": "Failed to leave group",
     "remove_member": "Remove from group",
     "share_event_to_group": "Share to a group"
+  },
+  "pwa": {
+    "install_title": "Install Lyon Night Guide",
+    "install_description": "Quick access from your home screen",
+    "install_button": "Install",
+    "install_dismiss": "Not now",
+    "ios_title": "Install the app",
+    "ios_instructions": "Tap the Share button then \"Add to Home Screen\"",
+    "update_available": "New version available",
+    "update_button": "Update"
   }
 }

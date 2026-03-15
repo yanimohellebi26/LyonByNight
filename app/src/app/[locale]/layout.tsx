@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/components/shared/ThemeProvider";
 import { AuthProvider } from "@/components/auth/AuthProvider";
 import { CookieBanner } from "@/components/shared/CookieBanner";
 import { ServiceWorkerRegister } from "@/components/shared/ServiceWorkerRegister";
+import { InstallPrompt } from "@/components/pwa/InstallPrompt";
 import "../globals.css";
 
 const geistSans = Geist({
@@ -52,12 +53,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="dark" suppressHydrationWarning>
       <head>
-        <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
-        <meta name="theme-color" content="#7c3aed" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+        <meta name="theme-color" content="#7c3aed" media="(prefers-color-scheme: light)" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="apple-mobile-web-app-title" content="LyonNight" />
-        <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+        <link rel="apple-touch-icon" href="/icons/icon-180.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
@@ -79,6 +81,7 @@ export default async function LocaleLayout({
             <ChatPanel />
             <CookieBanner />
             <ServiceWorkerRegister />
+            <InstallPrompt />
           </ThemeProvider>
           </AuthProvider>
           </NuqsAdapter>
