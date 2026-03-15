@@ -16,7 +16,11 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    searchParams.get("error") === "auth_callback_failed"
+      ? t("callback_error")
+      : null
+  );
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
@@ -31,7 +35,12 @@ export default function LoginPage() {
     });
 
     if (authError) {
-      setError(t("invalid_credentials"));
+      const msg = authError.message.toLowerCase();
+      if (msg.includes("email not confirmed")) {
+        setError(t("email_not_confirmed"));
+      } else {
+        setError(t("invalid_credentials"));
+      }
       setLoading(false);
       return;
     }

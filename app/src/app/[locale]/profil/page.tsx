@@ -7,7 +7,7 @@ import { useAuth } from "@/components/auth/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { User, Calendar, Users, ChevronRight } from "lucide-react";
+import { Calendar, Users, ChevronRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 
 interface Profile {
@@ -24,6 +24,7 @@ export default function ProfilPage() {
   const [displayName, setDisplayName] = useState("");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [eventCount, setEventCount] = useState(0);
 
   // Redirect if not authenticated
   useEffect(() => {
@@ -47,6 +48,15 @@ export default function ProfilPage() {
           setProfile(data);
           setDisplayName(data.display_name);
         }
+      });
+
+    // Count user events
+    supabase
+      .from("user_events")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .then(({ count }) => {
+        setEventCount(count ?? 0);
       });
   }, [user]);
 
@@ -122,13 +132,16 @@ export default function ProfilPage() {
       <div className="space-y-3">
         <h2 className="text-lg font-semibold">{t("my_activity")}</h2>
         <div className="grid gap-3 sm:grid-cols-2">
-          <div className="flex items-center gap-3 rounded-lg border p-4 text-muted-foreground">
-            <Calendar className="h-5 w-5" />
-            <div>
+          <Link href="/evenements" className="flex items-center gap-3 rounded-lg border p-4 hover:bg-accent transition-colors">
+            <Calendar className="h-5 w-5 text-primary" />
+            <div className="flex-1">
               <p className="text-sm font-medium">{t("my_events")}</p>
-              <p className="text-xs">{t("coming_soon")}</p>
+              <p className="text-xs text-muted-foreground">
+                {eventCount > 0 ? `${eventCount} événement${eventCount > 1 ? "s" : ""}` : t("coming_soon")}
+              </p>
             </div>
-          </div>
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          </Link>
           <Link href="/groupes" className="flex items-center gap-3 rounded-lg border p-4 hover:bg-accent transition-colors">
             <Users className="h-5 w-5 text-primary" />
             <div className="flex-1">

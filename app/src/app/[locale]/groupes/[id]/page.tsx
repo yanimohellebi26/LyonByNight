@@ -109,22 +109,50 @@ export default function GroupDetailPage() {
   async function handleVote(groupEventId: string, vote: VoteValue) {
     if (!group) return;
 
-    // Find current vote to toggle
     const ge = group.events.find((e) => e.id === groupEventId);
-    if (ge?.my_vote === vote) {
-      // Remove vote
-      await fetch(`/api/groups/${groupId}/events/${groupEventId}/vote`, {
-        method: "DELETE",
-      });
-    } else {
-      await fetch(`/api/groups/${groupId}/events/${groupEventId}/vote`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ vote }),
-      });
-    }
+    if (!ge) return;
 
-    void loadGroup();
+    const isToggleOff = ge.my_vote === vote;
+    const previousVote = ge.my_vote;
+
+    // Optimistic update
+    setGroup({
+      ...group,
+      events: group.events.map((e) => {
+        if (e.id !== groupEventId) return e;
+
+        const summary = { ...e.vote_summary };
+        // Remove previous vote from count
+        if (previousVote) {
+          summary[previousVote] = Math.max(0, summary[previousVote] - 1);
+          summary.total = Math.max(0, summary.total - 1);
+        }
+        // Add new vote if not toggling off
+        if (!isToggleOff) {
+          summary[vote] = summary[vote] + 1;
+          summary.total = summary.total + 1;
+        }
+
+        return { ...e, my_vote: isToggleOff ? null : vote, vote_summary: summary };
+      }),
+    });
+
+    try {
+      if (isToggleOff) {
+        await fetch(`/api/groups/${groupId}/events/${groupEventId}/vote`, {
+          method: "DELETE",
+        });
+      } else {
+        await fetch(`/api/groups/${groupId}/events/${groupEventId}/vote`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ vote }),
+        });
+      }
+    } catch {
+      // Revert on failure
+      void loadGroup();
+    }
   }
 
   async function handleLeave() {

@@ -17,6 +17,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [confirmEmail, setConfirmEmail] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -24,11 +25,12 @@ export default function RegisterPage() {
     setLoading(true);
 
     const supabase = createClient();
-    const { error: authError } = await supabase.auth.signUp({
+    const { data, error: authError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: { display_name: displayName },
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
       },
     });
 
@@ -42,8 +44,40 @@ export default function RegisterPage() {
       return;
     }
 
+    // If email confirmation is required, user won't have a session yet
+    if (data.user && !data.session) {
+      setConfirmEmail(true);
+      setLoading(false);
+      return;
+    }
+
+    // If auto-confirmed (e.g. confirm email disabled in Supabase), redirect
     router.push("/");
     router.refresh();
+  }
+
+  if (confirmEmail) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center px-4">
+        <div className="w-full max-w-sm space-y-6 text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+            <svg className="h-8 w-8 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold">{t("check_email_title")}</h1>
+          <p className="text-muted-foreground">
+            {t("check_email_description", { email })}
+          </p>
+          <Link
+            href="/login"
+            className="inline-block text-sm font-medium text-primary hover:underline"
+          >
+            {t("back_to_login")}
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

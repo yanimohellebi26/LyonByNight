@@ -18,7 +18,7 @@ interface EventCardProps {
 /** Curated Unsplash photos per event type (landscape, 400x200 crop) */
 const TYPE_IMAGES: Record<string, string> = {
   concert: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=300&fit=crop",
-  dj_set: "https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=600&h=300&fit=crop",
+  dj_set: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=300&fit=crop",
   soiree_theme: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=300&fit=crop",
   quiz: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&h=300&fit=crop",
   cultural: "https://images.unsplash.com/photo-1554907984-15263bfd63bd?w=600&h=300&fit=crop",
