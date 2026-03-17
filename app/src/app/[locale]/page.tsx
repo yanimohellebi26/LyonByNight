@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { getTranslations, getLocale } from "next-intl/server";
 import { getDataFilePath } from "@/lib/utils/data-path";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, TrendingUp, MapPin, Calendar, Sparkles, Coins, MessageCircle, Search, GitCompareArrows, PartyPopper } from "lucide-react";
+import { ArrowRight, MapPin, Calendar, Sparkles, MessageCircle, Search, GitCompareArrows, PartyPopper } from "lucide-react";
 import type { Lieu, Evenement } from "@/types";
 import { LieuCard } from "@/components/cards/LieuCard";
 import { EventCard } from "@/components/cards/EventCard";
@@ -87,17 +87,24 @@ export default async function HomePage() {
     <div className="flex min-h-screen flex-col">
       <JsonLd type="website" />
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center gap-8 px-6 py-24 text-center overflow-hidden">
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent" />
-        <div className="absolute -top-40 -right-40 -z-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 -z-10 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
+      <section className="relative flex flex-col items-center justify-center gap-6 px-6 py-28 text-center overflow-hidden md:py-36">
+        {/* Atmospheric background */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/8 via-background to-background" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 -z-10 h-[500px] w-[800px] rounded-full bg-primary/6 blur-[120px]" />
+        <div className="absolute bottom-0 left-0 right-0 -z-10 h-px glow-line" />
+
         <FadeIn>
-          <h1 className="max-w-2xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.3em] text-primary">
+            Lyon Night Guide
+          </p>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <h1 className="max-w-3xl font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
             {t("hero_title")}
           </h1>
         </FadeIn>
-        <FadeIn delay={0.15}>
-          <p className="max-w-lg text-lg text-muted-foreground">
+        <FadeIn delay={0.2}>
+          <p className="max-w-md text-base text-muted-foreground md:text-lg">
             {t("hero_subtitle")}
           </p>
         </FadeIn>
@@ -107,90 +114,87 @@ export default async function HomePage() {
           </div>
         </FadeIn>
         <FadeIn delay={0.3}>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/explorer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:shadow-xl hover:shadow-primary/30 hover:brightness-110"
             >
               {t("cta")}
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/carte"
-              className="inline-flex items-center gap-2 rounded-full border px-8 py-3 text-sm font-medium transition-colors hover:bg-accent"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3 text-sm font-medium transition-colors hover:bg-secondary"
             >
               <MapPin className="h-4 w-4" />
               {nav("map")}
             </Link>
-            <Link
-              href="#"
-              onClick={(e) => { e.preventDefault(); }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-8 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-7 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
               <MessageCircle className="h-4 w-4" />
               {t("ask_ai")}
-            </Link>
+            </button>
           </div>
         </FadeIn>
       </section>
 
       {/* Quick stats */}
-      <section className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-center gap-8 px-6 pb-12">
-        <div className="text-center">
-          <p className="text-3xl font-bold text-primary">{allLieux.length}</p>
-          <p className="text-sm text-muted-foreground">{t("venues")}</p>
-        </div>
-        <div className="text-center">
-          <p className="text-3xl font-bold text-primary">
-            {allLieux.filter((l) => l.type === "bar").length}
-          </p>
-          <p className="text-sm text-muted-foreground">{t("bars")}</p>
-        </div>
-        <div className="text-center">
-          <p className="text-3xl font-bold text-primary">
-            {allLieux.filter((l) => l.type === "club").length}
-          </p>
-          <p className="text-sm text-muted-foreground">{t("clubs")}</p>
-        </div>
-        <div className="text-center">
-          <p className="text-3xl font-bold text-primary">
-            {new Set(allLieux.flatMap((l) => l.musique)).size}
-          </p>
-          <p className="text-sm text-muted-foreground">{t("music_genres")}</p>
-        </div>
+      <section className="mx-auto flex w-full max-w-3xl items-center justify-center gap-6 px-6 pb-16 md:gap-12">
+        {[
+          { value: allLieux.length, label: t("venues") },
+          { value: allLieux.filter((l) => l.type === "bar").length, label: t("bars") },
+          { value: allLieux.filter((l) => l.type === "club").length, label: t("clubs") },
+          { value: new Set(allLieux.flatMap((l) => l.musique)).size, label: t("music_genres") },
+        ].map((stat, i) => (
+          <div key={stat.label} className="flex items-center gap-6 md:gap-12">
+            {i > 0 && <div className="h-8 w-px bg-border" />}
+            <div className="text-center">
+              <p className="font-display text-2xl font-bold text-primary md:text-3xl">{stat.value}</p>
+              <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{stat.label}</p>
+            </div>
+          </div>
+        ))}
       </section>
 
       {/* How it works */}
-      <section className="mx-auto w-full max-w-4xl px-6 pb-16">
+      <section className="mx-auto w-full max-w-4xl px-6 pb-20">
         <FadeIn>
-          <h2 className="mb-8 text-center text-xl font-bold">{t("how_it_works")}</h2>
+          <h2 className="mb-10 text-center font-display text-2xl font-bold">{t("how_it_works")}</h2>
         </FadeIn>
-        <StaggerList className="grid gap-6 sm:grid-cols-3">
+        <StaggerList className="grid gap-8 sm:grid-cols-3">
           <StaggerItem>
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border bg-card shadow-sm">
                 <Search className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-sm font-semibold">{t("step_explore")}</h3>
-              <p className="text-xs text-muted-foreground">{t("step_explore_desc")}</p>
+              <div>
+                <h3 className="text-sm font-semibold">{t("step_explore")}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("step_explore_desc")}</p>
+              </div>
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border bg-card shadow-sm">
                 <GitCompareArrows className="h-6 w-6 text-accent" />
               </div>
-              <h3 className="text-sm font-semibold">{t("step_compare")}</h3>
-              <p className="text-xs text-muted-foreground">{t("step_compare_desc")}</p>
+              <div>
+                <h3 className="text-sm font-semibold">{t("step_compare")}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("step_compare_desc")}</p>
+              </div>
             </div>
           </StaggerItem>
           <StaggerItem>
-            <div className="flex flex-col items-center gap-3 text-center">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border bg-card shadow-sm">
                 <PartyPopper className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-sm font-semibold">{t("step_go_out")}</h3>
-              <p className="text-xs text-muted-foreground">{t("step_go_out_desc")}</p>
+              <div>
+                <h3 className="text-sm font-semibold">{t("step_go_out")}</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("step_go_out_desc")}</p>
+              </div>
             </div>
           </StaggerItem>
         </StaggerList>
@@ -198,10 +202,10 @@ export default async function HomePage() {
 
       {/* Trending section */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            <h2 className="text-xl font-bold">{t("trending")}</h2>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="font-display text-2xl font-bold">{t("trending")}</h2>
+            <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
           </div>
           <Link
             href="/explorer?sort=note"
@@ -222,10 +226,10 @@ export default async function HomePage() {
 
       {/* Tonight / open now section */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-        <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Calendar className="h-5 w-5 text-primary" />
-            <h2 className="text-xl font-bold">{t("tonight")}</h2>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="font-display text-2xl font-bold">{t("tonight")}</h2>
+            <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
           </div>
           <Link
             href="/evenements"
@@ -247,10 +251,10 @@ export default async function HomePage() {
       {/* Events tonight section */}
       {todayEvents.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 pb-16">
-          <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              <h2 className="text-xl font-bold">{t("events_tonight")}</h2>
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h2 className="font-display text-2xl font-bold">{t("events_tonight")}</h2>
+              <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
             </div>
             <Link
               href="/evenements"
@@ -273,9 +277,9 @@ export default async function HomePage() {
       {/* Budget-friendly section */}
       {budgetFriendly.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 pb-24">
-          <div className="mb-6 flex items-center gap-2">
-            <Coins className="h-5 w-5 text-primary" />
-            <h2 className="text-xl font-bold">{t("near_you")}</h2>
+          <div className="mb-8">
+            <h2 className="font-display text-2xl font-bold">{t("near_you")}</h2>
+            <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
           </div>
           <StaggerList className="grid gap-4 sm:grid-cols-3">
             {budgetFriendly.map((lieu) => (

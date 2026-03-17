@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, DM_Sans } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -16,14 +16,16 @@ import { ServiceWorkerRegister } from "@/components/shared/ServiceWorkerRegister
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dmSans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -62,7 +64,7 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/icons/icon-180.png" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${playfair.variable} ${dmSans.variable} font-sans antialiased bg-background text-foreground`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NuqsAdapter>

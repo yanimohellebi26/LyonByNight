@@ -34,10 +34,10 @@ export function LieuCard({
   return (
     <Link
       href={`/lieu/${lieu.slug}`}
-      className="group block rounded-2xl border bg-card transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+      className="group block overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-500 hover:border-primary/40 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/20"
     >
       {/* Photo area / category banner */}
-      <div className="relative flex h-32 items-center justify-center overflow-hidden rounded-t-2xl sm:h-40 bg-gradient-to-br from-muted to-muted/50">
+      <div className="relative flex h-32 items-center justify-center overflow-hidden sm:h-40 bg-gradient-to-br from-muted to-muted/50">
         <Image
           src={coverSrc}
           alt={lieu.nom}
@@ -47,7 +47,7 @@ export function LieuCard({
           unoptimized
         />
         <div className="absolute left-3 top-3 flex items-center gap-1.5">
-          <span className="rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium backdrop-blur-sm">
+          <span className="rounded-full bg-background/70 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider backdrop-blur-md">
             {lieu.type === "club" ? t("type_club") : t("type_bar")}
           </span>
           {hasEventTonight && (
@@ -101,7 +101,7 @@ export function LieuCard({
           <OpenStatusBadge horaires={lieu.horaires} compact />
         </div>
 
-        <h3 className="text-sm font-semibold leading-tight group-hover:text-primary transition-colors sm:text-base">
+        <h3 className="font-display text-sm font-semibold leading-tight group-hover:text-primary transition-colors sm:text-base">
           {lieu.nom}
         </h3>
 

@@ -7,17 +7,26 @@ export function Footer() {
   const t = useTranslations("footer");
 
   return (
-    <footer className="border-t py-8">
-      <div className="mx-auto max-w-7xl px-4 text-center text-sm text-muted-foreground">
-        <p className="mb-2">
-          © {new Date().getFullYear()} Lyon Night Guide — {t("disclaimer")}
-        </p>
-        <Link
-          href="/mentions-legales"
-          className="text-xs hover:text-foreground hover:underline transition-colors"
-        >
-          {t("legal")}
-        </Link>
+    <footer className="border-t">
+      <div className="mx-auto max-w-7xl px-4 py-10">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <p className="font-display text-lg font-bold tracking-tight">
+            Lyon<span className="text-primary">Night</span>
+          </p>
+          <p className="max-w-sm text-xs leading-relaxed text-muted-foreground">
+            {t("disclaimer")}
+          </p>
+          <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <span>© {new Date().getFullYear()}</span>
+            <span className="h-3 w-px bg-border" />
+            <Link
+              href="/mentions-legales"
+              className="hover:text-foreground transition-colors"
+            >
+              {t("legal")}
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

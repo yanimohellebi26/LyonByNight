@@ -85,7 +85,7 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
 
   if (compact) {
     return (
-      <div className="flex items-center gap-3 rounded-xl border bg-card p-3 transition-all hover:border-primary/30">
+      <div className="flex items-center gap-3 rounded-xl border border-border/50 bg-card p-3 transition-all hover:border-primary/40 hover:shadow-sm">
         <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
           <Image
             src={imageUrl}
@@ -114,9 +114,9 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
   }
 
   return (
-    <div className="group rounded-2xl border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+    <div className="group overflow-hidden rounded-2xl border border-border/50 bg-card transition-all duration-500 hover:border-primary/40 hover:shadow-[0_8px_40px_-12px] hover:shadow-primary/20">
       {/* Header with photo */}
-      <div className="relative h-40 overflow-hidden rounded-t-2xl">
+      <div className="relative h-40 overflow-hidden">
         <Image
           src={imageUrl}
           alt={event.titre}
@@ -139,7 +139,7 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
           </div>
         )}
         <div className="absolute bottom-3 left-3 right-3">
-          <h3 className="text-base font-semibold leading-tight text-white drop-shadow-md line-clamp-2">
+          <h3 className="font-display text-base font-bold leading-tight text-white drop-shadow-md line-clamp-2">
             {event.titre}
           </h3>
         </div>
