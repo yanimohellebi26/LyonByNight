@@ -14,6 +14,7 @@ import { AuthProvider } from "@/components/auth/AuthProvider";
 import { CookieBanner } from "@/components/shared/CookieBanner";
 import { ServiceWorkerRegister } from "@/components/shared/ServiceWorkerRegister";
 import { InstallPrompt } from "@/components/pwa/InstallPrompt";
+import { OnboardingModal } from "@/components/shared/OnboardingModal";
 import "../globals.css";
 
 const playfair = Playfair_Display({
@@ -84,6 +85,7 @@ export default async function LocaleLayout({
             <CookieBanner />
             <ServiceWorkerRegister />
             <InstallPrompt />
+            <OnboardingModal />
           </ThemeProvider>
           </AuthProvider>
           </NuqsAdapter>

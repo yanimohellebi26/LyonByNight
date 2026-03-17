@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { getTranslations, getLocale } from "next-intl/server";
 import { getDataFilePath } from "@/lib/utils/data-path";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, MapPin, Calendar, Sparkles, MessageCircle, Search, GitCompareArrows, PartyPopper } from "lucide-react";
+import { ArrowRight, MapPin, Calendar, Sparkles, Search, GitCompareArrows, PartyPopper } from "lucide-react";
 import type { Lieu, Evenement } from "@/types";
 import { LieuCard } from "@/components/cards/LieuCard";
 import { EventCard } from "@/components/cards/EventCard";
@@ -18,6 +18,7 @@ import { CollectionGrid } from "@/components/shared/CollectionCard";
 import { FeaturedVenueCard } from "@/components/shared/FeaturedVenueCard";
 import { LiveCounter } from "@/components/shared/LiveCounter";
 import { NeighborhoodGrid } from "@/components/shared/NeighborhoodCard";
+import { TonightStories } from "@/components/shared/TonightStories";
 import { isOpenTonight } from "@/lib/utils/horaires";
 import { translateLieu, translateEvent } from "@/lib/utils/translations";
 
@@ -141,13 +142,13 @@ export default async function HomePage() {
               <MapPin className="h-4 w-4" />
               {nav("map")}
             </Link>
-            <button
-              type="button"
+            <Link
+              href="/soiree"
               className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-7 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
             >
-              <MessageCircle className="h-4 w-4" />
+              <Sparkles className="h-4 w-4" />
               {t("ask_ai")}
-            </button>
+            </Link>
           </div>
         </FadeIn>
       </section>
@@ -265,6 +266,15 @@ export default async function HomePage() {
           ))}
         </StaggerList>
       </section>
+
+      {/* Tonight stories carousel */}
+      {tonight.length > 0 && (
+        <section className="mx-auto w-full max-w-6xl px-6 pb-10">
+          <FadeIn delay={0.15}>
+            <TonightStories venues={tonight} />
+          </FadeIn>
+        </section>
+      )}
 
       {/* Tonight / open now section */}
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">

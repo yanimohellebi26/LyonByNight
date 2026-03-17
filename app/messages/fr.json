@@ -42,7 +42,9 @@
     "live_counter": "{count} personnes explorent Lyon ce soir",
     "event_tonight_banner": "Événement ce soir",
     "neighborhoods": "Explorer par quartier",
-    "see_map": "Voir la carte"
+    "see_map": "Voir la carte",
+    "stories_view_venue": "Voir le lieu",
+    "stories_tonight": "Ce soir"
   },
   "filters": {
     "title": "Filtres",
@@ -362,6 +364,31 @@
     "remove_member": "Retirer du groupe",
     "share_event_to_group": "Partager dans un groupe"
   },
+  "soiree": {
+    "title": "Soirée Builder",
+    "subtitle": "Planifie ta soirée idéale",
+    "step_date": "Choisis une date & une vibe",
+    "step_suggestions": "Suggestions",
+    "step_share": "Ton plan de soirée",
+    "date_label": "Date",
+    "vibe_chill": "Chill",
+    "vibe_chill_desc": "Bars calmes, jazz, terrasses",
+    "vibe_party": "Festif",
+    "vibe_party_desc": "Clubs, DJ sets, dancefloors",
+    "vibe_culture": "Culture",
+    "vibe_culture_desc": "Expos, théâtre, concerts",
+    "vibe_discover": "Découverte",
+    "vibe_discover_desc": "Nouveaux spots, quartiers insolites",
+    "next": "Suivant",
+    "ai_loading": "L'IA prépare ta soirée...",
+    "share_group": "Partager dans un groupe",
+    "copy_plan": "Copier le plan",
+    "copied": "Plan copié !",
+    "restart": "Recommencer",
+    "no_results": "Aucune suggestion pour cette vibe",
+    "include": "Inclure",
+    "your_plan": "Ton plan"
+  },
   "pwa": {
     "install_title": "Installer Lyon Night Guide",
     "install_description": "Accès rapide depuis votre écran d'accueil",
@@ -371,5 +398,19 @@
     "ios_instructions": "Appuyez sur le bouton Partager puis « Sur l'écran d'accueil »",
     "update_available": "Nouvelle version disponible",
     "update_button": "Mettre à jour"
+  },
+  "onboarding": {
+    "step_music": "Quels styles de musique tu aimes ?",
+    "step_budget": "Quel est ton budget ?",
+    "step_districts": "Quels quartiers tu préfères ?",
+    "next": "Suivant",
+    "skip": "Passer",
+    "done": "C'est parti !",
+    "budget_low": "Budget",
+    "budget_low_desc": "Bars étudiants & happy hours",
+    "budget_mid": "Modéré",
+    "budget_mid_desc": "Cocktails bars & brasseries",
+    "budget_high": "Premium",
+    "budget_high_desc": "Rooftops & clubs select"
   }
 }

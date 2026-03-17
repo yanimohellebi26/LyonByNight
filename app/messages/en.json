@@ -42,7 +42,9 @@
     "live_counter": "{count} people exploring Lyon tonight",
     "event_tonight_banner": "Event tonight",
     "neighborhoods": "Explore by neighborhood",
-    "see_map": "See map"
+    "see_map": "See map",
+    "stories_view_venue": "View venue",
+    "stories_tonight": "Tonight"
   },
   "filters": {
     "title": "Filters",
@@ -362,6 +364,31 @@
     "remove_member": "Remove from group",
     "share_event_to_group": "Share to a group"
   },
+  "soiree": {
+    "title": "Night Out Builder",
+    "subtitle": "Plan your perfect night out",
+    "step_date": "Pick a date & vibe",
+    "step_suggestions": "Suggestions",
+    "step_share": "Your night plan",
+    "date_label": "Date",
+    "vibe_chill": "Chill",
+    "vibe_chill_desc": "Quiet bars, jazz, terraces",
+    "vibe_party": "Festive",
+    "vibe_party_desc": "Clubs, DJ sets, dancefloors",
+    "vibe_culture": "Culture",
+    "vibe_culture_desc": "Exhibitions, theater, concerts",
+    "vibe_discover": "Discover",
+    "vibe_discover_desc": "New spots, unusual neighborhoods",
+    "next": "Next",
+    "ai_loading": "AI is planning your night...",
+    "share_group": "Share to a group",
+    "copy_plan": "Copy plan",
+    "copied": "Plan copied!",
+    "restart": "Start over",
+    "no_results": "No suggestions for this vibe",
+    "include": "Include",
+    "your_plan": "Your plan"
+  },
   "pwa": {
     "install_title": "Install Lyon Night Guide",
     "install_description": "Quick access from your home screen",
@@ -371,5 +398,19 @@
     "ios_instructions": "Tap the Share button then \"Add to Home Screen\"",
     "update_available": "New version available",
     "update_button": "Update"
+  },
+  "onboarding": {
+    "step_music": "What music styles do you like?",
+    "step_budget": "What's your budget?",
+    "step_districts": "Which neighborhoods do you prefer?",
+    "next": "Next",
+    "skip": "Skip",
+    "done": "Let's go!",
+    "budget_low": "Budget",
+    "budget_low_desc": "Student bars & happy hours",
+    "budget_mid": "Moderate",
+    "budget_mid_desc": "Cocktail bars & brasseries",
+    "budget_high": "Premium",
+    "budget_high_desc": "Rooftops & select clubs"
   }
 }
