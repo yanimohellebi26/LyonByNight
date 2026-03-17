@@ -7,6 +7,7 @@
  * Primary source: visiterlyon.com (600+ events, server-rendered HTML)
  * Secondary: Eventbrite, Petit Bulletin, CityC Crunch RSS
  * Tertiary: ESN Lyon, ErasmusPlace, GL Lyon Events
+ * University/Erasmus: Lyon1, Lyon2, Lyon3, ENS, INSA, emlyon, IAE, ESN France
  */
 
 import { readFileSync, writeFileSync } from "fs";
@@ -871,6 +872,645 @@ async function scrapeGlLyonEvents(): Promise<ScrapedEvent[]> {
 }
 
 // ---------------------------------------------------------------------------
+// University & Erasmus Scrapers
+// ---------------------------------------------------------------------------
+
+/**
+ * Université Claude Bernard Lyon 1: /agenda — calendar grid with event links
+ * Calendar month header shows "Mars 2026", day numbers are in td cells.
+ * We extract the month/year from the page, then combine with day from each cell.
+ */
+async function scrapeUnivLyon1(): Promise<ScrapedEvent[]> {
+  console.log("  [Univ Lyon 1] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://www.univ-lyon1.fr/agenda");
+    const $ = cheerio.load(html);
+
+    // Extract current calendar month/year from page header (e.g. "Mars 2026")
+    const pageText = $("body").text();
+    const monthYearMatch = pageText.match(/(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i);
+    const calMonths: Record<string, string> = {
+      janvier: "01", février: "02", fevrier: "02", mars: "03", avril: "04", mai: "05", juin: "06",
+      juillet: "07", août: "08", aout: "08", septembre: "09", octobre: "10", novembre: "11", décembre: "12", decembre: "12",
+    };
+    const calMonth = monthYearMatch ? calMonths[monthYearMatch[1].toLowerCase()] : null;
+    const calYear = monthYearMatch ? monthYearMatch[2] : null;
+
+    $("a[href*='/agenda/']").each((_, el) => {
+      const anchor = $(el);
+      const href = anchor.attr("href") ?? "";
+
+      // Skip navigation links
+      if (/\/agenda\/?$/.test(href)) return;
+      if (href.includes("DTSTART")) return; // Calendar nav links
+
+      const title = anchor.text().trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+      if (/agenda|accueil|calendrier|home|mois (précédent|suivant)/i.test(title)) return;
+      if (/^\d+ autres?$/.test(title)) return; // "3 autres" links
+
+      // Try to find date from surrounding td cell
+      const td = anchor.closest("td");
+      const tdText = td.length ? td.text() : "";
+
+      // Extract day number from td text (first number that's 1-31)
+      const dayMatch = tdText.match(/\b(\d{1,2})\b/);
+      let parsedDate: string | null = null;
+
+      if (dayMatch && calMonth && calYear) {
+        const day = dayMatch[1].padStart(2, "0");
+        const dayNum = parseInt(day, 10);
+        if (dayNum >= 1 && dayNum <= 31) {
+          parsedDate = `${calYear}-${calMonth}-${day}`;
+        }
+      }
+
+      // Fallback: try parsing from the link text or parent
+      if (!parsedDate) {
+        const parent = anchor.closest("div, li, article");
+        const allText = parent.length ? parent.text() : "";
+        parsedDate = parseFrDate(allText);
+      }
+
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      const fullUrl = href.startsWith("http") ? href : `https://www.univ-lyon1.fr${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: parseTime(title) ?? parseTime(tdText) ?? "12:00",
+        type: classifyEvent(title, tdText) === "autre" ? "student" : classifyEvent(title, tdText),
+        source: "univ_lyon1",
+        url: fullUrl,
+        lieu_nom: "Université Lyon 1",
+      });
+    });
+  } catch (err) {
+    console.error("  [Univ Lyon 1] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from Univ Lyon 1`);
+  return events;
+}
+
+/**
+ * Université Lumière Lyon 2: /agenda — calendar grid with event links
+ * Links point to subdomains: seg.univ-lyon2.fr, icom.univ-lyon2.fr, etc.
+ * Calendar header shows "mars 2026". Day numbers are in td cells.
+ */
+async function scrapeUnivLyon2(): Promise<ScrapedEvent[]> {
+  console.log("  [Univ Lyon 2] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://www.univ-lyon2.fr/agenda");
+    const $ = cheerio.load(html);
+
+    // Extract month/year from page text
+    const pageText = $("body").text();
+    const calMonths: Record<string, string> = {
+      janvier: "01", février: "02", fevrier: "02", mars: "03", avril: "04", mai: "05", juin: "06",
+      juillet: "07", août: "08", aout: "08", septembre: "09", octobre: "10", novembre: "11", décembre: "12", decembre: "12",
+    };
+    const monthYearMatch = pageText.match(/(janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|octobre|novembre|décembre|decembre)\s+(\d{4})/i);
+    const calMonth = monthYearMatch ? calMonths[monthYearMatch[1].toLowerCase()] : null;
+    const calYear = monthYearMatch ? monthYearMatch[2] : null;
+
+    // Find all links — the event links can be absolute URLs to subdomains
+    $("td a[href]").each((_, el) => {
+      const anchor = $(el);
+      const href = anchor.attr("href") ?? "";
+      const title = anchor.text().trim();
+
+      // Skip non-event links
+      if (!title || title.length < 5 || title.length > 200) return;
+      if (/^\d+\s*autres?$/i.test(title)) return;
+      if (/mois|agenda|accueil/i.test(title)) return;
+
+      // Accept links to univ-lyon2.fr subdomains or local paths
+      if (!href.includes("univ-lyon2.fr") && !href.startsWith("/")) return;
+      if (href.includes("DTSTART")) return;
+
+      // Get day from the containing td
+      const td = anchor.closest("td");
+      const tdText = td.length ? td.children().first().text().trim() : "";
+      const dayMatch = tdText.match(/^(\d{1,2})$/);
+      let parsedDate: string | null = null;
+
+      if (dayMatch && calMonth && calYear) {
+        const day = dayMatch[1].padStart(2, "0");
+        parsedDate = `${calYear}-${calMonth}-${day}`;
+      }
+
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: "12:00",
+        type: classifyEvent(title, "") === "autre" ? "student" : classifyEvent(title, ""),
+        source: "univ_lyon2",
+        url: href.startsWith("http") ? href : `https://www.univ-lyon2.fr${href}`,
+        lieu_nom: "Université Lyon 2",
+      });
+    });
+  } catch (err) {
+    console.error("  [Univ Lyon 2] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from Univ Lyon 2`);
+  return events;
+}
+
+/**
+ * Université Jean Moulin Lyon 3: /agenda — cards with images, dates, links at root level
+ * Event URLs: /projections-cine-kozmos-2025-2026, /seminaire-materialites-poetiques-2e-edition-1
+ * Dates: "24 septembre 2025 - 4 avril 2026" as text near/after the link
+ */
+async function scrapeUnivLyon3(): Promise<ScrapedEvent[]> {
+  console.log("  [Univ Lyon 3] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://www.univ-lyon3.fr/agenda");
+    const $ = cheerio.load(html);
+
+    // Lyon 3 events are in card divs with images. Look for any link that has
+    // a date nearby (sibling/parent text). Links are at root level (/slug).
+    // Strategy: find all links, check if the surrounding block contains a date.
+    const seen = new Set<string>();
+
+    $("a[href]").each((_, el) => {
+      const anchor = $(el);
+      const href = anchor.attr("href") ?? "";
+
+      // Must be a local link
+      const isLocal = href.startsWith("/") || href.startsWith("https://www.univ-lyon3.fr/");
+      if (!isLocal) return;
+
+      // Skip known non-event paths
+      const path = href.replace("https://www.univ-lyon3.fr", "");
+      if (/^\/(agenda|formation|recherche|universite|international|campus|#|$)/.test(path)) return;
+      if (/\.(pdf|jpg|png|css|js)$/i.test(path)) return;
+      if (path.length < 5) return;
+
+      const title = anchor.find("strong, span").first().text().trim()
+        || anchor.text().trim().split("\n")[0]?.trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+      if (/agenda|accueil|mentions|contact|plan du site|voir plus|en savoir|lire la suite|cookie/i.test(title)) return;
+
+      // Look for date in several layers of parent context
+      let parsedDate: string | null = null;
+      let contextText = "";
+      const parents = [
+        anchor.parent(),
+        anchor.closest("div"),
+        anchor.closest("li, article, section"),
+      ];
+      for (const p of parents) {
+        if (!p.length) continue;
+        contextText = p.text();
+        parsedDate = parseFrDate(contextText);
+        if (parsedDate) break;
+      }
+
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      const key = `${path}_${parsedDate}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+
+      const img = anchor.find("img").first().attr("src")
+        || anchor.parent().find("img").first().attr("src");
+      const fullUrl = href.startsWith("http") ? href : `https://www.univ-lyon3.fr${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: parseTime(contextText) ?? "12:00",
+        type: classifyEvent(title, contextText) === "autre" ? "student" : classifyEvent(title, contextText),
+        source: "univ_lyon3",
+        url: fullUrl,
+        image: img && img.startsWith("http") ? img : undefined,
+        lieu_nom: "Université Lyon 3",
+      });
+    });
+  } catch (err) {
+    console.error("  [Univ Lyon 3] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from Univ Lyon 3`);
+  return events;
+}
+
+/**
+ * ENS Lyon: /agenda — list of seminars, conferences, workshops
+ * Structure: .event-item > .event-date (date) + .event-content > a[href*="/evenement/"]
+ * Need to traverse up to .event-item to access the date in a sibling div.
+ */
+async function scrapeEnsLyon(): Promise<ScrapedEvent[]> {
+  console.log("  [ENS Lyon] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://www.ens-lyon.fr/agenda");
+    const $ = cheerio.load(html);
+
+    $("a[href*='/evenement/']").each((_, el) => {
+      const anchor = $(el);
+      const href = anchor.attr("href") ?? "";
+
+      // Skip overly short paths
+      if (href.split("/").filter(Boolean).length < 3) return;
+
+      const title = anchor.text().trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+      if (/en savoir plus|voir plus|agenda/i.test(title)) return;
+
+      // Traverse up multiple levels to find the full event block including the date
+      let allText = "";
+      let parsedDate: string | null = null;
+      const levels = [
+        anchor.parent(),
+        anchor.parent().parent(),
+        anchor.closest(".event-item, .event, article, .views-row, section"),
+        anchor.closest("div").parent(),
+        anchor.closest("div").parent().parent(),
+      ];
+      for (const p of levels) {
+        if (!p.length) continue;
+        allText = p.text();
+        parsedDate = parseFrDate(allText);
+        if (parsedDate) break;
+      }
+
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      // Detect type from ENS categorization
+      const textLower = allText.toLowerCase();
+      let type: EventType = "scientific"; // ENS events default to scientific
+      if (/atelier|workshop/i.test(textLower)) type = "workshop";
+      else if (/concert|musique/i.test(textLower)) type = "concert";
+      else if (/exposition|expo/i.test(textLower)) type = "expo";
+      else if (/festival/i.test(textLower)) type = "festival";
+      else if (/spectacle|théâtre/i.test(textLower)) type = "theater";
+
+      const fullUrl = href.startsWith("http") ? href : `https://www.ens-lyon.fr${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: parseTime(allText) ?? "14:00",
+        type,
+        source: "ens_lyon",
+        url: fullUrl,
+        lieu_nom: "ENS de Lyon",
+      });
+    });
+  } catch (err) {
+    console.error("  [ENS Lyon] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from ENS Lyon`);
+  return events;
+}
+
+/**
+ * INSA Lyon: /fr/agenda — card-based events with .event-item structure
+ * Each card: img.event-thumb, .date, .category, h4 > a[href*="/evenement/"]
+ */
+async function scrapeInsaLyon(): Promise<ScrapedEvent[]> {
+  console.log("  [INSA Lyon] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://www.insa-lyon.fr/fr/agenda");
+    const $ = cheerio.load(html);
+
+    // Try structured .event-item cards first
+    $(".event-item, article, .views-row").each((_, el) => {
+      const card = $(el);
+      const anchor = card.find("a[href*='/evenement/'], a[href*='/fr/'], h4 a").first();
+      if (!anchor.length) return;
+
+      const href = anchor.attr("href") ?? "";
+      const title = anchor.text().trim() || card.find("h4, h3, h2").first().text().trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+
+      const dateText = card.find(".date, time, .field--name-field-date").first().text().trim();
+      const allText = card.text();
+      const parsedDate = parseFrDate(dateText) ?? parseFrDate(allText);
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      const category = card.find(".category, .field--name-field-category").first().text().trim();
+      const img = card.find("img").first().attr("src");
+      const fullUrl = href.startsWith("http") ? href : `https://www.insa-lyon.fr${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: parseTime(allText) ?? "12:00",
+        type: classifyEvent(title, `${category} ${allText}`) === "autre" ? "student" : classifyEvent(title, `${category} ${allText}`),
+        source: "insa_lyon",
+        url: fullUrl,
+        image: img && img.startsWith("http") ? img : undefined,
+        lieu_nom: "INSA Lyon",
+      });
+    });
+
+    // Fallback: generic event link parsing
+    if (events.length === 0) {
+      $("a[href*='/evenement/'], a[href*='/fr/evenement/']").each((_, el) => {
+        const anchor = $(el);
+        const href = anchor.attr("href") ?? "";
+        const title = anchor.text().trim();
+        if (!title || title.length < 5 || title.length > 200) return;
+        if (/en savoir plus|voir plus|agenda/i.test(title)) return;
+
+        const parent = anchor.closest("div, li, article");
+        const allText = parent.length ? parent.text() : "";
+        const parsedDate = parseFrDate(allText);
+        if (!parsedDate || parsedDate < todayIso()) return;
+
+        const fullUrl = href.startsWith("http") ? href : `https://www.insa-lyon.fr${href}`;
+
+        events.push({
+          titre: sanitizeText(title).slice(0, 200),
+          description: "",
+          date: parsedDate,
+          heure_debut: parseTime(allText) ?? "12:00",
+          type: "student",
+          source: "insa_lyon",
+          url: fullUrl,
+          lieu_nom: "INSA Lyon",
+        });
+      });
+    }
+  } catch (err) {
+    console.error("  [INSA Lyon] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from INSA Lyon`);
+  return events;
+}
+
+/**
+ * emlyon Business School: /en/events or /fr/agenda — event cards
+ * Links: /fr/agenda/[slug] or /fr/executive/agenda/[slug]
+ * Dates: "Mar 16" or "16 mar" format with English/French month abbreviations
+ */
+async function scrapeEmLyon(): Promise<ScrapedEvent[]> {
+  console.log("  [emlyon] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  const monthAbbrevs: Record<string, string> = {
+    jan: "01", fev: "02", feb: "02", mar: "03", avr: "04", apr: "04",
+    mai: "05", may: "05", jun: "06", jui: "07", jul: "07",
+    aou: "08", aug: "08", sep: "09", oct: "10", nov: "11", dec: "12", déc: "12",
+  };
+
+  const urls = [
+    "https://em-lyon.com/en/events",
+    "https://em-lyon.com/fr/agenda",
+  ];
+
+  for (const baseUrl of urls) {
+    try {
+      const html = await fetchHtml(baseUrl);
+      const $ = cheerio.load(html);
+
+      // Collect all agenda/event links with their surrounding text
+      $("a[href*='/agenda/'], a[href*='/events/']").each((_, el) => {
+        const anchor = $(el);
+        const href = anchor.attr("href") ?? "";
+
+        // Skip navigation
+        if (/\/(agenda|events)\/?$/.test(href)) return;
+        if (/page=|filter|sort|category/i.test(href)) return;
+
+        const title = anchor.text().trim().split("\n")[0]?.trim() ?? "";
+        if (!title || title.length < 5 || title.length > 200) return;
+        if (/^(agenda|events|voir|see|résultats|results|pagination)/i.test(title)) return;
+
+        // Gather text from progressively wider parent containers
+        let parsedDate: string | null = null;
+        let contextText = "";
+        const containers = [
+          anchor.parent(),
+          anchor.parent().parent(),
+          anchor.parent().parent().parent(),
+          anchor.parent().parent().parent().parent(),
+        ];
+
+        for (const container of containers) {
+          if (!container.length) continue;
+          contextText = container.text();
+
+          // Try English/French abbreviated months: "Mar 16", "16 mar", "mars 2026"
+          const abbrMatch = contextText.match(/\b(Jan|Feb|Fev|Mar|Apr|Avr|May|Mai|Jun|Jui|Jul|Aug|Aou|Sep|Oct|Nov|Dec|Déc)\s*\.?\s*(\d{1,2})\b/i);
+          if (abbrMatch) {
+            const m = monthAbbrevs[abbrMatch[1].toLowerCase().replace(/é/, "e")];
+            if (m) {
+              const day = abbrMatch[2].padStart(2, "0");
+              parsedDate = `${new Date().getFullYear()}-${m}-${day}`;
+              break;
+            }
+          }
+
+          // Try day + abbreviated month: "16 Mar"
+          const abbrMatch2 = contextText.match(/\b(\d{1,2})\s+(Jan|Feb|Fev|Mar|Apr|Avr|May|Mai|Jun|Jui|Jul|Aug|Aou|Sep|Oct|Nov|Dec|Déc)\b/i);
+          if (abbrMatch2) {
+            const m = monthAbbrevs[abbrMatch2[2].toLowerCase().replace(/é/, "e")];
+            if (m) {
+              const day = abbrMatch2[1].padStart(2, "0");
+              parsedDate = `${new Date().getFullYear()}-${m}-${day}`;
+              break;
+            }
+          }
+
+          // Standard French date
+          parsedDate = parseFrDate(contextText);
+          if (parsedDate) break;
+        }
+
+        if (!parsedDate || parsedDate < todayIso()) return;
+
+        const fullUrl = href.startsWith("http") ? href : `https://em-lyon.com${href}`;
+        const locationMatch = contextText.match(/Campus\s+(?:de\s+)?(\w+)/i);
+        const venue = locationMatch ? `emlyon ${locationMatch[0]}` : "emlyon Business School, Lyon";
+
+        events.push({
+          titre: sanitizeText(title).slice(0, 200),
+          description: "",
+          date: parsedDate,
+          heure_debut: parseTime(contextText) ?? "18:00",
+          type: classifyEvent(title, contextText) === "autre" ? "student" : classifyEvent(title, contextText),
+          source: "emlyon",
+          url: fullUrl,
+          lieu_nom: venue,
+        });
+      });
+
+      if (events.length > 0) break;
+      await sleep(1500);
+    } catch (err) {
+      console.error(`    ${baseUrl} error:`, err instanceof Error ? err.message : err);
+    }
+  }
+
+  console.log(`  -> ${events.length} events from emlyon`);
+  return events;
+}
+
+/**
+ * IAE Lyon (School of Management, Lyon 3): agenda — list items with strong > a
+ * Structure: ul.objets li with img, strong > a title, date text
+ */
+async function scrapeIaeLyon(): Promise<ScrapedEvent[]> {
+  console.log("  [IAE Lyon] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://iae.univ-lyon3.fr/agenda");
+    const $ = cheerio.load(html);
+
+    // Primary: list items with structured content
+    $("ul.objets li, .event-item, article, .views-row").each((_, el) => {
+      const card = $(el);
+      const anchor = card.find("strong a, h3 a, h4 a, a[href]").first();
+      if (!anchor.length) return;
+
+      const href = anchor.attr("href") ?? "";
+      const title = anchor.text().trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+
+      const allText = card.text();
+      const parsedDate = parseFrDate(allText);
+      if (!parsedDate || parsedDate < todayIso()) return;
+
+      const img = card.find("img").first().attr("src");
+      const fullUrl = href.startsWith("http") ? href : `https://iae.univ-lyon3.fr${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: "",
+        date: parsedDate,
+        heure_debut: parseTime(allText) ?? "18:00",
+        type: classifyEvent(title, allText) === "autre" ? "student" : classifyEvent(title, allText),
+        source: "iae_lyon",
+        url: fullUrl,
+        image: img && img.startsWith("http") ? img : undefined,
+        lieu_nom: "IAE Lyon",
+      });
+    });
+
+    // Fallback: any links that look like events
+    if (events.length === 0) {
+      $("a[href]").each((_, el) => {
+        const anchor = $(el);
+        const href = anchor.attr("href") ?? "";
+        if (!href.startsWith("/") || href.length < 10) return;
+        if (/\.(pdf|jpg|png|css|js)$/i.test(href)) return;
+        if (href === "/agenda" || href === "/agenda/") return;
+
+        const title = anchor.find("strong").text().trim() || anchor.text().trim();
+        if (!title || title.length < 5 || title.length > 200) return;
+        if (/agenda|accueil|contact|mentions/i.test(title)) return;
+
+        const parent = anchor.closest("div, li");
+        const allText = parent.length ? parent.text() : "";
+        const parsedDate = parseFrDate(allText);
+        if (!parsedDate || parsedDate < todayIso()) return;
+
+        const fullUrl = `https://iae.univ-lyon3.fr${href}`;
+
+        events.push({
+          titre: sanitizeText(title).slice(0, 200),
+          description: "",
+          date: parsedDate,
+          heure_debut: parseTime(allText) ?? "18:00",
+          type: "student",
+          source: "iae_lyon",
+          url: fullUrl,
+          lieu_nom: "IAE Lyon",
+        });
+      });
+    }
+  } catch (err) {
+    console.error("  [IAE Lyon] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from IAE Lyon`);
+  return events;
+}
+
+/**
+ * ESN France: /toutes-les-actus/ — national Erasmus news/events
+ * Cards: .filtr-item .post-box with .portfolio_thumbnail, .bf_title_1-38
+ */
+async function scrapeEsnFrance(): Promise<ScrapedEvent[]> {
+  console.log("  [ESN France] Scraping...");
+  const events: ScrapedEvent[] = [];
+
+  try {
+    const html = await fetchHtml("https://esnfrance.org/toutes-les-actus/");
+    const $ = cheerio.load(html);
+
+    $(".filtr-item, .post-box, article").each((_, el) => {
+      const card = $(el);
+      const anchor = card.find("a[href]").first();
+      const href = anchor.attr("href") ?? "";
+
+      const title = card.find(".bf_title_1-38, h2, h3, h4, .entry-title").first().text().trim()
+        || anchor.text().trim().split("\n")[0]?.trim();
+      if (!title || title.length < 5 || title.length > 200) return;
+      if (/lire la suite|read more|voir plus/i.test(title)) return;
+
+      const allText = card.text();
+      const description = card.find(".bf_desc_1-38, .entry-content, p").first().text().trim();
+
+      // ESN articles often have dates in the text
+      const parsedDate = parseFrDate(allText);
+      // Accept events even without a clear date (use today + 7 as fallback for "upcoming" articles)
+      const eventDate = parsedDate ?? (() => {
+        const d = new Date();
+        d.setDate(d.getDate() + 7);
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+      })();
+      if (eventDate < todayIso()) return;
+
+      const img = card.find(".portfolio_thumbnail img, img").first().attr("src");
+      const fullUrl = href.startsWith("http") ? href : `https://esnfrance.org${href}`;
+
+      events.push({
+        titre: sanitizeText(title).slice(0, 200),
+        description: sanitizeText(description).slice(0, 500),
+        date: eventDate,
+        heure_debut: parseTime(allText) ?? "19:00",
+        type: "erasmus",
+        source: "esn_france",
+        url: fullUrl,
+        image: img && img.startsWith("http") ? img : undefined,
+        lieu_nom: "France (ESN)",
+      });
+    });
+  } catch (err) {
+    console.error("  [ESN France] Error:", err instanceof Error ? err.message : err);
+  }
+
+  console.log(`  -> ${events.length} events from ESN France`);
+  return events;
+}
+
+// ---------------------------------------------------------------------------
 // Merge & Deduplicate
 // ---------------------------------------------------------------------------
 
@@ -934,6 +1574,15 @@ async function main() {
     scrapeMacLyon,           // MAC Lyon: contemporary art, student nights
     scrapeErasmusPlace,      // ErasmusPlace: international student events
     scrapeGlLyonEvents,      // GL Lyon: professional events
+    // --- University & Erasmus sources ---
+    scrapeUnivLyon1,         // Univ Claude Bernard: campus events
+    scrapeUnivLyon2,         // Univ Lumière: campus events
+    scrapeUnivLyon3,         // Univ Jean Moulin: campus events
+    scrapeEnsLyon,           // ENS Lyon: seminars, conferences, workshops
+    scrapeInsaLyon,          // INSA Lyon: engineering school events
+    scrapeEmLyon,            // emlyon Business School: business/student events
+    scrapeIaeLyon,           // IAE Lyon: management school events
+    scrapeEsnFrance,         // ESN France: national Erasmus events/news
   ];
 
   for (const scraper of scrapers) {

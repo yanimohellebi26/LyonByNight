@@ -23,3 +23,5 @@ data/*.json
 # misc
 *.log
 *.pem
+ideas.md
+ESN_ONE_PAGER.md
