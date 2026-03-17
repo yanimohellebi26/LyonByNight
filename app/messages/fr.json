@@ -38,7 +38,11 @@
     "ask_ai": "Demande à l'IA",
     "featured": "Coup de c\u0153ur",
     "collections": "Collections",
-    "discover": "Découvrir"
+    "discover": "Découvrir",
+    "live_counter": "{count} personnes explorent Lyon ce soir",
+    "event_tonight_banner": "Événement ce soir",
+    "neighborhoods": "Explorer par quartier",
+    "see_map": "Voir la carte"
   },
   "filters": {
     "title": "Filtres",
@@ -292,7 +296,15 @@
     "my_activity": "Mon activité",
     "my_events": "Mes événements",
     "my_groups": "Mes groupes",
-    "coming_soon": "Bientôt disponible"
+    "coming_soon": "Bientôt disponible",
+    "member_since": "Membre depuis {date}",
+    "stats_favorites": "Favoris",
+    "stats_events": "Événements",
+    "stats_groups": "Groupes",
+    "favorite_venues": "Mes lieux favoris",
+    "no_favorites": "Aucun favori pour le moment",
+    "see_all_favorites": "Voir tout",
+    "settings": "Paramètres"
   },
   "transport": {
     "title": "Se rendre sur place",

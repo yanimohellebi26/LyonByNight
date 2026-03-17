@@ -38,7 +38,11 @@
     "ask_ai": "Ask AI",
     "featured": "Editor's Pick",
     "collections": "Collections",
-    "discover": "Discover"
+    "discover": "Discover",
+    "live_counter": "{count} people exploring Lyon tonight",
+    "event_tonight_banner": "Event tonight",
+    "neighborhoods": "Explore by neighborhood",
+    "see_map": "See map"
   },
   "filters": {
     "title": "Filters",
@@ -292,7 +296,15 @@
     "my_activity": "My activity",
     "my_events": "My events",
     "my_groups": "My groups",
-    "coming_soon": "Coming soon"
+    "coming_soon": "Coming soon",
+    "member_since": "Member since {date}",
+    "stats_favorites": "Favorites",
+    "stats_events": "Events",
+    "stats_groups": "Groups",
+    "favorite_venues": "My favorite venues",
+    "no_favorites": "No favorites yet",
+    "see_all_favorites": "See all",
+    "settings": "Settings"
   },
   "transport": {
     "title": "Getting there",

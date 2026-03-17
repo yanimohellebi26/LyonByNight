@@ -11,10 +11,13 @@ import {
   StaggerList,
   StaggerItem,
 } from "@/components/shared/MotionWrapper";
+import { PageTransition } from "@/components/shared/PageTransition";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ContextualBanner } from "@/components/shared/ContextualBanner";
 import { CollectionGrid } from "@/components/shared/CollectionCard";
 import { FeaturedVenueCard } from "@/components/shared/FeaturedVenueCard";
+import { LiveCounter } from "@/components/shared/LiveCounter";
+import { NeighborhoodGrid } from "@/components/shared/NeighborhoodCard";
 import { isOpenTonight } from "@/lib/utils/horaires";
 import { translateLieu, translateEvent } from "@/lib/utils/translations";
 
@@ -89,6 +92,7 @@ export default async function HomePage() {
   const featuredVenue = trending[0] ?? null;
 
   return (
+    <PageTransition>
     <div className="flex min-h-screen flex-col">
       <JsonLd type="website" />
       {/* Hero Section */}
@@ -112,6 +116,9 @@ export default async function HomePage() {
           <p className="max-w-md text-base text-muted-foreground md:text-lg">
             {t("hero_subtitle")}
           </p>
+        </FadeIn>
+        <FadeIn delay={0.22}>
+          <LiveCounter />
         </FadeIn>
         <FadeIn delay={0.25}>
           <div className="mx-auto max-w-md">
@@ -263,7 +270,10 @@ export default async function HomePage() {
       <section className="mx-auto w-full max-w-6xl px-6 pb-16">
         <div className="mb-8 flex items-center justify-between">
           <div>
-            <h2 className="font-display text-2xl font-bold">{t("tonight")}</h2>
+            <h2 className="flex items-center gap-2 font-display text-2xl font-bold">
+              <span className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse" />
+              {t("tonight")}
+            </h2>
             <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
           </div>
           <Link
@@ -280,6 +290,26 @@ export default async function HomePage() {
               <LieuCard lieu={lieu} hasEventTonight={tonightIds.has(lieu.id)} />
             </StaggerItem>
           ))}
+        </StaggerList>
+      </section>
+
+      {/* Neighborhoods section */}
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="font-display text-2xl font-bold">{t("neighborhoods")}</h2>
+            <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
+          </div>
+          <Link
+            href="/carte"
+            className="flex items-center gap-1 text-sm text-primary hover:underline"
+          >
+            {t("see_map")}
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+        <StaggerList className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+          <NeighborhoodGrid />
         </StaggerList>
       </section>
 
@@ -326,5 +356,6 @@ export default async function HomePage() {
         </section>
       )}
     </div>
+    </PageTransition>
   );
 }
