@@ -27,6 +27,7 @@ import { ShareButton } from "@/components/shared/ShareButton";
 import { StickyActionBar } from "@/components/shared/StickyActionBar";
 import { PhotoGallery } from "@/components/shared/PhotoGallery";
 import { getPlaceholderImage } from "@/lib/placeholder-images";
+import { PageTransition } from "@/components/shared/PageTransition";
 import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
 import type { Metadata } from "next";
@@ -160,6 +161,7 @@ export default async function LieuPage({ params }: LieuPageProps) {
   const isSparse = !lieu.note && !lieu.resume_avis && lieu.photos.length === 0 && !lieu.horaires;
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-4xl px-4 py-6 pb-20 md:pb-0">
       <JsonLd type="lieu" lieu={lieu} />
 
@@ -484,5 +486,6 @@ export default async function LieuPage({ params }: LieuPageProps) {
         lng={lieu.coordonnees?.lng}
       />
     </div>
+    </PageTransition>
   );
 }

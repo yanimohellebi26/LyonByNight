@@ -15,6 +15,7 @@ import {
   StaggerList,
   StaggerItem,
 } from "@/components/shared/MotionWrapper";
+import { PageTransition } from "@/components/shared/PageTransition";
 import { translateEvent } from "@/lib/utils/translations";
 import type { Evenement } from "@/types";
 
@@ -120,6 +121,7 @@ export default function EvenementsPage() {
   }
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-6xl px-4 py-8">
       {/* Header */}
       <FadeIn>
@@ -247,5 +249,6 @@ export default function EvenementsPage() {
         </div>
       )}
     </div>
+    </PageTransition>
   );
 }

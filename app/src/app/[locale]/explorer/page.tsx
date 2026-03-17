@@ -24,6 +24,7 @@ import {
 } from "@/components/filters/FilterPanel";
 import { ContextualBanner } from "@/components/shared/ContextualBanner";
 import { translateLieu } from "@/lib/utils/translations";
+import { PageTransition } from "@/components/shared/PageTransition";
 import type { Lieu } from "@/types";
 
 interface ApiResponse {
@@ -153,6 +154,7 @@ export default function ExplorerPage() {
   };
 
   return (
+    <PageTransition>
     <div className="mx-auto max-w-7xl px-4 py-6">
       {/* ── Contextual suggestion banner ── */}
       <div className="mb-4">
@@ -373,5 +375,6 @@ export default function ExplorerPage() {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 }

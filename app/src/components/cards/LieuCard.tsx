@@ -29,6 +29,7 @@ export function LieuCard({
   isFavorite,
 }: LieuCardProps) {
   const t = useTranslations("lieu");
+  const tHome = useTranslations("home");
   const coverSrc = lieu.photo_cover ?? getPlaceholderImage(lieu.id, lieu.categorie, lieu.type);
 
   return (
@@ -51,7 +52,8 @@ export function LieuCard({
             {lieu.type === "club" ? t("type_club") : t("type_bar")}
           </span>
           {hasEventTonight && (
-            <span className="animate-pulse rounded-full bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground">
+            <span className="animate-pulse rounded-full bg-primary px-2.5 py-1 text-xs font-medium text-primary-foreground flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
               {t("tonight_event")}
             </span>
           )}
@@ -92,6 +94,13 @@ export function LieuCard({
             </button>
           )}
         </div>
+        {hasEventTonight && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-primary/20 to-transparent px-3 py-1.5">
+            <span className="text-[10px] font-medium text-primary-foreground/90">
+              {tHome("event_tonight_banner")}
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
