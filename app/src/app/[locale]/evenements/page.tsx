@@ -2,20 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Calendar, Loader2, Filter, Plus, Search } from "lucide-react";
+import { AlertTriangle, Calendar, Plus, Search } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useDebounce } from "@/hooks/useDebounce";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { EventCard } from "@/components/cards/EventCard";
+import { EventCardSkeletonGrid } from "@/components/cards/EventCardSkeleton";
 import {
   FadeIn,
   StaggerList,
@@ -58,10 +52,13 @@ export default function EvenementsPage() {
 
   const [events, setEvents] = useState<EnrichedEvent[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [period, setPeriod] = useState("week");
   const [typeFilter, setTypeFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearch = useDebounce(searchQuery, 300);
+
+  const [fetchKey, setFetchKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -69,6 +66,7 @@ export default function EvenementsPage() {
 
     async function load() {
       setLoading(true);
+      setError(null);
       const params = new URLSearchParams({ period });
       if (typeFilter !== "all") params.set("type", typeFilter);
       if (debouncedSearch) params.set("q", debouncedSearch);
@@ -82,8 +80,9 @@ export default function EvenementsPage() {
             lieu_nom: e.lieu_nom,
           })));
         }
-      } catch {
-        /* aborted */
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") return;
+        if (!cancelled) setError(t("error_loading"));
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -91,7 +90,7 @@ export default function EvenementsPage() {
 
     void load();
     return () => { cancelled = true; controller.abort(); };
-  }, [period, typeFilter, locale, debouncedSearch]);
+  }, [period, typeFilter, locale, debouncedSearch, fetchKey, t]);
 
   // Group events by date
   const grouped = events.reduce<Record<string, EnrichedEvent[]>>((acc, evt) => {
@@ -171,32 +170,48 @@ export default function EvenementsPage() {
             ))}
           </div>
 
-          {/* Type filter */}
-          <Select value={typeFilter} onValueChange={(v) => setTypeFilter(v ?? "all")}>
-            <SelectTrigger className="w-[180px]">
-              <Filter className="mr-2 h-4 w-4" />
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {EVENT_TYPES.map((et) => (
-                <SelectItem key={et.value} value={et.value}>
-                  {t(et.labelKey)}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
           <span className="text-sm text-muted-foreground">
             {t("event_count", { count: events.length })}
           </span>
+        </div>
+
+        {/* Type filter pills */}
+        <div className="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          {EVENT_TYPES.map((et) => (
+            <button
+              key={et.value}
+              onClick={() => setTypeFilter(et.value)}
+              className={`shrink-0 rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+                typeFilter === et.value
+                  ? "bg-primary text-primary-foreground"
+                  : "bg-secondary text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {t(et.labelKey)}
+            </button>
+          ))}
         </div>
       </FadeIn>
 
       {/* Content */}
       {loading ? (
-        <div className="flex items-center justify-center py-24">
-          <Loader2 className="h-6 w-6 animate-spin text-primary" />
-        </div>
+        <EventCardSkeletonGrid count={6} />
+      ) : error ? (
+        <FadeIn>
+          <div className="flex flex-col items-center justify-center gap-4 py-24">
+            <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-6 text-center">
+              <AlertTriangle className="mx-auto mb-3 h-8 w-8 text-destructive" />
+              <p className="mb-4 text-sm text-destructive">{error}</p>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setFetchKey((k) => k + 1)}
+              >
+                {t("retry")}
+              </Button>
+            </div>
+          </div>
+        </FadeIn>
       ) : events.length === 0 ? (
         <FadeIn>
           <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">

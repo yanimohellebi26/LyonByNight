@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Search, Moon, Heart } from "lucide-react";
+import { AlertTriangle, Search, Moon, Heart } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -47,9 +47,11 @@ export default function ExplorerPage() {
   const [total, setTotal] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchInput, setSearchInput] = useState(filters.q ?? "");
   const [tonightMode, setTonightMode] = useState(false);
   const [favoritesMode, setFavoritesMode] = useState(false);
+  const [fetchKey, setFetchKey] = useState(0);
   const debouncedSearch = useDebounce(searchInput, 300);
 
   /* ── Sync debounced search → URL param ── */
@@ -66,6 +68,7 @@ export default function ExplorerPage() {
 
     async function fetchLieux() {
       setLoading(true);
+      setError(null);
       const params = new URLSearchParams();
       if (filters.type) params.set("type", filters.type);
       if (filters.arrondissement)
@@ -98,6 +101,7 @@ export default function ExplorerPage() {
         }
       } catch (err) {
         if (err instanceof DOMException && err.name === "AbortError") return;
+        setError(t("error_loading"));
       } finally {
         setLoading(false);
       }
@@ -119,6 +123,8 @@ export default function ExplorerPage() {
     favoriteIds,
     isHydrated,
     locale,
+    fetchKey,
+    t,
   ]);
 
   const handleCompare = useCallback(
@@ -259,6 +265,20 @@ export default function ExplorerPage() {
         <div>
           {loading ? (
             <LieuCardSkeletonGrid count={6} />
+          ) : error ? (
+            <div className="flex flex-col items-center justify-center gap-4 py-20">
+              <div className="rounded-xl border border-destructive/30 bg-destructive/10 p-6 text-center">
+                <AlertTriangle className="mx-auto mb-3 h-8 w-8 text-destructive" />
+                <p className="mb-4 text-sm text-destructive">{error}</p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setFetchKey((k) => k + 1)}
+                >
+                  {t("retry")}
+                </Button>
+              </div>
+            </div>
           ) : lieux.length === 0 ? (
             <div className="flex flex-col items-center justify-center gap-3 py-20 text-muted-foreground">
               <p className="text-lg">{tCommon("no_results")}</p>

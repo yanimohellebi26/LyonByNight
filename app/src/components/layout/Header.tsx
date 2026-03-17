@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
+import { SearchOverlay } from "@/components/shared/SearchOverlay";
 import { useAuth } from "@/components/auth/AuthProvider";
-import { User, LogOut, LogIn, Users } from "lucide-react";
+import { User, LogOut, LogIn, Users, Search } from "lucide-react";
 
 export function Header() {
   const t = useTranslations("nav");
@@ -14,6 +15,7 @@ export function Header() {
   const pathname = usePathname();
   const { user, loading, signOut } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   // Close menu on outside click
@@ -26,6 +28,20 @@ export function Header() {
     if (menuOpen) document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [menuOpen]);
+
+  // Open search overlay with Cmd+K / Ctrl+K
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen((prev) => !prev);
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
 
   const tGroups = useTranslations("groups");
 
@@ -65,6 +81,16 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center gap-1.5 rounded-lg p-2 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+            aria-label="Search"
+          >
+            <Search className="h-5 w-5" />
+            <kbd className="hidden md:inline-flex items-center gap-0.5 rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <span className="text-xs">&#8984;</span>K
+            </kbd>
+          </button>
           <ThemeToggle />
           <LanguageSwitcher />
 
@@ -131,6 +157,7 @@ export function Header() {
         </div>
       </div>
       <div className="glow-line" />
+      <SearchOverlay open={searchOpen} onClose={closeSearch} />
     </header>
   );
 }

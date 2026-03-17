@@ -13,6 +13,8 @@ import {
 } from "@/components/shared/MotionWrapper";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ContextualBanner } from "@/components/shared/ContextualBanner";
+import { CollectionGrid } from "@/components/shared/CollectionCard";
+import { FeaturedVenueCard } from "@/components/shared/FeaturedVenueCard";
 import { isOpenTonight } from "@/lib/utils/horaires";
 import { translateLieu, translateEvent } from "@/lib/utils/translations";
 
@@ -82,6 +84,9 @@ export default async function HomePage() {
   const budgetFriendly = [...allLieux]
     .filter((l) => l.prix.fourchette === "€")
     .slice(0, 3);
+
+  /* Featured venue (highest-rated) */
+  const featuredVenue = trending[0] ?? null;
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -198,6 +203,36 @@ export default async function HomePage() {
             </div>
           </StaggerItem>
         </StaggerList>
+      </section>
+
+      {/* Featured venue */}
+      {featuredVenue && (
+        <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+          <FadeIn>
+            <div className="mb-8">
+              <h2 className="font-display text-2xl font-bold">{t("featured")}</h2>
+              <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <FeaturedVenueCard lieu={featuredVenue} />
+          </FadeIn>
+        </section>
+      )}
+
+      {/* Collections */}
+      <section className="mx-auto w-full max-w-6xl px-6 pb-16">
+        <FadeIn>
+          <div className="mb-8">
+            <h2 className="font-display text-2xl font-bold">{t("collections")}</h2>
+            <div className="mt-1 h-0.5 w-12 rounded-full bg-primary" />
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <div className="flex gap-4 overflow-x-auto pb-2 md:grid md:grid-cols-4 md:overflow-visible">
+            <CollectionGrid />
+          </div>
+        </FadeIn>
       </section>
 
       {/* Trending section */}

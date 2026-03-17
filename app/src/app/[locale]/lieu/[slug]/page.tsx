@@ -24,6 +24,7 @@ import { LieuMapSection } from "@/components/map/LieuMapSection";
 import { LieuEvents } from "@/components/cards/LieuEvents";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { ShareButton } from "@/components/shared/ShareButton";
+import { StickyActionBar } from "@/components/shared/StickyActionBar";
 import { PhotoGallery } from "@/components/shared/PhotoGallery";
 import { getPlaceholderImage } from "@/lib/placeholder-images";
 import { translateLieu } from "@/lib/utils/translations";
@@ -159,7 +160,7 @@ export default async function LieuPage({ params }: LieuPageProps) {
   const isSparse = !lieu.note && !lieu.resume_avis && lieu.photos.length === 0 && !lieu.horaires;
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-6">
+    <div className="mx-auto max-w-4xl px-4 py-6 pb-20 md:pb-0">
       <JsonLd type="lieu" lieu={lieu} />
 
       {/* Back + share */}
@@ -472,6 +473,16 @@ export default async function LieuPage({ params }: LieuPageProps) {
           </div>
         </section>
       )}
+
+      {/* Sticky action bar — mobile only */}
+      <StickyActionBar
+        lieuId={lieu.id}
+        lieuNom={lieu.nom}
+        description={lieu.description}
+        googleMaps={lieu.google_maps ?? undefined}
+        lat={lieu.coordonnees?.lat}
+        lng={lieu.coordonnees?.lng}
+      />
     </div>
   );
 }

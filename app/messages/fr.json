@@ -35,7 +35,10 @@
     "step_compare_desc": "Ajoute tes favoris au comparateur pour trouver le spot parfait.",
     "step_go_out": "Sors !",
     "step_go_out_desc": "Consulte les événements du soir et partage ton plan avec tes amis.",
-    "ask_ai": "Demande à l'IA"
+    "ask_ai": "Demande à l'IA",
+    "featured": "Coup de c\u0153ur",
+    "collections": "Collections",
+    "discover": "Découvrir"
   },
   "filters": {
     "title": "Filtres",
@@ -50,7 +53,9 @@
     "clear": "Effacer les filtres",
     "results": "{count} résultats",
     "address_placeholder": "Adresse ou lieu…",
-    "showing_range": "{from}-{to} sur {total} résultats"
+    "showing_range": "{from}-{to} sur {total} résultats",
+    "error_loading": "Erreur de chargement",
+    "retry": "Réessayer"
   },
   "sort": {
     "label": "Trier par",
@@ -113,7 +118,8 @@
     "no_info": "Informations limitées pour ce lieu. N'hésitez pas à nous aider à enrichir cette fiche !",
     "explore_similar": "Découvrir des lieux similaires",
     "source": "Sources",
-    "link_copied": "Lien copié !"
+    "link_copied": "Lien copié !",
+    "favorite": "Favori"
   },
   "compare": {
     "title": "Comparateur",
@@ -178,7 +184,9 @@
     "type_autre_single": "Événement",
     "source_label": "Source",
     "view_original": "Voir sur le site",
-    "search_events": "Rechercher un événement..."
+    "search_events": "Rechercher un événement...",
+    "error_loading": "Erreur de chargement",
+    "retry": "Réessayer"
   },
   "common": {
     "loading": "Chargement…",
@@ -188,7 +196,12 @@
     "back": "Retour",
     "skip_to_content": "Aller au contenu",
     "copied": "Copié !",
-    "search_placeholder": "Rechercher…",
+    "search_placeholder": "Rechercher un lieu ou événement…",
+    "search_recent": "Recherches récentes",
+    "search_suggestions": "Suggestions",
+    "search_no_results": "Aucun résultat",
+    "search_venues": "Lieux",
+    "search_events": "Événements",
     "rating": "Note",
     "pint": "Pinte"
   },

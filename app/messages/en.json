@@ -35,7 +35,10 @@
     "step_compare_desc": "Add your favorites to the comparator to find the perfect spot.",
     "step_go_out": "Go out!",
     "step_go_out_desc": "Check tonight's events and share your plan with friends.",
-    "ask_ai": "Ask AI"
+    "ask_ai": "Ask AI",
+    "featured": "Editor's Pick",
+    "collections": "Collections",
+    "discover": "Discover"
   },
   "filters": {
     "title": "Filters",
@@ -50,7 +53,9 @@
     "clear": "Clear filters",
     "results": "{count} results",
     "address_placeholder": "Address or place…",
-    "showing_range": "{from}-{to} of {total} results"
+    "showing_range": "{from}-{to} of {total} results",
+    "error_loading": "Loading error",
+    "retry": "Retry"
   },
   "sort": {
     "label": "Sort by",
@@ -113,7 +118,8 @@
     "no_info": "Limited information for this venue. Help us make this page richer!",
     "explore_similar": "Explore similar venues",
     "source": "Sources",
-    "link_copied": "Link copied!"
+    "link_copied": "Link copied!",
+    "favorite": "Favorite"
   },
   "compare": {
     "title": "Comparator",
@@ -178,7 +184,9 @@
     "type_autre_single": "Event",
     "source_label": "Source",
     "view_original": "View original",
-    "search_events": "Search events..."
+    "search_events": "Search events...",
+    "error_loading": "Loading error",
+    "retry": "Retry"
   },
   "common": {
     "loading": "Loading…",
@@ -188,7 +196,12 @@
     "back": "Back",
     "skip_to_content": "Skip to content",
     "copied": "Copied!",
-    "search_placeholder": "Search…",
+    "search_placeholder": "Search for a venue or event…",
+    "search_recent": "Recent searches",
+    "search_suggestions": "Suggestions",
+    "search_no_results": "No results",
+    "search_venues": "Venues",
+    "search_events": "Events",
     "rating": "Rating",
     "pint": "Pint"
   },
