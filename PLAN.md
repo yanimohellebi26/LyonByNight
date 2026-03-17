@@ -578,3 +578,98 @@ vercel --prod                  # Déploiement
 | 5 | S6 | Événements + page d'accueil + SEO |
 | 6 | S7 | Tests, perf, accessibilité, mise en prod |
 | 7 | Post | Nice-to-have itératifs |
+
+---
+
+## 9. Améliorations Frontend (Mars 2026)
+
+> Audit UI/UX complet et refonte par priorité.
+
+### P0 - Critique (UX cassée)
+
+#### 9.1 Fixer le Light Mode (CSS vars)
+- **Fichier:** `app/src/app/globals.css`
+- **Problème:** Les variables `:root` utilisent les defaults shadcn (noir/gris). `--primary` en light = noir au lieu d'orange #FF6B35.
+- [ ] Corriger `--primary` -> orange adapté light
+- [ ] Corriger `--accent` -> violet adapté light
+- [ ] Corriger `--background`, `--card`, `--muted` pour fonds clairs harmonieux
+- [ ] Corriger `--destructive`, `--ring`, `--border` pour contraste suffisant
+- [ ] Tester toutes les pages en light mode
+
+---
+
+### P1 - Impact fort
+
+#### 9.2 Hero Homepage avec gradient nightlife
+- **Fichier:** `app/src/app/[locale]/page.tsx`
+- [ ] Ajouter un gradient animé violet/orange en fond du hero
+- [ ] Remplacer l'emoji 💸 par icône Lucide `Coins`
+- [ ] Ajouter un CTA "Demande à l'IA" vers le chat
+- [ ] Ajouter une section "Comment ça marche" (3 étapes)
+- [ ] Corriger le lien "tonight" -> `/evenements` au lieu de `/explorer`
+
+#### 9.3 Grid 2 colonnes mobile sur Explorer
+- **Fichiers:** `app/src/app/[locale]/explorer/page.tsx`, `app/src/components/cards/LieuCard.tsx`
+- [ ] Passer la grid de `grid-cols-1` à `grid-cols-2 xl:grid-cols-3`
+- [ ] Adapter `LieuCard` pour être lisible en petite taille
+- [ ] Ajouter un titre h1 avec compteur de résultats
+
+#### 9.4 Bouton Partager fonctionnel (page lieu)
+- **Fichier:** `app/src/app/[locale]/lieu/[slug]/page.tsx`
+- [ ] Implémenter Web Share API (mobile) + fallback clipboard (desktop)
+- [ ] Ajouter un bouton Favoris dans le hero
+- [ ] Feedback visuel "Lien copié !"
+
+---
+
+### P2 - Fonctionnalités manquantes
+
+#### 9.5 Bottom sheet carte sur mobile
+- [ ] Transformer le panel en bottom sheet draggable sur mobile
+- [ ] Ajouter un bouton "Ma position" proéminent
+- [ ] Fixer le z-index des filtres vs panel
+
+#### 9.6 Highlight meilleur dans Compare
+- [ ] Ajouter des photos miniatures dans les headers
+- [ ] Highlight fond vert/badge sur le meilleur de chaque ligne
+- [ ] Vue cards empilées sur mobile au lieu du tableau
+
+#### 9.7 Recherche sur événements
+- [ ] Ajouter une barre de recherche debounced
+- [ ] Ajouter un filtre par lieu/quartier
+- [ ] Corriger le lien lieu dans EventCard (slug au lieu de l'ID)
+
+#### 9.8 EventCard: utiliser Next/Image
+- [ ] Remplacer `<img>` par `<Image>` avec `fill` + `sizes`
+
+---
+
+### P3 - Nice to have
+
+#### 9.9 OAuth Google sur pages auth
+#### 9.10 Section "Comment ça marche" homepage
+#### 9.11 Galerie photo avec lightbox (lieu détail)
+#### 9.12 Pagination enrichie (Explorer)
+#### 9.13 BottomNav améliorée
+#### 9.14 Empty states avec illustrations SVG
+
+---
+
+### Statut d'avancement frontend
+
+| # | Tâche | Priorité | Statut |
+|---|-------|----------|--------|
+| 9.1 | Light mode CSS vars | P0 | Fait |
+| 9.2 | Hero homepage gradient | P1 | Fait |
+| 9.3 | Grid 2 cols mobile Explorer | P1 | Fait |
+| 9.4 | Bouton Partager lieu | P1 | Fait |
+| 9.5 | Bottom sheet carte mobile | P2 | Fait |
+| 9.6 | Highlight Compare | P2 | Fait |
+| 9.7 | Recherche événements | P2 | Fait |
+| 9.8 | EventCard Next/Image | P2 | Fait |
+| 9.9 | OAuth Google | P3 | Reporté (config Supabase requise) |
+| 9.10 | Section comment ça marche | P3 | Fait |
+| 9.11 | Galerie lightbox | P3 | Fait |
+| 9.12 | Pagination enrichie | P3 | Fait |
+| 9.13 | BottomNav améliorée | P3 | Fait |
+| 9.14 | Empty states illustrations | P3 | Reporté (nécessite assets SVG) |

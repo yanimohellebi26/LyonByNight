@@ -153,6 +153,8 @@ export default function ExplorerPage() {
         <ContextualBanner />
       </div>
 
+      <h1 className="mb-2 text-2xl font-bold">{tNav("explore")}</h1>
+
       {/* ── Top bar: search + sort + mode toggles + mobile filters ── */}
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="relative flex-1 sm:max-w-md">
@@ -276,7 +278,7 @@ export default function ExplorerPage() {
             </div>
           ) : (
             <>
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
                 {lieux.map((lieu) => (
                   <LieuCard
                     key={lieu.id}
@@ -291,30 +293,59 @@ export default function ExplorerPage() {
 
               {/* ── Pagination ── */}
               {totalPages > 1 && !favoritesMode && (
-                <div className="mt-8 flex items-center justify-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled={currentPage <= 1}
-                    onClick={() =>
-                      setFilters({ page: String(currentPage - 1) })
-                    }
-                  >
-                    ←
-                  </Button>
-                  <span className="text-sm text-muted-foreground">
-                    {currentPage} / {totalPages}
-                  </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    disabled={currentPage >= totalPages}
-                    onClick={() =>
-                      setFilters({ page: String(currentPage + 1) })
-                    }
-                  >
-                    →
-                  </Button>
+                <div className="mt-8 flex flex-col items-center gap-3">
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      disabled={currentPage <= 1}
+                      onClick={() => setFilters({ page: String(currentPage - 1) })}
+                    >
+                      ←
+                    </Button>
+                    {Array.from({ length: totalPages }, (_, i) => i + 1)
+                      .filter((p) => {
+                        if (totalPages <= 7) return true;
+                        if (p === 1 || p === totalPages) return true;
+                        if (Math.abs(p - currentPage) <= 1) return true;
+                        return false;
+                      })
+                      .reduce<(number | "ellipsis")[]>((acc, p, i, arr) => {
+                        if (i > 0 && p - (arr[i - 1] as number) > 1) acc.push("ellipsis");
+                        acc.push(p);
+                        return acc;
+                      }, [])
+                      .map((item, i) =>
+                        item === "ellipsis" ? (
+                          <span key={`e-${i}`} className="px-1 text-muted-foreground">…</span>
+                        ) : (
+                          <Button
+                            key={item}
+                            variant={item === currentPage ? "default" : "outline"}
+                            size="sm"
+                            className="min-w-[2rem]"
+                            onClick={() => setFilters({ page: String(item) })}
+                          >
+                            {item}
+                          </Button>
+                        )
+                      )}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      disabled={currentPage >= totalPages}
+                      onClick={() => setFilters({ page: String(currentPage + 1) })}
+                    >
+                      →
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {t("showing_range", {
+                      from: (currentPage - 1) * 18 + 1,
+                      to: Math.min(currentPage * 18, total),
+                      total,
+                    })}
+                  </p>
                 </div>
               )}
             </>

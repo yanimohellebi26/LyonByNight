@@ -3,8 +3,10 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
+import Image from "next/image";
 import { X, Plus, Search, Share2, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { getPlaceholderImage } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RatingStars } from "@/components/shared/RatingStars";
@@ -159,6 +161,26 @@ export default function ComparerPage() {
 
   const emptySlots = Math.max(0, 3 - selected.length);
 
+  function getBestIds(label: string): Set<string> {
+    if (selected.length < 2) return new Set();
+
+    if (label === tCommon("rating")) {
+      const maxNote = Math.max(...selected.map((l) => l.note ?? 0));
+      if (maxNote === 0) return new Set();
+      return new Set(selected.filter((l) => (l.note ?? 0) === maxNote).map((l) => l.id));
+    }
+
+    if (label === tLieu("price")) {
+      const priceOrder = ["€", "€€", "€€€"];
+      const minIdx = Math.min(...selected.map((l) => priceOrder.indexOf(l.prix.fourchette)));
+      return new Set(
+        selected.filter((l) => priceOrder.indexOf(l.prix.fourchette) === minIdx).map((l) => l.id)
+      );
+    }
+
+    return new Set();
+  }
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-6">
       <div className="mb-6 flex items-center justify-between">
@@ -242,7 +264,35 @@ export default function ComparerPage() {
           </Button>
         </div>
       ) : (
-        <div className="overflow-x-auto">
+        <>
+        {/* Mobile: stacked cards */}
+        <div className="space-y-4 md:hidden">
+          {selected.map((lieu) => (
+            <div key={lieu.id} className="rounded-xl border bg-card p-4">
+              <div className="mb-3 flex items-center justify-between">
+                <Link href={`/lieu/${lieu.slug}`} className="font-semibold hover:text-primary transition-colors">
+                  {lieu.nom}
+                </Link>
+                <button
+                  onClick={() => removeLieu(lieu.id)}
+                  className="rounded-full p-1 text-muted-foreground hover:text-foreground"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="space-y-2">
+                {rows.map((row) => (
+                  <div key={row.label} className="flex items-center justify-between gap-2">
+                    <span className="text-xs text-muted-foreground">{row.label}</span>
+                    <div>{row.render(lieu)}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="hidden overflow-x-auto md:block">
           <table className="w-full border-collapse">
             {/* Header: venue names + photos */}
             <thead>
@@ -253,24 +303,36 @@ export default function ComparerPage() {
                     key={lieu.id}
                     className="min-w-[200px] p-2 text-left align-top"
                   >
-                    <div className="relative rounded-xl border bg-card p-4">
-                      <button
-                        onClick={() => removeLieu(lieu.id)}
-                        className="absolute right-2 top-2 rounded-full p-1 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
-                        aria-label={tLieu("remove_compare")}
-                      >
-                        <X className="h-4 w-4" />
-                      </button>
-                      <Link
-                        href={`/lieu/${lieu.slug}`}
-                        className="text-sm font-semibold hover:text-primary transition-colors"
-                      >
-                        {lieu.nom}
-                      </Link>
-                      <p className="mt-0.5 text-xs text-muted-foreground">
-                        {lieu.type === "club" ? "Club" : "Bar"} ·{" "}
-                        {lieu.categorie}
-                      </p>
+                    <div className="relative rounded-xl border bg-card overflow-hidden">
+                      <div className="relative h-24 bg-gradient-to-br from-muted to-muted/50">
+                        <Image
+                          src={lieu.photo_cover ?? getPlaceholderImage(lieu.id, lieu.categorie, lieu.type)}
+                          alt={lieu.nom}
+                          fill
+                          className="object-cover"
+                          sizes="200px"
+                          unoptimized
+                        />
+                      </div>
+                      <div className="relative p-3">
+                        <button
+                          onClick={() => removeLieu(lieu.id)}
+                          className="absolute right-2 top-2 rounded-full p-1 text-muted-foreground hover:bg-secondary hover:text-foreground transition-colors"
+                          aria-label={tLieu("remove_compare")}
+                        >
+                          <X className="h-4 w-4" />
+                        </button>
+                        <Link
+                          href={`/lieu/${lieu.slug}`}
+                          className="text-sm font-semibold hover:text-primary transition-colors"
+                        >
+                          {lieu.nom}
+                        </Link>
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          {lieu.type === "club" ? "Club" : "Bar"} ·{" "}
+                          {lieu.categorie}
+                        </p>
+                      </div>
                     </div>
                   </th>
                 ))}
@@ -296,7 +358,14 @@ export default function ComparerPage() {
                     {row.label}
                   </td>
                   {selected.map((lieu) => (
-                    <td key={lieu.id} className="p-3">
+                    <td
+                      key={lieu.id}
+                      className={`p-3 ${
+                        getBestIds(row.label).has(lieu.id)
+                          ? "bg-green-500/10 rounded-lg"
+                          : ""
+                      }`}
+                    >
                       {row.render(lieu)}
                     </td>
                   ))}
@@ -321,6 +390,7 @@ export default function ComparerPage() {
             </tbody>
           </table>
         </div>
+        </>
       )}
     </div>
   );

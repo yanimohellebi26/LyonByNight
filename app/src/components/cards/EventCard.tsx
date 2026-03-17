@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Calendar, Clock, ExternalLink, MapPin, Music, Ticket } from "lucide-react";
 import { useMemo } from "react";
 import { useLocale, useTranslations } from "next-intl";
@@ -85,11 +86,16 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
   if (compact) {
     return (
       <div className="flex items-center gap-3 rounded-xl border bg-card p-3 transition-all hover:border-primary/30">
-        <img
-          src={imageUrl}
-          alt=""
-          className="h-10 w-10 shrink-0 rounded-lg object-cover"
-        />
+        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+          <Image
+            src={imageUrl}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="40px"
+            unoptimized
+          />
+        </div>
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold">{event.titre}</p>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -111,11 +117,13 @@ export function EventCard({ event, compact, serverToday }: EventCardProps) {
     <div className="group rounded-2xl border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
       {/* Header with photo */}
       <div className="relative h-40 overflow-hidden rounded-t-2xl">
-        <img
+        <Image
           src={imageUrl}
           alt={event.titre}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="absolute left-3 top-3">

@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   SlidersHorizontal,
   X,
+  Navigation,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -150,6 +151,30 @@ export default function CartePage() {
             {tFilters("clear")}
           </Button>
         )}
+
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-1.5 shadow-lg bg-background/80 backdrop-blur-sm ml-auto"
+          onClick={() => {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                  setGeoCenter({
+                    lat: pos.coords.latitude,
+                    lng: pos.coords.longitude,
+                    label: tMap("my_location"),
+                  });
+                  setRadiusKm(2);
+                },
+                () => { /* permission denied or error */ }
+              );
+            }
+          }}
+        >
+          <Navigation className="h-4 w-4" />
+          <span className="hidden sm:inline">{tMap("my_location")}</span>
+        </Button>
       </div>
 
       {/* ── Filter panel dropdown ── */}
@@ -304,9 +329,10 @@ export default function CartePage() {
         </div>
       )}
 
-      {/* ── Side panel ── */}
+      {/* ── Side panel: sidebar on desktop, bottom sheet on mobile ── */}
+      {/* Desktop sidebar */}
       <div
-        className={`absolute left-0 top-0 z-10 flex h-full transition-transform duration-300 ${
+        className={`absolute left-0 top-0 z-10 hidden h-full transition-transform duration-300 md:flex ${
           panelOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -358,6 +384,57 @@ export default function CartePage() {
             <ChevronRight className="h-4 w-4" />
           )}
         </button>
+      </div>
+
+      {/* Mobile bottom sheet */}
+      <div
+        className={`absolute bottom-0 left-0 right-0 z-10 flex flex-col md:hidden transition-transform duration-300 ${
+          panelOpen ? "translate-y-0" : "translate-y-[calc(100%-3rem)]"
+        }`}
+      >
+        {/* Drag handle */}
+        <button
+          onClick={() => setPanelOpen((v) => !v)}
+          className="flex items-center justify-center rounded-t-xl border border-b-0 bg-background py-2"
+        >
+          <div className="h-1 w-10 rounded-full bg-muted-foreground/30" />
+        </button>
+        <div className="flex h-[40vh] flex-col border-t bg-background">
+          <div className="border-b px-3 py-2">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder={`${t("map")}…`}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="pl-9"
+              />
+            </div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              {tMap("venues_on_map", { count: geoLieux.length })}
+            </p>
+          </div>
+          <div className="flex-1 overflow-y-auto p-2 space-y-2">
+            {loading ? (
+              <div className="flex justify-center py-6">
+                <Loader2 className="h-6 w-6 animate-spin text-primary" />
+              </div>
+            ) : geoLieux.length === 0 ? (
+              <p className="py-6 text-center text-sm text-muted-foreground">
+                {tCommon("no_results")}
+              </p>
+            ) : (
+              geoLieux.map((lieu) => (
+                <LieuMiniCard
+                  key={lieu.id}
+                  lieu={lieu}
+                  isActive={hoveredId === lieu.id}
+                  onHover={setHoveredId}
+                />
+              ))
+            )}
+          </div>
+        </div>
       </div>
 
       {/* ── Map ── */}

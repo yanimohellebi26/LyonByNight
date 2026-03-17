@@ -27,7 +27,15 @@
     "clubs": "Clubs",
     "music_genres": "Music genres",
     "see_all": "See all",
-    "events_tonight": "Events tonight"
+    "events_tonight": "Events tonight",
+    "how_it_works": "How it works",
+    "step_explore": "Explore",
+    "step_explore_desc": "Browse Lyon's bars and clubs, filter by music style, price or district.",
+    "step_compare": "Compare",
+    "step_compare_desc": "Add your favorites to the comparator to find the perfect spot.",
+    "step_go_out": "Go out!",
+    "step_go_out_desc": "Check tonight's events and share your plan with friends.",
+    "ask_ai": "Ask AI"
   },
   "filters": {
     "title": "Filters",
@@ -41,7 +49,8 @@
     "features": "Features",
     "clear": "Clear filters",
     "results": "{count} results",
-    "address_placeholder": "Address or place…"
+    "address_placeholder": "Address or place…",
+    "showing_range": "{from}-{to} of {total} results"
   },
   "sort": {
     "label": "Sort by",
@@ -103,7 +112,8 @@
     "good_to_know": "Good to know",
     "no_info": "Limited information for this venue. Help us make this page richer!",
     "explore_similar": "Explore similar venues",
-    "source": "Sources"
+    "source": "Sources",
+    "link_copied": "Link copied!"
   },
   "compare": {
     "title": "Comparator",
@@ -167,7 +177,8 @@
     "type_other_single": "Event",
     "type_autre_single": "Event",
     "source_label": "Source",
-    "view_original": "View original"
+    "view_original": "View original",
+    "search_events": "Search events..."
   },
   "common": {
     "loading": "Loading…",
@@ -185,7 +196,8 @@
     "results_count": "{count} results",
     "search_proximity": "Search by proximity",
     "radius": "Radius",
-    "venues_on_map": "{count} venues on map"
+    "venues_on_map": "{count} venues on map",
+    "my_location": "My location"
   },
   "footer": {
     "disclaimer": "Data for informational purposes",

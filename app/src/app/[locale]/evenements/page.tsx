@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
-import { Calendar, Loader2, Filter, Plus } from "lucide-react";
+import { Calendar, Loader2, Filter, Plus, Search } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useDebounce } from "@/hooks/useDebounce";
 import {
   Select,
   SelectContent,
@@ -58,6 +60,8 @@ export default function EvenementsPage() {
   const [loading, setLoading] = useState(true);
   const [period, setPeriod] = useState("week");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearch = useDebounce(searchQuery, 300);
 
   useEffect(() => {
     let cancelled = false;
@@ -67,6 +71,7 @@ export default function EvenementsPage() {
       setLoading(true);
       const params = new URLSearchParams({ period });
       if (typeFilter !== "all") params.set("type", typeFilter);
+      if (debouncedSearch) params.set("q", debouncedSearch);
 
       try {
         const res = await fetch(`/api/events?${params}`, { signal: controller.signal });
@@ -86,7 +91,7 @@ export default function EvenementsPage() {
 
     void load();
     return () => { cancelled = true; controller.abort(); };
-  }, [period, typeFilter, locale]);
+  }, [period, typeFilter, locale, debouncedSearch]);
 
   // Group events by date
   const grouped = events.reduce<Record<string, EnrichedEvent[]>>((acc, evt) => {
@@ -138,6 +143,17 @@ export default function EvenementsPage() {
       {/* Filters */}
       <FadeIn delay={0.1}>
         <div className="mb-8 flex flex-wrap items-center gap-3">
+          {/* Search */}
+          <div className="relative w-full sm:w-auto sm:min-w-[250px]">
+            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder={t("search_events")}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+
           {/* Period tabs */}
           <div className="flex gap-1 rounded-lg border bg-card p-1">
             {PERIOD_OPTIONS.map((opt) => (

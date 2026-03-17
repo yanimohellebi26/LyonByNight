@@ -27,7 +27,15 @@
     "clubs": "Clubs",
     "music_genres": "Genres musicaux",
     "see_all": "Tout voir",
-    "events_tonight": "Événements ce soir"
+    "events_tonight": "Événements ce soir",
+    "how_it_works": "Comment ça marche",
+    "step_explore": "Explore",
+    "step_explore_desc": "Parcours les bars et clubs de Lyon, filtre par style de musique, prix ou quartier.",
+    "step_compare": "Compare",
+    "step_compare_desc": "Ajoute tes favoris au comparateur pour trouver le spot parfait.",
+    "step_go_out": "Sors !",
+    "step_go_out_desc": "Consulte les événements du soir et partage ton plan avec tes amis.",
+    "ask_ai": "Demande à l'IA"
   },
   "filters": {
     "title": "Filtres",
@@ -41,7 +49,8 @@
     "features": "Spécificités",
     "clear": "Effacer les filtres",
     "results": "{count} résultats",
-    "address_placeholder": "Adresse ou lieu…"
+    "address_placeholder": "Adresse ou lieu…",
+    "showing_range": "{from}-{to} sur {total} résultats"
   },
   "sort": {
     "label": "Trier par",
@@ -103,7 +112,8 @@
     "good_to_know": "Bon à savoir",
     "no_info": "Informations limitées pour ce lieu. N'hésitez pas à nous aider à enrichir cette fiche !",
     "explore_similar": "Découvrir des lieux similaires",
-    "source": "Sources"
+    "source": "Sources",
+    "link_copied": "Lien copié !"
   },
   "compare": {
     "title": "Comparateur",
@@ -167,7 +177,8 @@
     "type_other_single": "Événement",
     "type_autre_single": "Événement",
     "source_label": "Source",
-    "view_original": "Voir sur le site"
+    "view_original": "Voir sur le site",
+    "search_events": "Rechercher un événement..."
   },
   "common": {
     "loading": "Chargement…",
@@ -185,7 +196,8 @@
     "results_count": "{count} résultats",
     "search_proximity": "Recherche par proximité",
     "radius": "Rayon",
-    "venues_on_map": "{count} lieux sur la carte"
+    "venues_on_map": "{count} lieux sur la carte",
+    "my_location": "Ma position"
   },
   "footer": {
     "disclaimer": "Données à titre indicatif",

@@ -37,7 +37,7 @@ export function LieuCard({
       className="group block rounded-2xl border bg-card transition-all duration-300 hover:scale-[1.02] hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
     >
       {/* Photo area / category banner */}
-      <div className="relative flex h-40 items-center justify-center overflow-hidden rounded-t-2xl bg-gradient-to-br from-muted to-muted/50">
+      <div className="relative flex h-32 items-center justify-center overflow-hidden rounded-t-2xl sm:h-40 bg-gradient-to-br from-muted to-muted/50">
         <Image
           src={coverSrc}
           alt={lieu.nom}
@@ -95,13 +95,13 @@ export function LieuCard({
       </div>
 
       {/* Content */}
-      <div className="space-y-2.5 p-4">
+      <div className="space-y-2 p-3 sm:space-y-2.5 sm:p-4">
         <div className="flex items-center justify-between gap-2">
           <MusicTags genres={lieu.musique} />
           <OpenStatusBadge horaires={lieu.horaires} compact />
         </div>
 
-        <h3 className="text-base font-semibold leading-tight group-hover:text-primary transition-colors">
+        <h3 className="text-sm font-semibold leading-tight group-hover:text-primary transition-colors sm:text-base">
           {lieu.nom}
         </h3>
 
@@ -126,7 +126,7 @@ export function LieuCard({
         </div>
 
         {lieu.description && (
-          <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
+          <p className="hidden line-clamp-2 text-xs leading-relaxed text-muted-foreground sm:block">
             {lieu.description}
           </p>
         )}

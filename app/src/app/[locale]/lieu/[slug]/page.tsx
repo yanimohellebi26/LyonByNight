@@ -11,7 +11,6 @@ import {
   Instagram,
   ExternalLink,
   ArrowLeft,
-  Share2,
   Music,
   Users,
   Euro,
@@ -24,6 +23,8 @@ import { Separator } from "@/components/ui/separator";
 import { LieuMapSection } from "@/components/map/LieuMapSection";
 import { LieuEvents } from "@/components/cards/LieuEvents";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { ShareButton } from "@/components/shared/ShareButton";
+import { PhotoGallery } from "@/components/shared/PhotoGallery";
 import { getPlaceholderImage } from "@/lib/placeholder-images";
 import { translateLieu } from "@/lib/utils/translations";
 import type { Lieu } from "@/types";
@@ -170,13 +171,7 @@ export default async function LieuPage({ params }: LieuPageProps) {
           <ArrowLeft className="h-4 w-4" />
           {tNav("explore")}
         </Link>
-        <button
-          className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          aria-label={t("share")}
-        >
-          <Share2 className="h-4 w-4" />
-          {t("share")}
-        </button>
+        <ShareButton title={lieu.nom} text={lieu.description} />
       </div>
 
       {/* Hero banner */}
@@ -220,25 +215,7 @@ export default async function LieuPage({ params }: LieuPageProps) {
       </div>
 
       {/* Photo gallery */}
-      {lieu.photos.length > 1 && (
-        <div className="mb-8 flex gap-3 overflow-x-auto pb-2">
-          {lieu.photos.map((photo, idx) => (
-            <div
-              key={idx}
-              className="relative h-24 w-36 shrink-0 overflow-hidden rounded-xl"
-            >
-              <Image
-                src={photo}
-                alt={`${lieu.nom} photo ${idx + 1}`}
-                fill
-                className="object-cover"
-                sizes="144px"
-                unoptimized
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      <PhotoGallery photos={lieu.photos} alt={lieu.nom} />
 
       {/* ===== Quick Facts Grid ===== */}
       <section className="mb-8">

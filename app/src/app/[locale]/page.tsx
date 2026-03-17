@@ -2,7 +2,7 @@ import { readFileSync } from "fs";
 import { getTranslations, getLocale } from "next-intl/server";
 import { getDataFilePath } from "@/lib/utils/data-path";
 import { Link } from "@/i18n/navigation";
-import { ArrowRight, TrendingUp, MapPin, Calendar, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, MapPin, Calendar, Sparkles, Coins, MessageCircle, Search, GitCompareArrows, PartyPopper } from "lucide-react";
 import type { Lieu, Evenement } from "@/types";
 import { LieuCard } from "@/components/cards/LieuCard";
 import { EventCard } from "@/components/cards/EventCard";
@@ -87,7 +87,10 @@ export default async function HomePage() {
     <div className="flex min-h-screen flex-col">
       <JsonLd type="website" />
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center gap-8 px-6 py-24 text-center">
+      <section className="relative flex flex-col items-center justify-center gap-8 px-6 py-24 text-center overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-accent/5 to-transparent" />
+        <div className="absolute -top-40 -right-40 -z-10 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 -z-10 h-80 w-80 rounded-full bg-accent/10 blur-3xl" />
         <FadeIn>
           <h1 className="max-w-2xl text-5xl font-bold leading-tight tracking-tight md:text-7xl">
             {t("hero_title")}
@@ -119,6 +122,14 @@ export default async function HomePage() {
               <MapPin className="h-4 w-4" />
               {nav("map")}
             </Link>
+            <Link
+              href="#"
+              onClick={(e) => { e.preventDefault(); }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-8 py-3 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {t("ask_ai")}
+            </Link>
           </div>
         </FadeIn>
       </section>
@@ -147,6 +158,42 @@ export default async function HomePage() {
           </p>
           <p className="text-sm text-muted-foreground">{t("music_genres")}</p>
         </div>
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto w-full max-w-4xl px-6 pb-16">
+        <FadeIn>
+          <h2 className="mb-8 text-center text-xl font-bold">{t("how_it_works")}</h2>
+        </FadeIn>
+        <StaggerList className="grid gap-6 sm:grid-cols-3">
+          <StaggerItem>
+            <div className="flex flex-col items-center gap-3 text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
+                <Search className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold">{t("step_explore")}</h3>
+              <p className="text-xs text-muted-foreground">{t("step_explore_desc")}</p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="flex flex-col items-center gap-3 text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10">
+                <GitCompareArrows className="h-6 w-6 text-accent" />
+              </div>
+              <h3 className="text-sm font-semibold">{t("step_compare")}</h3>
+              <p className="text-xs text-muted-foreground">{t("step_compare_desc")}</p>
+            </div>
+          </StaggerItem>
+          <StaggerItem>
+            <div className="flex flex-col items-center gap-3 text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
+                <PartyPopper className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="text-sm font-semibold">{t("step_go_out")}</h3>
+              <p className="text-xs text-muted-foreground">{t("step_go_out_desc")}</p>
+            </div>
+          </StaggerItem>
+        </StaggerList>
       </section>
 
       {/* Trending section */}
@@ -181,10 +228,10 @@ export default async function HomePage() {
             <h2 className="text-xl font-bold">{t("tonight")}</h2>
           </div>
           <Link
-            href="/explorer"
+            href="/evenements"
             className="flex items-center gap-1 text-sm text-primary hover:underline"
           >
-            {nav("map")}
+            {nav("events")}
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -227,7 +274,7 @@ export default async function HomePage() {
       {budgetFriendly.length > 0 && (
         <section className="mx-auto w-full max-w-6xl px-6 pb-24">
           <div className="mb-6 flex items-center gap-2">
-            <span className="text-xl">💸</span>
+            <Coins className="h-5 w-5 text-primary" />
             <h2 className="text-xl font-bold">{t("near_you")}</h2>
           </div>
           <StaggerList className="grid gap-4 sm:grid-cols-3">
